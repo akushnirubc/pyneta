@@ -1,0 +1,13 @@
+
+
+cisco3#terminal width 511
+cisco3#terminal length 0
+cisco3#
+cisco3#
+cisco3#
+cisco3#ping google.com
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 172.217.214.139, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 48/50/52 ms
+cisco3#

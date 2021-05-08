@@ -1,0 +1,10 @@
+vlan 680
+ name red680
+vlan 681
+ name red681
+vlan 682
+ name red682
+vlan 683
+ name red683
+vlan 684
+ name red684
