@@ -1,0 +1,129 @@
+
+In [3]: with open("show_version.txt") as f:
+   ...:     output = f.read()
+   ...: 
+
+In [4]: print(output)
+Cisco IOS Software, C880 Software (C880DATA-UNIVERSALK9-M), Version 15.4(2)T1, RELEASE SOFTWARE (fc3)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2014 by Cisco Systems, Inc.
+Compiled Thu 26-Jun-14 14:15 by prod_rel_team
+
+ROM: System Bootstrap, Version 12.4(22r)YB5, RELEASE SOFTWARE (fc1)
+
+pynet-rtr1 uptime is 1 year, 21 weeks, 6 days, 13 minutes
+System returned to ROM by reload
+System restarted at 12:44:53 PDT Wed Jun 22 2016
+System image file is "flash:c880data-universalk9-mz.154-2.T1.bin"
+Last reload type: Normal Reload
+Last reload reason: power-on
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Cisco 881 (MPC8300) processor (revision 1.0) with 236544K/25600K bytes of memory.
+Processor board ID FTX0000038X
+
+5 FastEthernet interfaces
+1 Virtual Private Network (VPN) Module
+256K bytes of non-volatile configuration memory.
+126000K bytes of ATA CompactFlash (Read/Write)
+
+
+License Info:
+
+License UDI:
+
+-------------------------------------------------
+Device#   PID                   SN
+-------------------------------------------------
+*0        CISCO881-SEC-K9       FTX0000038X     
+
+
+
+License Information for 'c880-data'
+    License Level: advipservices   Type: Permanent
+    Next reboot license Level: advipservices
+
+
+Configuration register is 0x2102
+
+In [5]: show_ver = output.splitlines()
+
+
+In [6]: line = show_ver[0]
+
+In [7]: line
+Out[7]: 'Cisco IOS Software, C880 Software (C880DATA-UNIVERSALK9-M), Version 15.4(2)T1, RELEASE SOFTWARE (fc3)'
+
+In [8]: import re
+
+In [9]: re.search(r"^C.*$", line)
+Out[9]: <re.Match object; span=(0, 101), match='Cisco IOS Software, C880 Software (C880DATA-UNIVE>
+
+In [10]: re.search(r"^C.*$", line).group(0)
+Out[10]: 'Cisco IOS Software, C880 Software (C880DATA-UNIVERSALK9-M), Version 15.4(2)T1, RELEASE SOFTWARE (fc3)'
+
+In [11]: line
+Out[11]: 'Cisco IOS Software, C880 Software (C880DATA-UNIVERSALK9-M), Version 15.4(2)T1, RELEASE SOFTWARE (fc3)'
+
+In [12]: In [12]: re.search(r"^Cisco.*, Version (\S+),.*$", line)
+Out[12]: <re.Match object; span=(0, 101), match='Cisco IOS Software, C880 Software (C880DATA-UNIVE>
+
+In [13]: re.search(r"^Cisco.*, Version (\S+),.*$", line).group(0)
+Out[13]: 'Cisco IOS Software, C880 Software (C880DATA-UNIVERSALK9-M), Version 15.4(2)T1, RELEASE SOFTWARE (fc3)'
+
+In [14]: re.search(r"^Cisco.*, Version (\S+),.*$", line).group(1)
+Out[14]: '15.4(2)T1'
+
+
+In [15]: re.search(r"^Cisco (.*), Version (\S+),.*$", line).group(1)
+Out[15]: 'IOS Software, C880 Software (C880DATA-UNIVERSALK9-M)'
+
+In [16]: re.search(r"^Cisco (.*), Version (\S+),.*$", line).group(2)
+Out[16]: '15.4(2)T1'
+
+In [17]: os_version = re.search(r"^Cisco (.*), Version (\S+),.*$", line).group(2)
+
+
+In [18]: os_version
+Out[18]: '15.4(2)T1'
+
+In [19]: os_version = re.search(r"^Cisco (.*), Version (?P<serial_num>\S+),.*$", line).group(2)
+
+In [20]: os_version = re.search(r"^Cisco (.*), Version (?P<serial_num>\S+),.*$", line)
+
+
+In [21]:  re.search(r"^Cisco (.*), Version (?P<serial_num>\S+),.*$", line)
+Out[21]: <re.Match object; span=(0, 101), match='Cisco IOS Software, C880 Software (C880DATA-UNIVE>
+
+
+In [22]:  re.search(r"^Cisco (.*), Version (?P<serial_num>\S+),.*$", line).groupdict()
+Out[22]: {'serial_num': '15.4(2)T1'}
+
+In [23]: match =  re.search(r"^Cisco (.*), Version (?P<serial_num>\S+),.*$", line)
+
+In [24]: match.group_dict()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-24-341cde63ee7d> in <module>
+----> 1 match.group_dict()
+
+AttributeError: 're.Match' object has no attribute 'group_dict'
+
+In [25]: In [25]: match.groupdict()
+Out[25]: {'serial_num': '15.4(2)T1'}

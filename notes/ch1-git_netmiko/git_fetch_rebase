@@ -1,0 +1,224 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git push origin main
+Enumerating objects: 13, done.
+Counting objects: 100% (12/12), done.
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (8/8), 983 bytes | 327.00 KiB/s, done.
+Total 8 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To https://github.com/akushnirubc/pyneta
+   af06aba..40e4432  main -> main
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ ls
+README.md  test1.py  test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git branch
+  devel
+  feature1
+* main
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git checkout devel
+Switched to branch 'devel'
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git checkout devel
+Already on 'devel'
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch devel
+nothing to commit, working tree clean
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git log
+commit 783ca2f29bf7714a2ba51e9624afa8fed1f17100 (HEAD -> devel)
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+Date:   Fri Apr 16 10:49:23 2021 -0700
+
+    Updating Python scripts
+
+commit 858aaea8892232bc444ea59008dd550c0baaeef3
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+Date:   Fri Apr 16 10:22:24 2021 -0700
+
+    Adding test3a.py
+
+commit 376e21c980a445675f254f4a9447b6fe08615990 (feature1)
+Author: akushnirubc <57720084+akushnirubc@users.noreply.github.com>
+Date:   Fri Apr 16 09:03:16 2021 -0700
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git checkout master
+error: pathspec 'master' did not match any file(s) known to git
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git log
+commit 40e443217232b18ec4220ee7920386f5a50f5fb5 (HEAD -> main, origin/main, origin/HEAD)
+Merge: c1c33a9 af06aba
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+Date:   Fri Apr 16 11:10:20 2021 -0700
+
+    Merge branch 'main' of https://github.com/akushnirubc/pyneta into main
+
+commit af06abaf1a30c096495f00fe6a03395414a3eb60
+Merge: 528c984 983e481
+Author: akushnirubc <57720084+akushnirubc@users.noreply.github.com>
+Date:   Fri Apr 16 11:08:13 2021 -0700
+
+    Merge pull request #4 from akushnirubc/devel
+    
+    Delete test3a.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ 
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ 
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ 
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git checkout devel
+Switched to branch 'devel'
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git branch
+* devel
+  feature1
+  main
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git checkout devel
+Already on 'devel'
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git rebase main
+First, rewinding head to replay your work on top of it...
+Fast-forwarded devel to main.
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git log
+commit 40e443217232b18ec4220ee7920386f5a50f5fb5 (HEAD -> devel, origin/main, origin/HEAD, main)
+Merge: c1c33a9 af06aba
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+Date:   Fri Apr 16 11:10:20 2021 -0700
+
+    Merge branch 'main' of https://github.com/akushnirubc/pyneta into main
+
+commit af06abaf1a30c096495f00fe6a03395414a3eb60
+Merge: 528c984 983e481
+Author: akushnirubc <57720084+akushnirubc@users.noreply.github.com>
+Date:   Fri Apr 16 11:08:13 2021 -0700
+
+    Merge pull request #4 from akushnirubc/devel
+    
+    Delete test3a.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ ls
+README.md  test1.py  test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch devel
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   test1.py
+        modified:   test2.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git add test*.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch devel
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   test1.py
+        modified:   test2.py
+
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git commit -m "Updating python script"
+[devel 5c65b34] Updating python script
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch devel
+nothing to commit, working tree clean
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git log
+commit 5c65b349e71558e8b309dec1ea042a850eb18c1d (HEAD -> devel)
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+Date:   Fri Apr 16 12:13:20 2021 -0700
+
+    Updating python script
+
+commit 40e443217232b18ec4220ee7920386f5a50f5fb5 (origin/main, origin/HEAD, main)
+Merge: c1c33a9 af06aba
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+Date:   Fri Apr 16 11:10:20 2021 -0700
+
+    Merge branch 'main' of https://github.com/akushnirubc/pyneta into main
+
+commit af06abaf1a30c096495f00fe6a03395414a3eb60
+Merge: 528c984 983e481
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git log
+commit 40e443217232b18ec4220ee7920386f5a50f5fb5 (HEAD -> main, origin/main, origin/HEAD)
+Merge: c1c33a9 af06aba
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+Date:   Fri Apr 16 11:10:20 2021 -0700
+
+    Merge branch 'main' of https://github.com/akushnirubc/pyneta into main
+
+commit af06abaf1a30c096495f00fe6a03395414a3eb60
+Merge: 528c984 983e481
+Author: akushnirubc <57720084+akushnirubc@users.noreply.github.com>
+Date:   Fri Apr 16 11:08:13 2021 -0700
+
+    Merge pull request #4 from akushnirubc/devel
+    
+    Delete test3a.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git merge devel
+Updating 40e4432..5c65b34
+Fast-forward
+ test1.py | 2 ++
+ test2.py | 7 ++-----
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git log
+commit 5c65b349e71558e8b309dec1ea042a850eb18c1d (HEAD -> main, devel)
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+Date:   Fri Apr 16 12:13:20 2021 -0700
+
+    Updating python script
+
+commit 40e443217232b18ec4220ee7920386f5a50f5fb5 (origin/main, origin/HEAD)
+Merge: c1c33a9 af06aba
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+Date:   Fri Apr 16 11:10:20 2021 -0700
+
+    Merge branch 'main' of https://github.com/akushnirubc/pyneta into main
+
+commit af06abaf1a30c096495f00fe6a03395414a3eb60
+Merge: 528c984 983e481
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ cat test2.py
+print("Hello")
+print("Hello")
+print("Hello")
+print("Hello")
+print("Hello")
+
+
+for x in range(100)
+    print(x)(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ cat test1/py
+cat: test1/py: No such file or directory
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ cat test1.py
+print("Hello Cat")
+
+print("Hello Cat")(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git remote -v
+origin  https://github.com/akushnirubc/pyneta (fetch)
+origin  https://github.com/akushnirubc/pyneta (push)
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ 
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git fetch origin
+From https://github.com/akushnirubc/pyneta
+   71f38b1..983e481  devel      -> origin/devel
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git checkout devel
+Switched to branch 'devel'
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch devel
+nothing to commit, working tree clean
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git branch
+* devel
+  feature1
+  main
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ get rebase origin/2.0
+bash: get: command not found
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git log
+commit 5c65b349e71558e8b309dec1ea042a850eb18c1d (HEAD -> devel, main)
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+Date:   Fri Apr 16 12:13:20 2021 -0700
+
+    Updating python script
+
+commit 40e443217232b18ec4220ee7920386f5a50f5fb5 (origin/main, origin/HEAD)
+Merge: c1c33a9 af06aba
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+Date:   Fri Apr 16 11:10:20 2021 -0700
+
+    Merge branch 'main' of https://github.com/akushnirubc/pyneta into main
+
+commit af06abaf1a30c096495f00fe6a03395414a3eb60
+Merge: 528c984 983e481

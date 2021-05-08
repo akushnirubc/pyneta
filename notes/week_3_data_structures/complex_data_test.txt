@@ -1,0 +1,305 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b week_3_data_structure_confparse]$ ipython -i exercise3.py 
+Python 3.7.9 (default, Feb 18 2021, 03:10:35) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+In [1]: dir()
+Out[1]: 
+['In',
+ 'Out',
+ '_',
+ '__',
+ '___',
+ '__builtin__',
+ '__builtins__',
+ '__doc__',
+ '__loader__',
+ '__name__',
+ '__package__',
+ '__spec__',
+ '_dh',
+ '_i',
+ '_i1',
+ '_ih',
+ '_ii',
+ '_iii',
+ '_oh',
+ 'data',
+ 'exit',
+ 'get_ipython',
+ 'quit']
+
+
+In [2]: In [2]: data
+Out[2]: 
+{'Ethernet2/1': {'ipv4': {'1.1.1.1': {'prefix_length': 24}}},
+ 'Ethernet2/2': {'ipv4': {'2.2.2.2': {'prefix_length': 27},
+   '3.3.3.3': {'prefix_length': 25}}},
+ 'Ethernet2/3': {'ipv4': {'4.4.4.4': {'prefix_length': 16}},
+  'ipv6': {'fe80::2ec2:60ff:fe4f:feb2': {'prefix_length': 64},
+   '2001:db8::1': {'prefix_length': 10}}},
+ 'Ethernet2/4': {'ipv6': {'fe80::2ec2:60ff:fe4f:feb2': {'prefix_length': 64},
+   '2001:11:2233::a1': {'prefix_length': 24},
+   '2001:cc11:22bb:0:2ec2:60ff:fe4f:feb2': {'prefix_length': 64}}}}
+
+
+In [3]: type(data)
+Out[3]: dict
+
+In [4]: len(data)
+Out[4]: 4
+
+In [5]: data.keys
+Out[5]: <function dict.keys>
+
+In [6]: data.keys()
+Out[6]: dict_keys(['Ethernet2/1', 'Ethernet2/2', 'Ethernet2/3', 'Ethernet2/4'])
+
+In [7]: data.items()
+Out[7]: dict_items([('Ethernet2/1', {'ipv4': {'1.1.1.1': {'prefix_length': 24}}}), ('Ethernet2/2', {'ipv4': {'2.2.2.2': {'prefix_length': 27}, '3.3.3.3': {'prefix_length': 25}}}), ('Ethernet2/3', {'ipv4': {'4.4.4.4': {'prefix_length': 16}}, 'ipv6': {'fe80::2ec2:60ff:fe4f:feb2': {'prefix_length': 64}, '2001:db8::1': {'prefix_length': 10}}}), ('Ethernet2/4', {'ipv6': {'fe80::2ec2:60ff:fe4f:feb2': {'prefix_length': 64}, '2001:11:2233::a1': {'prefix_length': 24}, '2001:cc11:22bb:0:2ec2:60ff:fe4f:feb2': {'prefix_length': 64}}})])
+
+
+In [8]: print(data['Ethernet2/1']
+   ...: 
+   ...: )
+{'ipv4': {'1.1.1.1': {'prefix_length': 24}}}
+
+In [9]: print(data['Ethernet2/2'])
+{'ipv4': {'2.2.2.2': {'prefix_length': 27}, '3.3.3.3': {'prefix_length': 25}}}
+
+In [10]: print(data['Ethernet2/3'])
+{'ipv4': {'4.4.4.4': {'prefix_length': 16}}, 'ipv6': {'fe80::2ec2:60ff:fe4f:feb2': {'prefix_length': 64}, '2001:db8::1': {'prefix_length': 10}}}
+
+
+In [11]: print(data['Ethernet2/4'])
+{'ipv6': {'fe80::2ec2:60ff:fe4f:feb2': {'prefix_length': 64}, '2001:11:2233::a1': {'prefix_length': 24}, '2001:cc11:22bb:0:2ec2:60ff:fe4f:feb2': {'prefix_length': 64}}}
+
+
+In [12]: for int_name, inf_dict in data.items():
+    ...:     print(int_name)
+    ...:     print(intf_dict)
+    ...:     break
+    ...: 
+Ethernet2/1
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-12-625974b95989> in <module>
+      1 for int_name, inf_dict in data.items():
+      2     print(int_name)
+----> 3     print(intf_dict)
+      4     break
+      5 
+
+NameError: name 'intf_dict' is not defined
+
+In [13]: for int_name, inf_dict in data.items():
+    ...:     print(int_name)
+    ...:     print(inf_dict)
+    ...:     break
+    ...: 
+    ...: 
+Ethernet2/1
+{'ipv4': {'1.1.1.1': {'prefix_length': 24}}}
+
+In [14]: for int_name, inf_dict in data.items():
+    ...:     print(int_name)
+    ...:     print(inf_dict['prefix_length"])
+    ...:     break
+    ...: 
+    ...: 
+    ...: 
+  File "<ipython-input-14-567a896fbdd2>", line 3
+    print(inf_dict['prefix_length"])
+                                    ^
+SyntaxError: EOL while scanning string literal
+
+
+In [15]: for int_name, inf_dict in data.items():
+    ...:     print(int_name)
+    ...:     print(inf_dict['prefix_length'])
+    ...:     break
+    ...: 
+    ...: 
+    ...: 
+Ethernet2/1
+---------------------------------------------------------------------------
+KeyError                                  Traceback (most recent call last)
+<ipython-input-15-605cc1c63924> in <module>
+      1 for int_name, inf_dict in data.items():
+      2     print(int_name)
+----> 3     print(inf_dict['prefix_length'])
+      4     break
+      5 
+
+KeyError: 'prefix_length'
+
+In [16]: for int_name, inf_dict in data.items():
+    ...:     print(int_name)
+    ...:     print(inf_dict.items())
+    ...:     break
+    ...: 
+    ...: 
+    ...: 
+    ...: 
+Ethernet2/1
+dict_items([('ipv4', {'1.1.1.1': {'prefix_length': 24}})])
+
+In [17]: for intf, ipaddr_dict in data.items():
+    ...:     for ipv4_or_ipv6, addr_info in ipaddr_dict.items():
+    ...:         for ip_addr, prefix_dict in addr_info.items():
+    ...:             print(prefix_dict['prefix_length'])
+    ...: 
+24
+27
+25
+16
+64
+10
+64
+24
+64
+
+In [18]: for int_name, inf_dict in data.items():
+    ...:     print(int_name)
+    ...: 
+    ...: 
+    ...: 
+    ...: 
+    ...: 
+Ethernet2/1
+Ethernet2/2
+Ethernet2/3
+Ethernet2/4
+
+In [19]: for int_name, inf_dict in data.items():
+    ...:     print(int_name)
+    ...:     print(ip_addr_dict)
+    ...: 
+    ...: 
+    ...: 
+    ...: 
+    ...: 
+Ethernet2/1
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-19-26cd887d19dc> in <module>
+      1 for int_name, inf_dict in data.items():
+      2     print(int_name)
+----> 3     print(ip_addr_dict)
+      4 
+      5 
+
+NameError: name 'ip_addr_dict' is not defined
+
+In [20]: for int_name, ipaddr_dict in data.items():
+    ...:     print(int_name)
+    ...:     print(ipaddr_dict)
+    ...: 
+    ...: 
+    ...: 
+    ...: 
+    ...: 
+    ...: 
+Ethernet2/1
+{'ipv4': {'1.1.1.1': {'prefix_length': 24}}}
+Ethernet2/2
+{'ipv4': {'2.2.2.2': {'prefix_length': 27}, '3.3.3.3': {'prefix_length': 25}}}
+Ethernet2/3
+{'ipv4': {'4.4.4.4': {'prefix_length': 16}}, 'ipv6': {'fe80::2ec2:60ff:fe4f:feb2': {'prefix_length': 64}, '2001:db8::1': {'prefix_length': 10}}}
+Ethernet2/4
+{'ipv6': {'fe80::2ec2:60ff:fe4f:feb2': {'prefix_length': 64}, '2001:11:2233::a1': {'prefix_length': 24}, '2001:cc11:22bb:0:2ec2:60ff:fe4f:feb2': {'prefix_length': 64}}}
+
+
+
+
+Python 3.7.9 (default, Feb 18 2021, 03:10:35) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: dir()
+Out[1]: 
+['In',
+ 'Out',
+ '_',
+ '__',
+ '___',
+ '__builtin__',
+ '__builtins__',
+ '__doc__',
+ '__loader__',
+ '__name__',
+ '__package__',
+ '__spec__',
+ '_dh',
+ '_i',
+ '_i1',
+ '_ih',
+ '_ii',
+ '_iii',
+ '_oh',
+ 'arp_data',
+ 'exit',
+ 'get_ipython',
+ 'quit']
+
+
+In [2]: In [2]: print(arp_data)
+{'dynamicEntries': 2, 'ipV4Neighbors': [{'hwAddress': 'dc38.e111.97cf', 'address': '172.17.17.1', 'interface': 'Ethernet45', 'age': 0}, {'hwAddress': '90e2.ba5c.25fd', 'address': '172.17.16.1', 'interface': 'Ethernet36', 'age': 0}], 'notLearnedEntries': 0, 'totalEntries': 2, 'staticEntries': 0}
+
+In [3]: In [3]: arp_data(len)
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-3-d6b49f37fcb1> in <module>
+----> 1 arp_data(len)
+
+TypeError: 'dict' object is not callable
+
+In [4]: In [4]: len(arp_data)
+Out[4]: 5
+
+
+In [5]: In [5]: print(arp_data.keys())
+dict_keys(['dynamicEntries', 'ipV4Neighbors', 'notLearnedEntries', 'totalEntries', 'staticEntries'])
+
+In [6]: print(arp_data.items())
+dict_items([('dynamicEntries', 2), ('ipV4Neighbors', [{'hwAddress': 'dc38.e111.97cf', 'address': '172.17.17.1', 'interface': 'Ethernet45', 'age': 0}, {'hwAddress': '90e2.ba5c.25fd', 'address': '172.17.16.1', 'interface': 'Ethernet36', 'age': 0}]), ('notLearnedEntries', 0), ('totalEntries', 2), ('staticEntries', 0)])
+
+In [7]: arp_entries = arp_data["ipV4Neighbors"]
+
+In [8]: arp_entries
+Out[8]: 
+[{'hwAddress': 'dc38.e111.97cf',
+  'address': '172.17.17.1',
+  'interface': 'Ethernet45',
+  'age': 0},
+ {'hwAddress': '90e2.ba5c.25fd',
+  'address': '172.17.16.1',
+  'interface': 'Ethernet36',
+  'age': 0}]
+
+In [9]: for arp_entry in arp_entries:
+   ...:     print("address")
+   ...:     print("hwAddress")
+   ...:     break
+   ...: 
+address
+hwAddress
+
+
+In [10]: for arp_entry in arp_entries:
+    ...:     print(arp_entry["address"])
+    ...:     print(arp_entry["hwAddress"])
+    ...:     break
+    ...: 
+    ...: 
+172.17.17.1
+dc38.e111.97cf
+
+In [11]: for arp_entry in arp_entries:
+    ...:     print(arp_entry["address"])
+    ...:     print(arp_entry["hwAddress"])
+    ...: 
+    ...: 
+172.17.17.1
+dc38.e111.97cf
+172.17.16.1
+90e2.ba5c.25fd

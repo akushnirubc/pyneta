@@ -1,0 +1,68 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b week_3_data_structures]$ ipython -i read_yaml.py 
+Python 3.7.9 (default, Feb 18 2021, 03:10:35) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+Enter filename: test2.yml
+{'key1': 'value1', 'key2': 'value2', 'key3': 'value3'}
+
+
+'key1': 'value1', 'key2': 'value2', 'key3': 'value3'}
+
+In [1]: dir()
+Out[1]: 
+['In',
+ 'Out',
+ '_',
+ '__',
+ '___',
+ '__builtin__',
+ '__builtins__',
+ '__doc__',
+ '__loader__',
+ '__name__',
+ '__package__',
+ '__spec__',
+ '_dh',
+ '_i',
+ '_i1',
+ '_ih',
+ '_ii',
+ '_iii',
+ '_oh',
+ 'exit',
+ 'f',
+ 'filename',
+ 'get_ipython',
+ 'quit',
+ 'yaml',
+ 'yaml_out']
+
+
+In [2]: In [2]: yaml_out
+Out[2]: {'key1': 'value1', 'key2': 'value2', 'key3': 'value3'}
+
+In [3]: type(yaml_out)
+Out[3]: dict
+
+In [4]: yaml_out['key3']
+Out[4]: 'value3'
+
+In [5]: quit()
+(py3_venv) (py3_venv) [akushnir@pylab25b week_3_data_structures]$ cat test2.yml
+---
+key1: value1
+key2: value2
+key3: value3
+
+(py3_venv) (py3_venv) [akushnir@pylab25b week_3_data_structures]$ python read_yaml.py 
+Enter filename: test3.yml
+{'router1': {'device_type': 'cisco_ios', 'ip_addr': '1.1.1.1', 'username': 'admin', 'password': 'foo'}}
+(py3_venv) (py3_venv) [akushnir@pylab25b week_3_data_structures]$ python read_yaml.py 
+Enter filename: test4.yml
+['some_string', 'some string that has multiple words', None, True, False, True, False, True, False, True, False, 'yes']
+(py3_venv) (py3_venv) [akushnir@pylab25b week_3_data_structures]$ python read_yaml.py 
+Enter filename: test4.yml
+['some_string', 'some string that has multiple words', None, True, False, True, False, True, False, True, False, 'yes', 'This is a multiline string in YAML.\nIt can keep going across\ndifferent lines']
+(py3_venv) (py3_venv) [akushnir@pylab25b week_3_data_structures]$ python read_yaml.py 
+Enter filename: test4.yml
+['some_string', 'some string that has multiple words', None, True, False, True, False, True, False, True, False, 'yes', 'This is a multiline string in YAML. It can keep going across different lines']

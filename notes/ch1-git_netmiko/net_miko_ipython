@@ -1,0 +1,242 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b ~]$ ipython
+Python 3.7.9 (default, Feb 18 2021, 03:10:35) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: 
+
+
+In [1]: from netmiko import ConnectHandler
+
+In [2]: net_connect = ConnectHandler(host='cisco1.lasthop.io', username='pyclass
+   ...: ', password=getpass(), device_type='whatever')
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-2-48876630a8f0> in <module>
+----> 1 net_connect = ConnectHandler(host='cisco1.lasthop.io', username='pyclass', password=getpass(), device_type='whatever')
+
+NameError: name 'getpass' is not defined
+
+In [3]: from getpass import getpass
+
+In [4]: net_connect = ConnectHandler(host='cisco1.lasthop.io', username='pyclass
+   ...: ', password=getpass(), device_type='whatever')
+Password: 
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+<ipython-input-4-48876630a8f0> in <module>
+----> 1 net_connect = ConnectHandler(host='cisco1.lasthop.io', username='pyclass', password=getpass(), device_type='whatever')
+
+~/VENV/py3_venv/lib64/python3.7/site-packages/netmiko/ssh_dispatcher.py in ConnectHandler(*args, **kwargs)
+    310         raise ValueError(
+    311             "Unsupported 'device_type' "
+--> 312             "currently supported platforms are: {}".format(msg_str)
+    313         )
+    314     ConnectionClass = ssh_dispatcher(device_type)
+
+ValueError: Unsupported 'device_type' currently supported platforms are: 
+a10
+accedian
+adtran_os
+alcatel_aos
+alcatel_sros
+apresia_aeos
+arista_eos
+aruba_os
+aruba_osswitch
+aruba_procurve
+avaya_ers
+avaya_vsp
+broadcom_icos
+brocade_fastiron
+brocade_netiron
+brocade_nos
+brocade_vdx
+brocade_vyos
+calix_b6
+centec_os
+checkpoint_gaia
+ciena_saos
+cisco_asa
+cisco_ftd
+cisco_ios
+cisco_nxos
+cisco_s300
+cisco_tp
+cisco_wlc
+cisco_xe
+cisco_xr
+cloudgenix_ion
+coriant
+dell_dnos9
+dell_force10
+dell_isilon
+dell_os10
+dell_os6
+dell_os9
+dell_powerconnect
+dlink_ds
+eltex
+eltex_esr
+endace
+enterasys
+ericsson_ipos
+extreme
+extreme_ers
+extreme_exos
+extreme_netiron
+extreme_nos
+extreme_slx
+extreme_vdx
+extreme_vsp
+extreme_wing
+f5_linux
+f5_ltm
+f5_tmsh
+flexvnf
+fortinet
+generic
+generic_termserver
+hp_comware
+hp_procurve
+huawei
+huawei_olt
+huawei_smartax
+huawei_vrpv8
+ipinfusion_ocnos
+juniper
+juniper_junos
+juniper_screenos
+keymile
+keymile_nos
+linux
+mellanox
+mellanox_mlnxos
+mikrotik_routeros
+mikrotik_switchos
+mrv_lx
+mrv_optiswitch
+netapp_cdot
+netgear_prosafe
+netscaler
+nokia_sros
+oneaccess_oneos
+ovs_linux
+paloalto_panos
+pluribus
+quanta_mesh
+rad_etx
+raisecom_roap
+ruckus_fastiron
+ruijie_os
+sixwind_os
+sophos_sfos
+tplink_jetstream
+ubiquiti_edge
+ubiquiti_edgerouter
+ubiquiti_edgeswitch
+ubiquiti_unifiswitch
+vyatta_vyos
+vyos
+watchguard_fireware
+yamaha
+zte_zxros
+
+
+In [5]: net_connect = ConnectHandler(host='cisco1.lasthop.io', username='pyclass
+   ...: ', password=getpass(), device_type='cisco_ios')
+Password: 
+
+In [6]: net_connect.find_prompt()
+Out[6]: 'cisco1#'
+
+
+(py3_venv) (py3_venv) [akushnir@pylab25b ch1-git_netmiko]$ python test_dict.py 
+Password: 
+cisco1#
+(py3_venv) (py3_venv) [akushnir@pylab25b ch1-git_netmiko]$ ipython -i test_dict.py 
+Python 3.7.9 (default, Feb 18 2021, 03:10:35) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+Password: 
+cisco1#
+
+In [1]: net_connect
+Out[1]: <netmiko.cisco.cisco_ios.CiscoIosSSH at 0x7f012f761ed0>
+
+
+In [2]: net_connect.find_prompt()
+Out[2]: 'cisco1#'
+
+In [3]: In [3]: output = net_connect.send_command("show ip int brief")
+
+In [4]: print(output)
+Interface                  IP-Address      OK? Method Status                Protocol
+FastEthernet0              unassigned      YES unset  down                  down    
+FastEthernet1              unassigned      YES unset  down                  down    
+FastEthernet2              unassigned      YES unset  down                  down    
+FastEthernet3              unassigned      YES unset  down                  down    
+FastEthernet4              10.220.88.20    YES NVRAM  up                    up      
+Vlan1                      unassigned      YES unset  down                  down    
+
+
+In [5]: In [5]: output = net_connect.send_command("show ip arp")
+
+In [6]: print(output)
+Protocol  Address          Age (min)  Hardware Addr   Type   Interface
+Internet  10.220.88.1             7   0062.ec29.70fe  ARPA   FastEthernet4
+Internet  10.220.88.20            -   c89c.1dea.0eb6  ARPA   FastEthernet4
+Internet  10.220.88.22           20   a093.5141.b780  ARPA   FastEthernet4
+Internet  10.220.88.32          136   00aa.56ce.aa04  ARPA   FastEthernet4
+Internet  10.220.88.33           28   00aa.655d.e8c3  ARPA   FastEthernet4
+Internet  10.220.88.34           60   00aa.7867.8f6b  ARPA   FastEthernet4
+Internet  10.220.88.35            4   00aa.877d.c6e5  ARPA   FastEthernet4
+Internet  10.220.88.37          124   0001.00ff.0001  ARPA   FastEthernet4
+Internet  10.220.88.38          184   0002.00ff.0001  ARPA   FastEthernet4
+Internet  10.220.88.39           10   6464.9be8.08c8  ARPA   FastEthernet4
+
+In [7]: output = net_connect.send_command("show ip arp", expect_string=r'#')
+   ...: )
+  File "<ipython-input-7-87ade3bd8853>", line 2
+    )
+    ^
+SyntaxError: invalid syntax
+
+
+In [8]: output = net_connect.send_command("show ip arp", expect_string=r'#')
+
+In [9]: In [9]: print(output)
+Protocol  Address          Age (min)  Hardware Addr   Type   Interface
+Internet  10.220.88.1             9   0062.ec29.70fe  ARPA   FastEthernet4
+Internet  10.220.88.20            -   c89c.1dea.0eb6  ARPA   FastEthernet4
+Internet  10.220.88.22           22   a093.5141.b780  ARPA   FastEthernet4
+Internet  10.220.88.32          139   00aa.56ce.aa04  ARPA   FastEthernet4
+Internet  10.220.88.33           30   00aa.655d.e8c3  ARPA   FastEthernet4
+Internet  10.220.88.34           62   00aa.7867.8f6b  ARPA   FastEthernet4
+Internet  10.220.88.35            7   00aa.877d.c6e5  ARPA   FastEthernet4
+Internet  10.220.88.37          126   0001.00ff.0001  ARPA   FastEthernet4
+Internet  10.220.88.38          186   0002.00ff.0001  ARPA   FastEthernet4
+Internet  10.220.88.39           12   6464.9be8.08c8  ARPA   FastEthernet4
+
+
+In [10]: output = net_connect.send_command("show ip arp", expect_string=r'>')
+---------------------------------------------------------------------------
+OSError                                   Traceback (most recent call last)
+<ipython-input-10-095143dfe504> in <module>
+----> 1 output = net_connect.send_command("show ip arp", expect_string=r'>')
+
+~/VENV/py3_venv/lib64/python3.7/site-packages/netmiko/utilities.py in wrapper_decorator(self, *args, **kwargs)
+    428         if self.global_cmd_verify is not None:
+    429             kwargs["cmd_verify"] = self.global_cmd_verify
+--> 430         return func(self, *args, **kwargs)
+    431 
+    432     return wrapper_decorator
+
+~/VENV/py3_venv/lib64/python3.7/site-packages/netmiko/base_connection.py in send_command(self, command_string, expect_string, delay_factor, max_loops, auto_find_prompt, strip_prompt, strip_command, normalize, use_textfsm, textfsm_template, use_ttp, ttp_template, use_genie, cmd_verify)
+   1529             raise IOError(
+   1530                 "Search pattern never detected in send_command: {}".format(
+-> 1531                     search_pattern
+   1532                 )
+   1533             )
+
+OSError: Search pattern never detected in send_command: >

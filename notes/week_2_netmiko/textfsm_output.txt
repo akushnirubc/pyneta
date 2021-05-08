@@ -1,0 +1,72 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b week_2_netmiko]$ ipython -i text_fsm_ex.py 
+Python 3.7.9 (default, Feb 18 2021, 03:10:35) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+Password: 
+cisco1#
+[{'intf': 'FastEthernet0', 'ipaddr': 'unassigned', 'status': 'down', 'proto': 'down'}, {'intf': 'FastEthernet1', 'ipaddr': 'unassigned', 'status': 'down', 'proto': 'down'}, {'intf': 'FastEthernet2', 'ipaddr': 'unassigned', 'status': 'down', 'proto': 'down'}, {'intf': 'FastEthernet3', 'ipaddr': 'unassigned', 'status': 'down', 'proto': 'down'}, {'intf': 'FastEthernet4', 'ipaddr': '10.220.88.20', 'status': 'up', 'proto': 'up'}, {'intf': 'Vlan1', 'ipaddr': 'unassigned', 'status': 'down', 'proto': 'down'}]
+
+In [1]: from pprint import pprint
+
+In [2]: pprint(output)
+[{'intf': 'FastEthernet0',
+  'ipaddr': 'unassigned',
+  'proto': 'down',
+  'status': 'down'},
+ {'intf': 'FastEthernet1',
+  'ipaddr': 'unassigned',
+  'proto': 'down',
+  'status': 'down'},
+ {'intf': 'FastEthernet2',
+  'ipaddr': 'unassigned',
+  'proto': 'down',
+  'status': 'down'},
+ {'intf': 'FastEthernet3',
+  'ipaddr': 'unassigned',
+  'proto': 'down',
+  'status': 'down'},
+ {'intf': 'FastEthernet4',
+  'ipaddr': '10.220.88.20',
+  'proto': 'up',
+  'status': 'up'},
+ {'intf': 'Vlan1', 'ipaddr': 'unassigned', 'proto': 'down', 'status': 'down'}]
+
+
+In [3]: type(output)
+Out[3]: list
+
+In [4]: output[0]
+Out[4]: 
+{'intf': 'FastEthernet0',
+ 'ipaddr': 'unassigned',
+ 'status': 'down',
+ 'proto': 'down'}
+
+
+In [5]: output[1]
+Out[5]: 
+{'intf': 'FastEthernet1',
+ 'ipaddr': 'unassigned',
+ 'status': 'down',
+ 'proto': 'down'}
+
+In [6]: output[5]
+Out[6]: {'intf': 'Vlan1', 'ipaddr': 'unassigned', 'status': 'down', 'proto': 'down'}
+
+
+In [7]: output[4]
+Out[7]: 
+{'intf': 'FastEthernet4',
+ 'ipaddr': '10.220.88.20',
+ 'status': 'up',
+ 'proto': 'up'}
+
+In [8]: output[4]['ipaddr']
+Out[8]: '10.220.88.20'
+
+In [9]: exit
+(py3_venv) (py3_venv) [akushnir@pylab25b week_2_netmiko]$ python text_fsm_ex.py 
+Password: 
+cisco1#
+[{'protocol': 'Internet', 'address': '10.220.88.1', 'age': '33', 'mac': '0062.ec29.70fe', 'type': 'ARPA', 'interface': 'FastEthernet4'}, {'protocol': 'Internet', 'address': '10.220.88.20', 'age': '-', 'mac': 'c89c.1dea.0eb6', 'type': 'ARPA', 'interface': 'FastEthernet4'}, {'protocol': 'Internet', 'address': '10.220.88.22', 'age': '23', 'mac': 'a093.5141.b780', 'type': 'ARPA', 'interface': 'FastEthernet4'}, {'protocol': 'Internet', 'address': '10.220.88.32', 'age': '22', 'mac': '00aa.56ce.aa04', 'type': 'ARPA', 'interface': 'FastEthernet4'}, {'protocol': 'Internet', 'address': '10.220.88.33', 'age': '199', 'mac': '00aa.655d.e8c3', 'type': 'ARPA', 'interface': 'FastEthernet4'}, {'protocol': 'Internet', 'address': '10.220.88.34', 'age': '24', 'mac': '00aa.7867.8f6b', 'type': 'ARPA', 'interface': 'FastEthernet4'}, {'protocol': 'Internet', 'address': '10.220.88.35', 'age': '194', 'mac': '00aa.877d.c6e5', 'type': 'ARPA', 'interface': 'FastEthernet4'}, {'protocol': 'Internet', 'address': '10.220.88.37', 'age': '96', 'mac': '0001.00ff.0001', 'type': 'ARPA', 'interface': 'FastEthernet4'}, {'protocol': 'Internet', 'address': '10.220.88.38', 'age': '164', 'mac': '0002.00ff.0001', 'type': 'ARPA', 'interface': 'FastEthernet4'}, {'protocol': 'Internet', 'address': '10.220.88.39', 'age': '8', 'mac': '6464.9be8.08c8', 'type': 'ARPA', 'interface': 'FastEthernet4'}]
+(py3_venv) (py3_venv) [akushnir@pylab25b week_2_netmiko]$ 

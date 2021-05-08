@@ -1,0 +1,143 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b conf_parse]$ ipython
+froPython 3.7.9 (default, Feb 18 2021, 03:10:35) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from ciscoconfparse import CiscoConfParse
+
+In [2]: In [2]: CiscoConfParse("cisco1.txt")
+Out[2]: <CiscoConfParse: 245 lines / syntax: ios / comment delimiter: '!' / factory: False>
+
+
+In [3]: cisco_obj = CiscoConfParse("cisco1.txt")
+
+In [4]: In [4]: 
+
+In [4]: In [4]: cisco_obj
+Out[4]: <CiscoConfParse: 245 lines / syntax: ios / comment delimiter: '!' / factory: False>
+
+In [5]: cisco_obj.find_objects(r"^interface")
+Out[5]: 
+[<IOSCfgLine # 171 'interface FastEthernet0'>,
+ <IOSCfgLine # 174 'interface FastEthernet1'>,
+ <IOSCfgLine # 177 'interface FastEthernet2'>,
+ <IOSCfgLine # 180 'interface FastEthernet3'>,
+ <IOSCfgLine # 183 'interface FastEthernet4'>,
+ <IOSCfgLine # 189 'interface Vlan1'>]
+
+In [6]: dir(cisco_obj)
+Out[6]: 
+['ConfigObjs',
+ '__class__',
+ '__delattr__',
+ '__dict__',
+ '__dir__',
+ '__doc__',
+ '__eq__',
+ '__format__',
+ '__ge__',
+ '__getattribute__',
+ '__gt__',
+ '__hash__',
+ '__init__',
+ '__init_subclass__',
+ '__le__',
+ '__lt__',
+ '__module__',
+ '__ne__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ '__weakref__',
+ '_build_space_tolerant_regex',
+ '_find_all_child_OBJ',
+ '_find_line_OBJ',
+ '_find_sibling_OBJ',
+ '_objects_to_uncfg',
+ '_sequence_nonparent_lines',
+ '_sequence_parent_lines',
+ '_unique_OBJ',
+ 'append_line',
+ 'atomic',
+ 'comment_delimiter',
+ 'commit',
+ 'convert_braces_to_ios',
+ 'debug',
+ 'delete_lines',
+ 'factory',
+ 'find_all_children',
+ 'find_blocks',
+ 'find_children',
+ 'find_children_w_parents',
+ 'find_interface_objects',
+ 'find_lineage',
+ 'find_lines',
+ 'find_object_branches',
+ 'find_objects',
+ 'find_objects_dna',
+ 'find_objects_w_all_children',
+ 'find_objects_w_child',
+ 'find_objects_w_missing_children',
+ 'find_objects_w_parents',
+ 'find_objects_wo_child',
+ 'find_parents_w_child',
+ 'find_parents_wo_child',
+ 'has_line_with',
+ 'insert_after',
+ 'insert_after_child',
+ 'insert_before',
+ 'ioscfg',
+ 'objs',
+ 'openargs',
+ 'prepend_line',
+ 're_match_iter_typed',
+ 're_search_children',
+ 'replace_all_children',
+ 'replace_children',
+ 'replace_lines',
+ 'req_cfgspec_all_diff',
+ 'req_cfgspec_excl_diff',
+ 'save_as',
+ 'sync_diff',
+ 'syntax']
+
+In [7]: help(cisco_obj.find_objects_w_child)
+
+
+In [8]: cisco_obj.find_objects_w_child(parentspec=r"^interface", childspec=r"ip address")
+Out[8]: 
+[<IOSCfgLine # 171 'interface FastEthernet0'>,
+ <IOSCfgLine # 174 'interface FastEthernet1'>,
+ <IOSCfgLine # 177 'interface FastEthernet2'>,
+ <IOSCfgLine # 180 'interface FastEthernet3'>,
+ <IOSCfgLine # 183 'interface FastEthernet4'>,
+ <IOSCfgLine # 189 'interface Vlan1'>]
+
+In [9]: cisco_obj.find_objects_w_child(parentspec=r"^interface", childspec=r"^\s+ip address")
+Out[9]: [<IOSCfgLine # 183 'interface FastEthernet4'>]
+
+In [10]: match = cisco_obj.find_objects_w_child(parentspec=r"^interface", childspec=r"^\s+ip address")
+
+
+In [11]: match
+Out[11]: [<IOSCfgLine # 183 'interface FastEthernet4'>]
+
+In [12]: match[0]
+Out[12]: <IOSCfgLine # 183 'interface FastEthernet4'>
+
+In [13]: In [13]: match[0].text
+Out[13]: 'interface FastEthernet4'
+
+In [14]: match[0].children
+Out[14]: 
+[<IOSCfgLine # 184 ' description *** LAN connection (don't change) ***' (parent is # 183)>,
+ <IOSCfgLine # 185 ' ip address 10.220.88.20 255.255.255.0' (parent is # 183)>,
+ <IOSCfgLine # 186 ' duplex auto' (parent is # 183)>,
+ <IOSCfgLine # 187 ' speed auto' (parent is # 183)>]
+
+In [15]: 

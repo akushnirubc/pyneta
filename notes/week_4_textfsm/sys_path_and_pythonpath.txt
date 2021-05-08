@@ -1,0 +1,104 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ python
+Python 3.7.9 (default, Feb 18 2021, 03:10:35) 
+[GCC 7.3.1 20180712 (Red Hat 7.3.1-12)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import sys
+>>> from pprint import pprint
+>>> pprint(sys.path)
+['',
+ '/home/akushnir/python-libs',
+ '/home/akushnir/DJANGOX/djproject',
+ '/usr/lib64/python37.zip',
+ '/usr/lib64/python3.7',
+ '/usr/lib64/python3.7/lib-dynload',
+ '/home/akushnir/VENV/py3_venv/lib64/python3.7/site-packages',
+ '/home/akushnir/VENV/py3_venv/lib/python3.7/site-packages']
+>>> 
+>>> import re
+>>> re.__file__
+'/usr/lib64/python3.7/re.py'
+>>> quit()
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ quit()
+> python
+bash: syntax error near unexpected token `python'
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ 
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ 
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ 
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ 
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ python
+Python 3.7.9 (default, Feb 18 2021, 03:10:35) 
+[GCC 7.3.1 20180712 (Red Hat 7.3.1-12)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import re
+hello world
+>>> re.__file__
+'/home/akushnir/notes/week_4_textfsm/re.py'
+>>> quit()
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ rm re.py 
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ python
+Python 3.7.9 (default, Feb 18 2021, 03:10:35) 
+[GCC 7.3.1 20180712 (Red Hat 7.3.1-12)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import sys
+>>> sys.path
+['', '/home/akushnir/python-libs', '/home/akushnir/DJANGOX/djproject', '/usr/lib64/python37.zip', '/usr/lib64/python3.7', '/usr/lib64/python3.7/lib-dynload', '/home/akushnir/VENV/py3_venv/lib64/python3.7/site-packages', '/home/akushnir/VENV/py3_venv/lib/python3.7/site-packages']
+>>> import my_file
+>>> my_file.MY_CONST
+3.14
+>>> quit()
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ python
+Python 3.7.9 (default, Feb 18 2021, 03:10:35) 
+[GCC 7.3.1 20180712 (Red Hat 7.3.1-12)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from my_file import USERNAME, PASSWORD
+>>> USERNAME
+'admin'
+>>> PASSWORD
+'whatever'
+>>> quit()
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ python
+Python 3.7.9 (default, Feb 18 2021, 03:10:35) 
+[GCC 7.3.1 20180712 (Red Hat 7.3.1-12)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import sys
+>>> from pprint import pprint
+>>> pprint(sys.path)
+['',
+ '/home/akushnir/python-libs',
+ '/home/akushnir/DJANGOX/djproject',
+ '/usr/lib64/python37.zip',
+ '/usr/lib64/python3.7',
+ '/usr/lib64/python3.7/lib-dynload',
+ '/home/akushnir/VENV/py3_venv/lib64/python3.7/site-packages',
+ '/home/akushnir/VENV/py3_venv/lib/python3.7/site-packages']
+>>> quit()
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ ls
+libraries_and_pypi.txt  my_file.py  __pycache__  requirements.txt  sys_path_and_pythonpath.txt
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ mv my_file.py ~/python-libs/
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ ls
+libraries_and_pypi.txt  __pycache__  requirements.txt  sys_path_and_pythonpath.txt
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ ipython
+Python 3.7.9 (default, Feb 18 2021, 03:10:35) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from my_file import USERNAME, PASSWORD
+
+
+In [2]: import my_file
+
+In [3]: my_file.__file__
+Out[3]: '/home/akushnir/python-libs/my_file.py'
+
+
+In [4]: quit()
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ env | grep PYTHON
+PYTHONWARNINGS=ignore::Warning
+PYTHONPATH=/home/akushnir/python-libs:/home/akushnir/DJANGOX/djproject/
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ export PYTHONPATH=/home/akushnir/python-libs
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ 
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ 
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ 
+(py3_venv) (py3_venv) [akushnir@pylab25b week_4_textfsm]$ env | grep PYTHON
+PYTHONWARNINGS=ignore::Warning
+PYTHONPATH=/home/akushnir/python-libs

@@ -1,0 +1,194 @@
+py3_venv) (py3_venv) [akushnir@pylab25b week_2_netmiko]$ ipython -i misc.py 
+Python 3.7.9 (default, Feb 18 2021, 03:10:35) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+Password: 
+cisco1#
+
+In [1]: net_connect.find_prompt()
+Out[1]: 'cisco1#'
+
+In [2]: dir(net_connect)
+Out[2]: 
+['RESPONSE_RETURN',
+ 'RETURN',
+ 'TELNET_RETURN',
+ '__class__',
+ '__delattr__',
+ '__dict__',
+ '__dir__',
+ '__doc__',
+ '__enter__',
+ '__eq__',
+ '__exit__',
+ '__format__',
+ '__ge__',
+ '__getattribute__',
+ '__gt__',
+ '__hash__',
+ '__init__',
+ '__init_subclass__',
+ '__le__',
+ '__lt__',
+ '__module__',
+ '__ne__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ '__weakref__',
+ '_autodetect_fs',
+ '_build_ssh_client',
+ '_connect_params_dict',
+ '_first_line_handler',
+ '_legacy_mode',
+ '_lock_netmiko_session',
+ '_modify_connection_params',
+ '_open',
+ '_read_channel',
+ '_read_channel_expect',
+ '_read_channel_timing',
+ '_sanitize_output',
+ '_session_locker',
+ '_session_log_close',
+ '_session_log_fin',
+ '_test_channel_read',
+ '_timeout_exceeded',
+ '_try_session_preparation',
+ '_unlock_netmiko_session',
+ '_use_ssh_config',
+ '_write_channel',
+ '_write_session_log',
+ 'allow_agent',
+ 'allow_auto_change',
+ 'alt_host_keys',
+ 'alt_key_file',
+ 'ansi_escape_codes',
+ 'auth_timeout',
+ 'banner_timeout',
+ 'base_prompt',
+ 'blocking_timeout',
+ 'check_config_mode',
+ 'check_enable_mode',
+ 'cleanup',
+ 'clear_buffer',
+ 'close_session_log',
+ 'commit',
+ 'config_mode',
+ 'conn_timeout',
+ 'device_type',
+ 'disable_paging',
+ 'disconnect',
+ 'enable',
+ 'encoding',
+ 'establish_connection',
+ 'exit_config_mode',
+ 'exit_enable_mode',
+ 'fast_cli',
+ 'find_prompt',
+ 'global_cmd_verify',
+ 'global_delay_factor',
+ 'host',
+ 'is_alive',
+ 'keepalive',
+ 'key_file',
+ 'key_policy',
+ 'normalize_cmd',
+ 'normalize_linefeeds',
+ 'open_session_log',
+ 'paramiko_cleanup',
+ 'passphrase',
+ 'password',
+ 'pkey',
+ 'port',
+ 'protocol',
+ 'read_channel',
+ 'read_until_pattern',
+ 'read_until_prompt',
+ 'read_until_prompt_or_pattern',
+ 'remote_conn',
+ 'remote_conn_pre',
+ 'save_config',
+ 'secret',
+ 'select_delay_factor',
+ 'send_command',
+ 'send_command_expect',
+ 'send_command_timing',
+ 'send_config_from_file',
+ 'send_config_set',
+ 'serial_login',
+ 'serial_settings',
+ 'session_log',
+ 'session_log_record_writes',
+ 'session_preparation',
+ 'session_timeout',
+ 'set_base_prompt',
+ 'set_terminal_width',
+ 'sock',
+ 'special_login_handler',
+ 'ssh_config_file',
+ 'strip_ansi_escape_codes',
+ 'strip_backspaces',
+ 'strip_command',
+ 'strip_prompt',
+ 'system_host_keys',
+ 'telnet_login',
+ 'timeout',
+ 'use_keys',
+ 'username',
+ 'verbose',
+ 'write_channel']
+
+
+In [3]: help(net_connect.config_mode)
+
+
+In [4]: net_connect.config_mode()
+Out[4]: 'configure terminal\r\nEnter configuration commands, one per line.  End with CNTL/Z.\r\ncisco1(config)#'
+
+In [5]: net_connect.exit_config_mode()
+Out[5]: 'end\r\ncisco1#'
+
+
+In [6]: net_connect.enable()
+Out[6]: ''
+
+In [7]: net_connect.write_channel("show ip int brief\n")
+
+In [8]: output = net_connect.read_channel()
+
+In [9]: print(output)
+show ip int brief
+Interface                  IP-Address      OK? Method Status                Protocol
+FastEthernet0              unassigned      YES unset  down                  down    
+FastEthernet1              unassigned      YES unset  down                  down    
+FastEthernet2              unassigned      YES unset  down                  down    
+FastEthernet3              unassigned      YES unset  down                  down    
+FastEthernet4              10.220.88.20    YES NVRAM  up                    up      
+Vlan1                      unassigned      YES unset  down                  down    
+cisco1#
+
+In [10]: net_connect.write_channel("disable\n")
+
+
+In [11]: net_connect.find_prompt()
+Out[11]: 'cisco1>'
+
+
+In [12]: from getpass import getpass
+
+In [13]: net_connect.secret = getpass()
+Password: 
+
+In [14]: In [14]: net_connect.enable()
+Out[14]: 'enable\r\nPassword: \r\ncisco1#'
+
+In [15]: net_connect.find_prompt()
+Out[15]: 'cisco1#'
+
+In [16]: quit()
+(py3_venv) (py3_venv) [akushnir@pylab25b week_2_netmiko]$ 

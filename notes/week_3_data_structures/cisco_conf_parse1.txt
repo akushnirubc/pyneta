@@ -1,0 +1,289 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b conf_parse]$ ipython
+Python 3.7.9 (default, Feb 18 2021, 03:10:35) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from ciscoconfparse import CiscoConfParse
+
+In [2]: CiscoConfParse("cisco1.txt")
+Out[2]: <CiscoConfParse: 245 lines / syntax: ios / comment delimiter: '!' / factory: False>
+
+In [3]: cisco_obj = CiscoConfParse("cisco1.txt")
+
+In [4]: cisco_obj
+Out[4]: <CiscoConfParse: 245 lines / syntax: ios / comment delimiter: '!' / factory: False>
+
+In [5]: my_config = """
+   ...: interface FastEthernet3
+   ...: no ip address
+   ...: !
+   ...: Interface FastEthernet4
+   ...: description ***LAN connection (don't change) ***
+   ...: ip address 10.220.88.20 255.255.255.0
+   ...: duplex auto
+   ...: speed auto
+   ...: """
+
+In [6]: CiscoConfParse(my_config)
+[FATAL] CiscoConfParse could not open '
+interface FastEthernet3
+no ip address
+!
+Interface FastEthernet4
+description ***LAN connection (don't change) ***
+ip address 10.220.88.20 255.255.255.0
+duplex auto
+speed auto
+'
+---------------------------------------------------------------------------
+FileNotFoundError                         Traceback (most recent call last)
+~/VENV/py3_venv/lib64/python3.7/site-packages/ciscoconfparse/ciscoconfparse.py in __init__(self, config, comment, debug, factory, linesplit_rgx, ignore_blank_lines, syntax)
+    267                         _log.debug("parsing from '{0}' with ios syntax".format(config))
+--> 268                     f = open(config, **self.openargs)
+    269                     text = f.read()
+
+FileNotFoundError: [Errno 2] No such file or directory: "\ninterface FastEthernet3\nno ip address\n!\nInterface FastEthernet4\ndescription ***LAN connection (don't change) ***\nip address 10.220.88.20 255.255.255.0\nduplex auto\nspeed auto\n"
+
+During handling of the above exception, another exception occurred:
+
+RuntimeError                              Traceback (most recent call last)
+<ipython-input-6-b7c4b805aac9> in <module>
+----> 1 CiscoConfParse(my_config)
+
+~/VENV/py3_venv/lib64/python3.7/site-packages/ciscoconfparse/ciscoconfparse.py in __init__(self, config, comment, debug, factory, linesplit_rgx, ignore_blank_lines, syntax)
+    341             except IOError:
+    342                 print(("[FATAL] CiscoConfParse could not open '%s'" % config))
+--> 343                 raise RuntimeError
+    344         else:
+    345             raise RuntimeError(
+
+RuntimeError: 
+
+In [7]: CiscoConfParse(my_config.splitlines())
+Out[7]: <CiscoConfParse: 8 lines / syntax: ios / comment delimiter: '!' / factory: False>
+
+In [8]: cisco_obj
+Out[8]: <CiscoConfParse: 245 lines / syntax: ios / comment delimiter: '!' / factory: False>
+
+In [9]: dir(cisco_obj)
+Out[9]: 
+['ConfigObjs',
+ '__class__',
+ '__delattr__',
+ '__dict__',
+ '__dir__',
+ '__doc__',
+ '__eq__',
+ '__format__',
+ '__ge__',
+ '__getattribute__',
+ '__gt__',
+ '__hash__',
+ '__init__',
+ '__init_subclass__',
+ '__le__',
+ '__lt__',
+ '__module__',
+ '__ne__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ '__weakref__',
+ '_build_space_tolerant_regex',
+ '_find_all_child_OBJ',
+ '_find_line_OBJ',
+ '_find_sibling_OBJ',
+ '_objects_to_uncfg',
+ '_sequence_nonparent_lines',
+ '_sequence_parent_lines',
+ '_unique_OBJ',
+ 'append_line',
+ 'atomic',
+ 'comment_delimiter',
+ 'commit',
+ 'convert_braces_to_ios',
+ 'debug',
+ 'delete_lines',
+ 'factory',
+ 'find_all_children',
+ 'find_blocks',
+ 'find_children',
+ 'find_children_w_parents',
+ 'find_interface_objects',
+ 'find_lineage',
+ 'find_lines',
+ 'find_object_branches',
+ 'find_objects',
+ 'find_objects_dna',
+ 'find_objects_w_all_children',
+ 'find_objects_w_child',
+ 'find_objects_w_missing_children',
+ 'find_objects_w_parents',
+ 'find_objects_wo_child',
+ 'find_parents_w_child',
+ 'find_parents_wo_child',
+ 'has_line_with',
+ 'insert_after',
+ 'insert_after_child',
+ 'insert_before',
+ 'ioscfg',
+ 'objs',
+ 'openargs',
+ 'prepend_line',
+ 're_match_iter_typed',
+ 're_search_children',
+ 'replace_all_children',
+ 'replace_children',
+ 'replace_lines',
+ 'req_cfgspec_all_diff',
+ 'req_cfgspec_excl_diff',
+ 'save_as',
+ 'sync_diff',
+ 'syntax']
+
+In [10]: help(cisco_obj.find_objects)
+
+
+In [11]: cisco_obj.find_objects(r"^interface")
+Out[11]: 
+[<IOSCfgLine # 171 'interface FastEthernet0'>,
+ <IOSCfgLine # 174 'interface FastEthernet1'>,
+ <IOSCfgLine # 177 'interface FastEthernet2'>,
+ <IOSCfgLine # 180 'interface FastEthernet3'>,
+ <IOSCfgLine # 183 'interface FastEthernet4'>,
+ <IOSCfgLine # 189 'interface Vlan1'>]
+
+In [12]: intf = cisco_obj.find_objects(r"^interface")
+
+In [13]: intf[0]
+Out[13]: <IOSCfgLine # 171 'interface FastEthernet0'>
+
+In [14]: intf[0].text
+Out[14]: 'interface FastEthernet0'
+
+In [15]: dir(intf[0])
+Out[15]: 
+['_VIRTUAL_INTF_REGEX',
+ '_VIRTUAL_INTF_REGEX_STR',
+ '__abstractmethods__',
+ '__class__',
+ '__delattr__',
+ '__dict__',
+ '__dir__',
+ '__doc__',
+ '__eq__',
+ '__format__',
+ '__ge__',
+ '__getattribute__',
+ '__gt__',
+ '__hash__',
+ '__init__',
+ '__init_subclass__',
+ '__le__',
+ '__lt__',
+ '__module__',
+ '__ne__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ '__weakref__',
+ '_abc_impl',
+ '_list_reassign_linenums',
+ 'add_child',
+ 'add_parent',
+ 'add_uncfgtext',
+ 'all_children',
+ 'all_parents',
+ 'append_to_family',
+ 'build_reset_string',
+ 'child_indent',
+ 'children',
+ 'classname',
+ 'comment_delimiter',
+ 'confobj',
+ 'delete',
+ 'delete_children_matching',
+ 'dna',
+ 'family_endpoint',
+ 'feature',
+ 'feature_param1',
+ 'feature_param2',
+ 'geneology',
+ 'geneology_text',
+ 'has_child_with',
+ 'has_children',
+ 'hash_children',
+ 'indent',
+ 'insert_after',
+ 'insert_before',
+ 'intf_in_portchannel',
+ 'ioscfg',
+ 'is_child',
+ 'is_comment',
+ 'is_config_line',
+ 'is_ethernet_intf',
+ 'is_intf',
+ 'is_loopback_intf',
+ 'is_object_for',
+ 'is_parent',
+ 'is_portchannel_intf',
+ 'is_subintf',
+ 'is_virtual_intf',
+ 'lineage',
+ 'linenum',
+ 'oldest_ancestor',
+ 'parent',
+ 'portchannel_number',
+ 're_match',
+ 're_match_iter_typed',
+ 're_match_typed',
+ 're_search',
+ 're_search_children',
+ 're_sub',
+ 'replace',
+ 'reset',
+ 'set_comment_bool',
+ 'siblings',
+ 'text',
+ 'verbose']
+
+In [16]: intf[0].children
+Out[16]: [<IOSCfgLine # 172 ' no ip address' (parent is # 171)>]
+
+In [17]: intf[4].children
+Out[17]: 
+[<IOSCfgLine # 184 ' description *** LAN connection (don't change) ***' (parent is # 183)>,
+ <IOSCfgLine # 185 ' ip address 10.220.88.20 255.255.255.0' (parent is # 183)>,
+ <IOSCfgLine # 186 ' duplex auto' (parent is # 183)>,
+ <IOSCfgLine # 187 ' speed auto' (parent is # 183)>]
+
+In [18]: intf[4]
+Out[18]: <IOSCfgLine # 183 'interface FastEthernet4'>
+
+In [19]: intf[4].children
+Out[19]: 
+[<IOSCfgLine # 184 ' description *** LAN connection (don't change) ***' (parent is # 183)>,
+ <IOSCfgLine # 185 ' ip address 10.220.88.20 255.255.255.0' (parent is # 183)>,
+ <IOSCfgLine # 186 ' duplex auto' (parent is # 183)>,
+ <IOSCfgLine # 187 ' speed auto' (parent is # 183)>]
+
+In [20]: for child in intf[4].children:
+    ...:     print(child.text)
+    ...: 
+ description *** LAN connection (don't change) ***
+ ip address 10.220.88.20 255.255.255.0
+ duplex auto
+ speed auto
+
+In [21]: intf[4].text
+Out[21]: 'interface FastEthernet4'

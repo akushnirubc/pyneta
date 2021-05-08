@@ -1,0 +1,53 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b week_3_data_structures]$ ipython -i read_yaml.py
+Python 3.7.9 (default, Feb 18 2021, 03:10:35) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+Enter filename: test1.yml
+['router1', 'router2', 'router3', 'router4']
+
+In [1]: dir
+Out[1]: <function dir>
+
+In [2]: dir()
+Out[2]: 
+['In',
+ 'Out',
+ '_',
+ '_1',
+ '__',
+ '___',
+ '__builtin__',
+ '__builtins__',
+ '__doc__',
+ '__loader__',
+ '__name__',
+ '__package__',
+ '__spec__',
+ '_dh',
+ '_i',
+ '_i1',
+ '_i2',
+ '_ih',
+ '_ii',
+ '_iii',
+ '_oh',
+ 'exit',
+ 'f',
+ 'filename',
+ 'get_ipython',
+ 'quit',
+ 'yaml',
+ 'yaml_out']
+
+In [3]: yaml_out
+Out[3]: ['router1', 'router2', 'router3', 'router4']
+
+In [4]: yaml_out[0]
+Out[4]: 'router1'
+
+
+In [5]: yaml_out[1]
+Out[5]: 'router2'
+
+In [6]: type(yaml_out)
+Out[6]: list

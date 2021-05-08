@@ -1,0 +1,215 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b week_3_data_structures]$ ipython -i test_arp.py 
+Python 3.7.9 (default, Feb 18 2021, 03:10:35) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: dir()
+Out[1]: 
+['In',
+ 'Out',
+ '_',
+ '__',
+ '___',
+ '__builtin__',
+ '__builtins__',
+ '__doc__',
+ '__loader__',
+ '__name__',
+ '__package__',
+ '__spec__',
+ '_dh',
+ '_i',
+ '_i1',
+ '_ih',
+ '_ii',
+ '_iii',
+ '_oh',
+ 'arp',
+ 'exit',
+ 'get_ipython',
+ 'quit']
+
+In [2]: print(arp)
+[{'interface': 'FastEthernet4', 'mac': '00:62:EC:29:70:FE', 'ip': '10.220.88.1', 'age': 2.0}, {'interface': 'FastEthernet4', 'mac': '00:24:C4:E9:48:AE', 'ip': '10.220.88.19', 'age': 25.0}, {'interface': 'FastEthernet4', 'mac': 'C8:9C:1D:EA:0E:B6', 'ip': '10.220.88.20', 'age': 0.0}, {'interface': 'FastEthernet4', 'mac': '1C:6A:7A:AF:57:6C', 'ip': '10.220.88.21', 'age': 6.0}, {'interface': 'FastEthernet4', 'mac': 'A0:93:51:41:B7:80', 'ip': '10.220.88.22', 'age': 198.0}, {'interface': 'FastEthernet4', 'mac': '50:2F:A8:B1:69:00', 'ip': '10.220.88.23', 'age': 5.0}, {'interface': 'FastEthernet4', 'mac': '52:54:AB:A8:9A:EA', 'ip': '10.220.88.28', 'age': 238.0}, {'interface': 'FastEthernet4', 'mac': '52:54:AB:BE:5B:7B', 'ip': '10.220.88.29', 'age': 24.0}, {'interface': 'FastEthernet4', 'mac': '52:54:AB:71:E1:19', 'ip': '10.220.88.30', 'age': 224.0}, {'interface': 'FastEthernet4', 'mac': '52:54:AB:FB:AF:12', 'ip': '10.220.88.35', 'age': 239.0}, {'interface': 'FastEthernet4', 'mac': '00:01:00:FF:00:01', 'ip': '10.220.88.37', 'age': 33.0}, {'interface': 'FastEthernet4', 'mac': '00:02:00:FF:00:01', 'ip': '10.220.88.38', 'age': 6.0}, {'interface': 'FastEthernet4', 'mac': '64:64:9B:E8:08:C8', 'ip': '10.220.88.39', 'age': 9.0}, {'interface': 'FastEthernet4', 'mac': 'EC:38:73:9E:2F:08', 'ip': '10.220.88.42', 'age': 7.0}]
+
+In [3]: type(arp)
+Out[3]: list
+
+
+In [4]: len(arp)
+Out[4]: 14
+
+In [5]: In [5]: arp[0]
+Out[5]: 
+{'interface': 'FastEthernet4',
+ 'mac': '00:62:EC:29:70:FE',
+ 'ip': '10.220.88.1',
+ 'age': 2.0}
+
+In [6]: arp[1]
+Out[6]: 
+{'interface': 'FastEthernet4',
+ 'mac': '00:24:C4:E9:48:AE',
+ 'ip': '10.220.88.19',
+ 'age': 25.0}
+
+In [7]: for arp_entry in arp:
+   ...:     print(arp_entry)
+   ...:     break
+   ...: 
+{'interface': 'FastEthernet4', 'mac': '00:62:EC:29:70:FE', 'ip': '10.220.88.1', 'age': 2.0}
+
+
+In [8]: for arp_entry in arp:
+   ...:     print('#' * 12)
+   ...:     print(arp_entry)
+   ...:     print(arp_entry['mac'])
+   ...:     print(arp_entry['ip'])
+   ...:     print('#' * 12)
+   ...:     break
+   ...: 
+############
+{'interface': 'FastEthernet4', 'mac': '00:62:EC:29:70:FE', 'ip': '10.220.88.1', 'age': 2.0}
+00:62:EC:29:70:FE
+10.220.88.1
+############
+
+
+In [9]: for arp_entry in arp:
+   ...:     print('#' * 12)
+   ...:     print(arp_entry['mac'])
+   ...:     print(arp_entry['ip'])
+   ...:     print('#' * 12)
+   ...:     break
+   ...: 
+############
+00:62:EC:29:70:FE
+10.220.88.1
+############
+
+In [10]: for arp_entry in arp:
+    ...:     print('#' * 12)
+    ...:     print(arp_entry['mac'])
+    ...:     print(arp_entry['ip'])
+    ...:     print('#' * 12)
+    ...: 
+    ...: 
+############
+00:62:EC:29:70:FE
+10.220.88.1
+############
+############
+00:24:C4:E9:48:AE
+10.220.88.19
+############
+############
+C8:9C:1D:EA:0E:B6
+10.220.88.20
+############
+############
+1C:6A:7A:AF:57:6C
+10.220.88.21
+############
+############
+A0:93:51:41:B7:80
+10.220.88.22
+############
+############
+50:2F:A8:B1:69:00
+10.220.88.23
+############
+############
+F:00:01B:A8:9A:EA
+10.220.88.37
+############
+############
+00:02:00:FF:00:01
+10.220.88.38
+############
+############
+64:64:9B:E8:08:C8
+10.220.88.39
+############
+############
+EC:38:73:9E:2F:08
+10.220.88.42
+############
+############
+In [11]: for arp_entry in arp:
+    ...:     print('#' * 12)
+    ...:     print(arp_entry['mac'])
+    ...:     print(arp_entry['ip'])
+    ...:     print('#' * 12)
+    ...:     print()
+    ...: 
+    ...: 
+############
+00:62:EC:29:70:FE
+10.220.88.1
+############
+
+############
+00:24:C4:E9:48:AE
+10.220.88.19
+############
+
+############
+C8:9C:1D:EA:0E:B6
+10.220.88.20
+############
+
+############
+1C:6A:7A:AF:57:6C
+10.220.88.21
+############
+
+############
+A0:93:51:41:B7:80
+10.220.88.22
+############
+
+############
+50:2F:A8:B1:69:00
+10.220.88.23
+############
+
+############
+52:54:AB:A8:9A:EA
+10.220.88.28
+############
+
+############
+52:54:AB:BE:5B:7B
+10.220.88.29
+############
+
+############
+52:54:AB:71:E1:19
+10.220.88.30
+############
+
+############
+52:54:AB:FB:AF:12
+10.220.88.35
+############
+
+############
+00:01:00:FF:00:01
+10.220.88.37
+############
+
+############
+00:02:00:FF:00:01
+10.220.88.38
+############
+
+############
+64:64:9B:E8:08:C8
+10.220.88.39
+############
+
+############
+EC:38:73:9E:2F:08
+10.220.88.42
+############
+

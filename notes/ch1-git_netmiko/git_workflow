@@ -1,0 +1,357 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git clone https://github.com/ktbyers/netmiko
+Cloning into 'netmiko'...
+remote: Enumerating objects: 16485, done.
+remote: Counting objects: 100% (156/156), done.
+remote: Compressing objects: 100% (114/114), done.
+remote: Total 16485 (delta 75), reused 87 (delta 42), pack-reused 16329
+Receiving objects: 100% (16485/16485), 4.99 MiB | 15.12 MiB/s, done.
+Resolving deltas: 100% (10825/10825), done.
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ ls
+netmiko  README.md  test1.py  test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ cd netmiko
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ ls -la
+total 128
+drwxrwxr-x 11 akushnir akushnir  4096 Apr 16 12:24 .
+drwxrwxr-x  4 akushnir akushnir   100 Apr 16 12:24 ..
+-rw-rw-r--  1 akushnir akushnir  2957 Apr 16 12:24 COMMON_ISSUES.md
+-rw-rw-r--  1 akushnir akushnir    26 Apr 16 12:24 _config.yml
+drwxrwxr-x  3 akushnir akushnir    38 Apr 16 12:24 docs
+drwxrwxr-x  2 akushnir akushnir  4096 Apr 16 12:24 examples
+-rw-rw-r--  1 akushnir akushnir 25739 Apr 16 12:24 EXAMPLES.md
+drwxrwxr-x  8 akushnir akushnir   182 Apr 16 12:24 examples_old
+drwxrwxr-x  8 akushnir akushnir   163 Apr 16 12:24 .git
+drwxrwxr-x  3 akushnir akushnir    23 Apr 16 12:24 .github
+-rw-rw-r--  1 akushnir akushnir   763 Apr 16 12:24 .gitignore
+drwxrwxr-x  2 akushnir akushnir    33 Apr 16 12:24 images
+-rw-rw-r--  1 akushnir akushnir  1078 Apr 16 12:24 LICENSE
+-rw-rw-r--  1 akushnir akushnir    82 Apr 16 12:24 MANIFEST.in
+drwxrwxr-x 62 akushnir akushnir  4096 Apr 16 12:24 netmiko
+-rw-rw-r--  1 akushnir akushnir  1452 Apr 16 12:24 PLATFORMS.md
+-rw-rw-r--  1 akushnir akushnir  7905 Apr 16 12:24 README.md
+-rw-rw-r--  1 akushnir akushnir   704 Apr 16 12:24 release_process.txt
+-rwxrwxr-x  1 akushnir akushnir  3621 Apr 16 12:24 _release.sh
+-rw-rw-r--  1 akushnir akushnir   140 Apr 16 12:24 requirements-dev.txt
+-rw-rw-r--  1 akushnir akushnir    24 Apr 16 12:24 requirements-genie.txt
+-rw-rw-r--  1 akushnir akushnir    11 Apr 16 12:24 requirements-ttp.txt
+-rw-rw-r--  1 akushnir akushnir    50 Apr 16 12:24 requirements.txt
+-rw-rw-r--  1 akushnir akushnir   251 Apr 16 12:24 setup.cfg
+-rw-rw-r--  1 akushnir akushnir  1850 Apr 16 12:24 setup.py
+-rw-rw-r--  1 akushnir akushnir   997 Apr 16 12:24 TESTING.md
+-rw-rw-r--  1 akushnir akushnir  6465 Apr 16 12:24 test.log
+drwxrwxr-x  5 akushnir akushnir  4096 Apr 16 12:24 tests
+drwxrwxr-x 10 akushnir akushnir  4096 Apr 16 12:24 tests_new
+-rw-rw-r--  1 akushnir akushnir  2300 Apr 16 12:24 VENDOR.md
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ git branch
+* develop
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ git branch -r
+  origin/6wind_driver
+  origin/Apcela-netmiko4_exp
+  origin/HEAD -> origin/develop
+  origin/TanY0Y0-yoyo_yotc
+  origin/add_ttp
+  origin/add_ttp2
+  origin/adtran_os
+  origin/allied_telesis
+  origin/ansi-insert-line
+  origin/arista_performance
+  origin/aruba_os_switch
+  origin/aruba_procurve_fix
+  origin/asa_login_attempts
+  origin/asa_perf
+  origin/autodetect_cmd_order
+  origin/autodetect_cmd_verify
+  origin/banner_timeout
+  origin/bouchardh-local_space_windows
+  origin/brocade_autodetect
+  origin/brocade_fabric_os
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ git branch -r
+  origin/6wind_driver
+  origin/Apcela-netmiko4_exp
+  origin/HEAD -> origin/develop
+  origin/TanY0Y0-yoyo_yotc
+  origin/add_ttp
+  origin/add_ttp2
+  origin/adtran_os
+  origin/allied_telesis
+  origin/ansi-insert-line
+  origin/arista_performance
+  origin/aruba_os_switch
+  origin/aruba_procurve_fix
+  origin/asa_login_attempts
+  origin/asa_perf
+  origin/autodetect_cmd_order
+  origin/autodetect_cmd_verify
+  origin/banner_timeout
+  origin/bouchardh-local_space_windows
+  origin/brocade_autodetect
+  origin/brocade_fabric_os
+  origin/canonical_conf_t
+  origin/cdot_cros
+  origin/centec_fixes
+  origin/cmd_verify_arg
+  origin/comment_fix
+  origin/comware7_enable
+  origin/config_fixes
+  origin/config_set_exception
+  origin/conn_timeout
+  origin/dainok-watchguard_firebox
+  origin/develop
+  origin/disable_cmd_verify_comware
+  origin/dlink
+  origin/dlink_test
+  origin/doc_fix
+  origin/doc_fix2
+  origin/doc_update
+  origin/doc_update2
+  origin/doc_update_202102
+  origin/endace_driver
+  origin/environment_markers
+  origin/example-fix
+  origin/f5_driver_update
+  origin/f5_tmsh_disconnect
+  origin/fix_arista_check_config
+  origin/fix_asa_enable
+  origin/fix_auth_exception
+  origin/fix_cmd_verify_config_mode
+  origin/fix_dell_autodetect
+  origin/fix_file_size
+  origin/fix_huawei_ansi
+  origin/fix_huawei_telnet
+  origin/fix_linux_width
+  origin/fix_mikrotik_strip_prompt
+  origin/fix_palo_alto_repaint
+  origin/fix_procurve_enable
+  origin/fix_readme
+  origin/fix_ruckus_enable
+  origin/fix_scp_progress
+  origin/fix_send_cmd_timing
+  origin/fix_send_config_set_bug
+  origin/fix_session_log_encoding
+  origin/fix_sros_disconnect
+  origin/fix_term_width
+  origin/fix_wlc_conn_timeout
+  origin/fix_xr_exit_config
+  origin/ftd_fix
+  origin/ftd_fix2
+  origin/generic_driver
+  origin/genie_py38
+  origin/gh-pages
+  origin/global_cmd_verify
+  origin/h3c_driver
+  origin/hellt-sros-enable-mode
+  origin/huawei_handler
+  origin/huawei_olt
+  origin/huawei_telnet
+  origin/huawei_telnet2
+  origin/huawei_telnet3
+  origin/improve_enable
+  origin/improved_examples
+  origin/improved_examples2
+  origin/integrate-genie
+  origin/iosxr_performance
+  origin/iosxr_telnet
+  origin/juniper_perf
+  origin/junos_cli_complete
+  origin/lykinsbd-brett-ntc-templates2
+  origin/manual_template
+  origin/master
+  origin/mellanox_driver
+  origin/minor_huawei_fix
+  origin/minor_screenos_fixes
+  origin/minor_test_fixes
+  origin/minor_test_updates
+  origin/mock
+  origin/mrv_lx_driver
+  origin/n3_release_minor
+  origin/netgear_prosafe_fix
+  origin/netiron_improvements
+  origin/netmiko4_exp
+  origin/netmiko4_poc
+  origin/netmiko4_poc-2
+  origin/netmiko_3_1_0
+  origin/netmiko_3_2_0
+  origin/netmiko_3_3_0
+  origin/netmiko_tools_path
+  origin/no_auto_open
+  origin/nokia_commit
+  origin/nokia_sros
+  origin/nxos_buffering
+  origin/nxos_doubleslash_bug
+  origin/nxos_newline_fix
+  origin/nxos_performance
+  origin/paging_and_cmd_verify
+  origin/panos_prompting
+  origin/perf_graphs
+  origin/pica8_driver
+  origin/poc_fix_session_prep
+  origin/profile_connect
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ git checkout -b master origin/master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+Switched to a new branch 'master'
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ branch
+bash: branch: command not found
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ git log
+commit dbe387b3ba95a7a06111c531e5188a480a2f607c (HEAD -> master, tag: v3.3.3, origin/master)
+Author: Kirk Byers <ktbyers@twb-tech.com>
+Date:   Mon Feb 1 12:56:22 2021 -0800
+
+    Release process tooling
+
+commit 985e797024cc38f15a80ae4747bfb85a029adec7
+Author: Kirk Byers <ktbyers@twb-tech.com>
+Date:   Mon Feb 1 12:48:15 2021 -0800
+
+    Removing universal support from wheels
+
+commit 44211425b4dbf5dae2c3721fa9004351c4c2dedd
+Author: Kirk Byers <ktbyers@twb-tech.com>
+Date:   Mon Feb 1 12:41:33 2021 -0800
+
+    Doc update (#2133)
+
+commit f832a17c0d7b4e1c1c290129f37cacf042d0d4ab
+Author: Kirk Byers <ktbyers@twb-tech.com>
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ git branch
+  develop
+* master
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ git checkout develop
+Switched to branch 'develop'
+Your branch is up to date with 'origin/develop'.
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ git log
+commit 4cfd6e7ff6679d394b77abecb91859f934d01e2d (HEAD -> develop, origin/develop, origin/HEAD)
+Author: Kirk Byers <ktbyers@twb-tech.com>
+Date:   Wed Apr 14 09:51:19 2021 -0700
+
+    Netiron improvements (#2226)
+    
+    * Add MLX token to autodetect pattern, add extreme_netiron platform autodetect section
+    
+    * extreme_netiron platform require disable paging command while session open
+    
+    * Code style changes for linting pass
+    
+    * Consolidate extreme and brocade to extreme in autodetect for netiron
+    
+    Co-authored-by: Eugene Peregudov <joniknsk@gmail.com>
+
+commit b636ed902c2f31df2c3c9046ae43d0593271a896
+Author: Kirk Byers <ktbyers@twb-tech.com>
+Date:   Tue Apr 13 15:16:00 2021 -0700
+
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ git status
+On branch develop
+Your branch is up to date with 'origin/develop'.
+
+nothing to commit, working tree clean
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ git branch
+* develop
+  master
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ git cheeckout -b test_feature1 origin/develop
+git: 'cheeckout' is not a git command. See 'git --help'.
+
+The most similar command is
+        checkout
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ git checkout -b test_feature1 origin/develop
+Branch 'test_feature1' set up to track remote branch 'develop' from 'origin'.
+Switched to a new branch 'test_feature1'
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ branch
+bash: branch: command not found
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ git branch
+  develop
+  master
+* test_feature1
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ git log
+commit 4cfd6e7ff6679d394b77abecb91859f934d01e2d (HEAD -> test_feature1, origin/develop, origin/HEAD, develop)
+Author: Kirk Byers <ktbyers@twb-tech.com>
+Date:   Wed Apr 14 09:51:19 2021 -0700
+
+    Netiron improvements (#2226)
+    
+    * Add MLX token to autodetect pattern, add extreme_netiron platform autodetect section
+    
+    * extreme_netiron platform require disable paging command while session open
+    
+    * Code style changes for linting pass
+    
+    * Consolidate extreme and brocade to extreme in autodetect for netiron
+    
+    Co-authored-by: Eugene Peregudov <joniknsk@gmail.com>
+
+commit b636ed902c2f31df2c3c9046ae43d0593271a896
+Author: Kirk Byers <ktbyers@twb-tech.com>
+Date:   Tue Apr 13 15:16:00 2021 -0700
+
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ git branch
+  develop
+  master
+* test_feature1
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ 
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ cat .git
+.git/       .github/    .gitignore  
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ cat .git
+.git/       .github/    .gitignore  
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ cat .git
+.git/       .github/    .gitignore  
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ cat .git
+.git/       .github/    .gitignore  
+(py3_venv) (py3_venv) [akushnir@pylab25b netmiko]$ cat .gitignore
+*.pyc
+*.swp
+
+tests/old_format/DEVICE_CREDS.py
+tests/test_prep.sh
+tests/testx.txt
+tests/standard_tests.sh
+tests/etc/test_devices.yml
+tests/etc/commands.yml
+tests/etc/responses.yml
+tests/etc/test_devices_exc.yml
+
+tests_new/etc/commands.yml
+tests_new/etc/responses.yml
+tests_new/etc/test_devices.yml
+
+examples/SECRET_DEVICE_CREDS.py
+./build
+./build/*
+build/
+dist
+netmiko.egg-info
+.cache
+bin/.netmiko.cfg
+
+# IDE Related files
+.vscode/*
+.idea/
+
+# Virtual Environment files
+.venv/
+bin/
+lib/
+pyvenv.cfg
+.devcontainer
+
+# Sphinx documentation
+docs/build/doctrees/
+
+# Tox
+.tox/*
+
+.pytest_cache/*
+
+# Mac stuff
+.DS_Store
+*/.DS_Store
+
+tests/cisco3-out.txt
+tests/test.log
+tests_new/test_out/*.out
+tests_new/test_out/*.stderr
+tests_new/cisco-xrv.txt
+tests_new/*.out
+tests/*.out

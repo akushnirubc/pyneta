@@ -1,0 +1,83 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b week_3_data_structures]$ ipython -i read_json.py 
+Python 3.7.9 (default, Feb 18 2021, 03:10:35) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+Input filename: outfile.json
+{'a_bool': False,
+ 'device_name': 'rtr1',
+ 'ip_addr': '10.1.1.1',
+ 'null_value': None,
+ 'password': 'foo',
+ 'some_list': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+ 'username': 'admin'}
+
+In [1]: dir()
+Out[1]: 
+['In',
+ 'Out',
+ '_',
+ '__',
+ '___',
+ '__builtin__',
+ '__builtins__',
+ '__doc__',
+ '__loader__',
+ '__name__',
+ '__package__',
+ '__spec__',
+ '_dh',
+ '_i',
+ '_i1',
+ '_ih',
+ '_ii',
+ '_iii',
+ '_oh',
+ 'data',
+ 'exit',
+ 'f',
+ 'filename',
+ 'get_ipython',
+ 'json',
+ 'pprint',
+ 'quit']
+
+In [2]: In [2]: type(data)
+Out[2]: dict
+
+In [3]: In [3]: data.keys()
+Out[3]: dict_keys(['device_name', 'ip_addr', 'username', 'password', 'some_list', 'null_value', 'a_bool'])
+
+In [4]: In [4]: data.['a_bool']
+  File "<ipython-input-4-8d06de6e5416>", line 1
+    data.['a_bool']
+         ^
+SyntaxError: invalid syntax
+
+
+In [5]: data['a_bool']
+Out[5]: False
+
+
+In [6]: data
+Out[6]: 
+{'device_name': 'rtr1',
+ 'ip_addr': '10.1.1.1',
+ 'username': 'admin',
+ 'password': 'foo',
+ 'some_list': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+ 'null_value': None,
+ 'a_bool': False}
+
+
+In [7]: data['device_name']
+Out[7]: 'rtr1'
+
+
+In [8]: In [8]: data['some_list']
+Out[8]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+In [9]: data['some_list'][5]
+Out[9]: 5
+
+In [10]: 

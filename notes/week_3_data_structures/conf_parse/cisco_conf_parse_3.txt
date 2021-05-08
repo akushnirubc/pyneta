@@ -1,0 +1,184 @@
+In [15]: cisco_obj.find_objects(r"^line con 0")
+Out[15]: [<IOSCfgLine # 232 'line con 0'>]
+
+In [16]: parent = cisco_obj.find_objects(r"^line con 0")
+
+In [17]: parent
+Out[17]: [<IOSCfgLine # 232 'line con 0'>]
+
+In [18]: parent = parent[0]
+
+In [19]: parent
+Out[19]: <IOSCfgLine # 232 'line con 0'>
+
+In [20]: parent.is_parent
+Out[20]: True
+
+In [21]: parent.children
+Out[21]: 
+[<IOSCfgLine # 233 ' logging synchronous' (parent is # 232)>,
+ <IOSCfgLine # 234 ' no modem enable' (parent is # 232)>]
+
+In [22]: child = parent.children
+
+In [23]: chikdren[1]
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-23-7ec41d7edf73> in <module>
+----> 1 chikdren[1]
+
+NameError: name 'chikdren' is not defined
+
+In [24]: children[1]
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-24-dd354110e6d3> in <module>
+----> 1 children[1]
+
+NameError: name 'children' is not defined
+
+In [25]: children = parent.children
+
+In [26]: children[1]
+Out[26]: <IOSCfgLine # 234 ' no modem enable' (parent is # 232)>
+
+In [27]: a_child = children[1]
+
+In [28]: a_child
+Out[28]: <IOSCfgLine # 234 ' no modem enable' (parent is # 232)>
+
+In [29]: a_child.is_parent
+Out[29]: False
+
+In [30]: a_child.is_child
+Out[30]: True
+
+In [31]: a_child.parent
+Out[31]: <IOSCfgLine # 232 'line con 0'>
+
+In [32]: a_child.siblings
+Out[32]: 
+[<IOSCfgLine # 233 ' logging synchronous' (parent is # 232)>,
+ <IOSCfgLine # 234 ' no modem enable' (parent is # 232)>]
+
+In [33]: cisco_obj
+Out[33]: <CiscoConfParse: 245 lines / syntax: ios / comment delimiter: '!' / factory: False>
+
+In [34]: cisco_obj(dir)
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-34-3c0cfa048bb8> in <module>
+----> 1 cisco_obj(dir)
+
+TypeError: 'CiscoConfParse' object is not callable
+
+In [35]: dir(cisco_obj)
+Out[35]: 
+['ConfigObjs',
+ '__class__',
+ '__delattr__',
+ '__dict__',
+ '__dir__',
+ '__doc__',
+ '__eq__',
+ '__format__',
+ '__ge__',
+ '__getattribute__',
+ '__gt__',
+ '__hash__',
+ '__init__',
+ '__init_subclass__',
+ '__le__',
+ '__lt__',
+ '__module__',
+ '__ne__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ '__weakref__',
+ '_build_space_tolerant_regex',
+ '_find_all_child_OBJ',
+ '_find_line_OBJ',
+ '_find_sibling_OBJ',
+ '_objects_to_uncfg',
+ '_sequence_nonparent_lines',
+ '_sequence_parent_lines',
+ '_unique_OBJ',
+ 'append_line',
+ 'atomic',
+ 'comment_delimiter',
+ 'commit',
+ 'convert_braces_to_ios',
+ 'debug',
+ 'delete_lines',
+ 'factory',
+ 'find_all_children',
+ 'find_blocks',
+ 'find_children',
+ 'find_children_w_parents',
+ 'find_interface_objects',
+ 'find_lineage',
+ 'find_lines',
+ 'find_object_branches',
+ 'find_objects',
+ 'find_objects_dna',
+ 'find_objects_w_all_children',
+ 'find_objects_w_child',
+ 'find_objects_w_missing_children',
+ 'find_objects_w_parents',
+ 'find_objects_wo_child',
+ 'find_parents_w_child',
+ 'find_parents_wo_child',
+ 'has_line_with',
+ 'insert_after',
+ 'insert_after_child',
+ 'insert_before',
+ 'ioscfg',
+ 'objs',
+ 'openargs',
+ 'prepend_line',
+ 're_match_iter_typed',
+ 're_search_children',
+ 'replace_all_children',
+ 'replace_children',
+ 'replace_lines',
+ 'req_cfgspec_all_diff',
+ 'req_cfgspec_excl_diff',
+ 'save_as',
+ 'sync_diff',
+ 'syntax']
+
+In [36]: cisco_obj.find_objects_wo_child(parentspec=r"^interface", childspec=r"no ip address")
+Out[36]: [<IOSCfgLine # 183 'interface FastEthernet4'>]
+
+In [37]: cisco_obj.find_objects(r"^crypto map CRYPTO")
+Out[37]: 
+[<IOSCfgLine # 131 'crypto map CRYPTO 10 ipsec-isakmp '>,
+ <IOSCfgLine # 138 'crypto map CRYPTO 20 ipsec-isakmp '>,
+ <IOSCfgLine # 145 'crypto map CRYPTO 30 ipsec-isakmp '>,
+ <IOSCfgLine # 152 'crypto map CRYPTO 40 ipsec-isakmp '>,
+ <IOSCfgLine # 159 'crypto map CRYPTO 50 ipsec-isakmp '>]
+
+In [38]: match = cisco_obj.find_objects(r"^crypto map CRYPTO")
+
+In [39]: match = match[0]
+
+In [40]: match
+Out[40]: <IOSCfgLine # 131 'crypto map CRYPTO 10 ipsec-isakmp '>
+
+In [41]: match.children
+Out[41]: 
+[<IOSCfgLine # 132 ' ! Incomplete' (parent is # 131)>,
+ <IOSCfgLine # 133 ' set peer 1.1.1.1' (parent is # 131)>,
+ <IOSCfgLine # 134 ' ! access-list has not been configured yet' (parent is # 131)>,
+ <IOSCfgLine # 135 ' set transform-set AES-SHA ' (parent is # 131)>,
+ <IOSCfgLine # 136 ' set pfs group5' (parent is # 131)>,
+ <IOSCfgLine # 137 ' match address VPN-TEST1' (parent is # 131)>]
+
+In [42]: match.re_search_children(r'set pfs ')
+Out[42]: [<IOSCfgLine # 136 ' set pfs group5' (parent is # 131)>]

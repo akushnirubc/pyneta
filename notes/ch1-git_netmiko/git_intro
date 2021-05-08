@@ -1,0 +1,189 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b ~]$ mkdir git-test
+(py3_venv) (py3_venv) [akushnir@pylab25b ~]$ cd git-test/
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git init
+Initialized empty Git repository in /home/akushnir/git-test/.git/
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ ls -al
+total 4
+drwxrwxr-x  3 akushnir akushnir   18 Apr 15 13:25 .
+drwx------ 14 akushnir akushnir 4096 Apr 15 13:25 ..
+drwxrwxr-x  7 akushnir akushnir  119 Apr 15 13:25 .git
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git branch
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test1.py
+        test2.py
+
+nothing added to commit but untracked files present (use "git add" to track)
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git add test*.py
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ status
+bash: status: command not found
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   test1.py
+        new file:   test2.py
+
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git commit -m "Making first commit of files"
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'akushnir@pylab25b.(none)')
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git config --global user.email "alex.kushnir@ubc.ca"
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$  git config --global user.name "Alex Kushnir"
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ cat ~/.gitconfig
+[user]
+        email = alex.kushnir@ubc.ca
+        name = Alex Kushnir
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ cd .git
+(py3_venv) (py3_venv) [akushnir@pylab25b .git]$ tree -C
+.
+├── branches
+├── config
+├── description
+├── HEAD
+├── hooks
+│   ├── applypatch-msg.sample
+│   ├── commit-msg.sample
+│   ├── fsmonitor-watchman.sample
+│   ├── post-update.sample
+│   ├── pre-applypatch.sample
+│   ├── pre-commit.sample
+│   ├── prepare-commit-msg.sample
+│   ├── pre-push.sample
+│   ├── pre-rebase.sample
+│   ├── pre-receive.sample
+│   └── update.sample
+├── index
+├── info
+│   └── exclude
+├── objects
+│   ├── 01
+│   │   └── 4d91219d562795b5c0dbb8f26a3b09a8537980
+│   ├── 7c
+│   │   └── 04e7483090850614311e4103c578626c8099cd
+│   ├── 8e
+│   │   └── 235769c023ae8b5dad489734aa4ac26ad526de
+│   ├── info
+│   └── pack
+└── refs
+    ├── heads
+    └── tags
+
+12 directories, 19 files
+(py3_venv) (py3_venv) [akushnir@pylab25b .git]$ ls -ltr
+total 16
+drwxrwxr-x 2 akushnir akushnir   6 Apr 15 13:25 branches
+-rw-rw-r-- 1 akushnir akushnir  73 Apr 15 13:25 description
+drwxrwxr-x 4 akushnir akushnir  31 Apr 15 13:25 refs
+drwxrwxr-x 2 akushnir akushnir  21 Apr 15 13:25 info
+drwxrwxr-x 2 akushnir akushnir 301 Apr 15 13:25 hooks
+-rw-rw-r-- 1 akushnir akushnir  23 Apr 15 13:25 HEAD
+-rw-rw-r-- 1 akushnir akushnir  92 Apr 15 13:25 config
+drwxrwxr-x 7 akushnir akushnir  60 Apr 15 13:46 objects
+-rw-rw-r-- 1 akushnir akushnir 209 Apr 15 13:46 index
+(py3_venv) (py3_venv) [akushnir@pylab25b .git]$ cd ..
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ ls -ltr
+total 8
+-rw-rw-r-- 1 akushnir akushnir 20 Apr 15 13:43 test1.py
+-rw-rw-r-- 1 akushnir akushnir 32 Apr 15 13:44 test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ 
+
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ 
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git commit -m "Making first commit of files"
+[master (root-commit) 1e1a492] Making first commit of files
+ 2 files changed, 3 insertions(+)
+ create mode 100644 test1.py
+ create mode 100644 test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git branch
+* master
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   test2.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test3.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git diff
+diff --git a/test2.py b/test2.py
+index 014d912..5781fd1 100644
+--- a/test2.py
++++ b/test2.py
+@@ -1,2 +1,4 @@
+ for x in range(10):
+-    print(x)
+\ No newline at end of file
++    print(x)
++
++print("Other words")
+\ No newline at end of file
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git diff ./test2.py
+diff --git a/test2.py b/test2.py
+index 014d912..5781fd1 100644
+--- a/test2.py
++++ b/test2.py
+@@ -1,2 +1,4 @@
+ for x in range(10):
+-    print(x)
+\ No newline at end of file
++    print(x)
++
++print("Other words")
+\ No newline at end of file
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ 
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git add *.py
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   test2.py
+        new file:   test3.py
+
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git commit -m "Second commit of more python files"
+[master 69cbedb] Second commit of more python files
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+ create mode 100644 test3.py
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git status
+On branch master
+nothing to commit, working tree clean
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ 
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ 
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git log
+commit 69cbedbde46120b32c5231fa7e5c8e77b942e360 (HEAD -> master)
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+Date:   Thu Apr 15 14:03:07 2021 -0700
+
+    Second commit of more python files
+
+commit 1e1a4927978a379f7fedb530b5c745a917ca597f
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+Date:   Thu Apr 15 14:00:26 2021 -0700
+
+    Making first commit of files

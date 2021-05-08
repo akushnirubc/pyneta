@@ -1,0 +1,836 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git status
+On branch master
+nothing to commit, working tree clean
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ ls
+test1.py  test2.py  test3.py
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ mkdir python_test
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ cd python_test
+(py3_venv) (py3_venv) [akushnir@pylab25b python_test]$ ls
+new_file.py
+(py3_venv) (py3_venv) [akushnir@pylab25b python_test]$ cp new_file.py alt_file2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b python_test]$ ls
+alt_file2.py  new_file.py
+(py3_venv) (py3_venv) [akushnir@pylab25b python_test]$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        ./
+
+nothing added to commit but untracked files present (use "git add" to track)
+(py3_venv) (py3_venv) [akushnir@pylab25b python_test]$ cd ..
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        python_test/
+
+nothing added to commit but untracked files present (use "git add" to track)
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git add python_test
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   python_test/alt_file2.py
+        new file:   python_test/new_file.py
+
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git commit -m "Python test directory"
+[master e1754a8] Python test directory
+ 2 files changed, 6 insertions(+)
+ create mode 100644 python_test/alt_file2.py
+ create mode 100644 python_test/new_file.py
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git status
+On branch master
+nothing to commit, working tree clean
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ ls
+python_test  test1.py  test2.py  test3.py
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git status
+On branch master
+nothing to commit, working tree clean
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git rm test3.py
+rm 'test3.py'
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ ls -la
+total 12
+drwxrwxr-x  4 akushnir akushnir   69 Apr 16 08:26 .
+drwx------ 15 akushnir akushnir 4096 Apr 15 17:52 ..
+drwxrwxr-x  8 akushnir akushnir  184 Apr 16 08:26 .git
+drwxrwxr-x  2 akushnir akushnir   45 Apr 16 08:24 python_test
+-rw-rw-r--  1 akushnir akushnir   20 Apr 15 13:43 test1.py
+-rw-rw-r--  1 akushnir akushnir   54 Apr 15 14:01 test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    test3.py
+
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git rm -r python_test/
+rm 'python_test/alt_file2.py'
+rm 'python_test/new_file.py'
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    python_test/alt_file2.py
+        deleted:    python_test/new_file.py
+        deleted:    test3.py
+
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ ls
+test1.py  test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git commit -m "Removing some unneeded files"
+[master 0561302] Removing some unneeded files
+ 3 files changed, 7 deletions(-)
+ delete mode 100644 python_test/alt_file2.py
+ delete mode 100644 python_test/new_file.py
+ delete mode 100644 test3.py
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git status
+On branch master
+nothing to commit, working tree clean
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ who
+hmodha   pts/0        2021-04-16 06:27 (host86-189-174-98.range86-189.btcentralplus.com)
+gituser  pts/3        2021-04-16 08:21 (ec2-54-214-14-39.us-west-2.compute.amazonaws.com)
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ git clone https://github.com/akushnirubc/pyneta
+Cloning into 'pyneta'...
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), done.
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ cd pyneta
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ ls -la
+total 8
+drwxrwxr-x 3 akushnir akushnir   53 Apr 16 08:47 .
+drwxrwxr-x 4 akushnir akushnir   64 Apr 16 08:47 ..
+drwxrwxr-x 8 akushnir akushnir  163 Apr 16 08:47 .git
+-rw-rw-r-- 1 akushnir akushnir 1799 Apr 16 08:47 .gitignore
+-rw-rw-r-- 1 akushnir akushnir   31 Apr 16 08:47 README.md
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ cd .git
+(py3_venv) (py3_venv) [akushnir@pylab25b .git]$ tree
+.
+├── branches
+├── config
+├── description
+├── HEAD
+├── hooks
+│   ├── applypatch-msg.sample
+│   ├── commit-msg.sample
+│   ├── fsmonitor-watchman.sample
+│   ├── post-update.sample
+│   ├── pre-applypatch.sample
+│   ├── pre-commit.sample
+│   ├── prepare-commit-msg.sample
+│   ├── pre-push.sample
+│   ├── pre-rebase.sample
+│   ├── pre-receive.sample
+│   └── update.sample
+├── index
+├── info
+│   └── exclude
+├── logs
+│   ├── HEAD
+│   └── refs
+│       ├── heads
+│       │   └── main
+│       └── remotes
+│           └── origin
+│               └── HEAD
+├── objects
+│   ├── 31
+│   │   └── 6c36710b86ecb9f38ea4f6f7a04b23bf190c48
+│   ├── b6
+│   │   └── e47617de110dea7ca47e087ff1347cc2646eda
+│   ├── bd
+│   │   └── 3fb4bd3ab0df0d30528c128ec0138390da14fe
+│   ├── be
+│   │   └── 45b7837f0167cb89e9d9d32fa560b4a00ef5c7
+│   ├── info
+│   └── pack
+├── packed-refs
+└── refs
+    ├── heads
+    │   └── main
+    ├── remotes
+    │   └── origin
+    │       └── HEAD
+    └── tags
+
+20 directories, 26 files
+(py3_venv) (py3_venv) [akushnir@pylab25b .git]$ cd ..
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ ls -la
+total 8
+drwxrwxr-x 3 akushnir akushnir   53 Apr 16 08:47 .
+drwxrwxr-x 4 akushnir akushnir   64 Apr 16 08:47 ..
+drwxrwxr-x 8 akushnir akushnir  163 Apr 16 08:47 .git
+-rw-rw-r-- 1 akushnir akushnir 1799 Apr 16 08:47 .gitignore
+-rw-rw-r-- 1 akushnir akushnir   31 Apr 16 08:47 README.md
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ vi test1.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ ls
+README.md
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ ls -la
+total 8
+drwxrwxr-x 3 akushnir akushnir   53 Apr 16 08:51 .
+drwxrwxr-x 4 akushnir akushnir   64 Apr 16 08:47 ..
+drwxrwxr-x 8 akushnir akushnir  163 Apr 16 08:47 .git
+-rw-rw-r-- 1 akushnir akushnir 1799 Apr 16 08:47 .gitignore
+-rw-rw-r-- 1 akushnir akushnir   31 Apr 16 08:47 README.md
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ vi test1.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ ls -la
+total 12
+drwxrwxr-x 3 akushnir akushnir   69 Apr 16 08:52 .
+drwxrwxr-x 4 akushnir akushnir   64 Apr 16 08:47 ..
+drwxrwxr-x 8 akushnir akushnir  163 Apr 16 08:47 .git
+-rw-rw-r-- 1 akushnir akushnir 1799 Apr 16 08:47 .gitignore
+-rw-rw-r-- 1 akushnir akushnir   31 Apr 16 08:47 README.md
+-rw-rw-r-- 1 akushnir akushnir   15 Apr 16 08:52 test1.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ cat test1.py
+print("Hello")
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ cp test1.py test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ ls -la
+total 16
+drwxrwxr-x 3 akushnir akushnir   85 Apr 16 08:52 .
+drwxrwxr-x 4 akushnir akushnir   64 Apr 16 08:47 ..
+drwxrwxr-x 8 akushnir akushnir  163 Apr 16 08:47 .git
+-rw-rw-r-- 1 akushnir akushnir 1799 Apr 16 08:47 .gitignore
+-rw-rw-r-- 1 akushnir akushnir   31 Apr 16 08:47 README.md
+-rw-rw-r-- 1 akushnir akushnir   15 Apr 16 08:52 test1.py
+-rw-rw-r-- 1 akushnir akushnir   15 Apr 16 08:52 test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ nano test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ ls -la
+total 16
+drwxrwxr-x 3 akushnir akushnir   85 Apr 16 08:52 .
+drwxrwxr-x 4 akushnir akushnir   64 Apr 16 08:47 ..
+drwxrwxr-x 8 akushnir akushnir  163 Apr 16 08:47 .git
+-rw-rw-r-- 1 akushnir akushnir 1799 Apr 16 08:47 .gitignore
+-rw-rw-r-- 1 akushnir akushnir   31 Apr 16 08:47 README.md
+-rw-rw-r-- 1 akushnir akushnir   15 Apr 16 08:52 test1.py
+-rw-rw-r-- 1 akushnir akushnir   75 Apr 16 08:53 test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test1.py
+        test2.py
+
+nothing added to commit but untracked files present (use "git add" to track)
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git add test*.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git commit -m "adding a couple of tet python files"
+[main a95e2e2] adding a couple of tet python files
+ 2 files changed, 6 insertions(+)
+ create mode 100644 test1.py
+ create mode 100644 test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git log
+commit a95e2e2b7b0c2f7cf044c56e4f7749ee5447984c (HEAD -> main)
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+Date:   Fri Apr 16 08:53:48 2021 -0700
+
+    adding a couple of tet python files
+
+commit bd3fb4bd3ab0df0d30528c128ec0138390da14fe (origin/main, origin/HEAD)
+Author: akushnirubc <57720084+akushnirubc@users.noreply.github.com>
+Date:   Fri Apr 16 08:45:35 2021 -0700
+
+    Initial commit
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git push origin main
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 396 bytes | 198.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0)
+To https://github.com/akushnirubc/pyneta
+   bd3fb4b..a95e2e2  main -> main
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git remote -v
+origin  https://github.com/akushnirubc/pyneta (fetch)
+origin  https://github.com/akushnirubc/pyneta (push)
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git commit -m "adding a couple of test python files"
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ ls
+README.md  test1.py  test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ cd ..
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ ls -la
+total 12
+drwxrwxr-x  4 akushnir akushnir   64 Apr 16 08:47 .
+drwx------ 15 akushnir akushnir 4096 Apr 16 08:52 ..
+drwxrwxr-x  8 akushnir akushnir  184 Apr 16 08:28 .git
+drwxrwxr-x  3 akushnir akushnir   85 Apr 16 08:52 pyneta
+-rw-rw-r--  1 akushnir akushnir   20 Apr 15 13:43 test1.py
+-rw-rw-r--  1 akushnir akushnir   54 Apr 15 14:01 test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ cd .git
+(py3_venv) (py3_venv) [akushnir@pylab25b .git]$ ls -la
+total 20
+drwxrwxr-x  8 akushnir akushnir 184 Apr 16 08:28 .
+drwxrwxr-x  4 akushnir akushnir  64 Apr 16 08:47 ..
+drwxrwxr-x  2 akushnir akushnir   6 Apr 15 13:25 branches
+-rw-rw-r--  1 akushnir akushnir  29 Apr 16 08:28 COMMIT_EDITMSG
+-rw-rw-r--  1 akushnir akushnir 209 Apr 15 14:06 config
+-rw-rw-r--  1 akushnir akushnir  73 Apr 15 13:25 description
+-rw-rw-r--  1 akushnir akushnir   0 Apr 15 14:06 FETCH_HEAD
+-rw-rw-r--  1 akushnir akushnir  23 Apr 15 13:25 HEAD
+drwxrwxr-x  2 akushnir akushnir 301 Apr 15 13:25 hooks
+-rw-rw-r--  1 akushnir akushnir 209 Apr 16 08:28 index
+drwxrwxr-x  2 akushnir akushnir  21 Apr 15 13:25 info
+drwxrwxr-x  3 akushnir akushnir  30 Apr 15 14:00 logs
+drwxrwxr-x 18 akushnir akushnir 170 Apr 16 08:28 objects
+drwxrwxr-x  4 akushnir akushnir  31 Apr 15 13:25 refs
+(py3_venv) (py3_venv) [akushnir@pylab25b .git]$ ls -la
+total 20
+drwxrwxr-x  8 akushnir akushnir 184 Apr 16 08:28 .
+drwxrwxr-x  4 akushnir akushnir  64 Apr 16 08:47 ..
+drwxrwxr-x  2 akushnir akushnir   6 Apr 15 13:25 branches
+-rw-rw-r--  1 akushnir akushnir  29 Apr 16 08:28 COMMIT_EDITMSG
+-rw-rw-r--  1 akushnir akushnir 209 Apr 15 14:06 config
+-rw-rw-r--  1 akushnir akushnir  73 Apr 15 13:25 description
+-rw-rw-r--  1 akushnir akushnir   0 Apr 15 14:06 FETCH_HEAD
+-rw-rw-r--  1 akushnir akushnir  23 Apr 15 13:25 HEAD
+drwxrwxr-x  2 akushnir akushnir 301 Apr 15 13:25 hooks
+-rw-rw-r--  1 akushnir akushnir 209 Apr 16 08:28 index
+drwxrwxr-x  2 akushnir akushnir  21 Apr 15 13:25 info
+drwxrwxr-x  3 akushnir akushnir  30 Apr 15 14:00 logs
+drwxrwxr-x 18 akushnir akushnir 170 Apr 16 08:28 objects
+drwxrwxr-x  4 akushnir akushnir  31 Apr 15 13:25 refs
+(py3_venv) (py3_venv) [akushnir@pylab25b .git]$ cd branches/
+(py3_venv) (py3_venv) [akushnir@pylab25b branches]$ ls -la
+total 0
+drwxrwxr-x 2 akushnir akushnir   6 Apr 15 13:25 .
+drwxrwxr-x 8 akushnir akushnir 184 Apr 16 08:28 ..
+(py3_venv) (py3_venv) [akushnir@pylab25b branches]$ cd ..
+(py3_venv) (py3_venv) [akushnir@pylab25b .git]$ cd ..
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ ls -la
+total 12
+drwxrwxr-x  4 akushnir akushnir   64 Apr 16 08:47 .
+drwx------ 15 akushnir akushnir 4096 Apr 16 08:52 ..
+drwxrwxr-x  8 akushnir akushnir  184 Apr 16 08:28 .git
+drwxrwxr-x  3 akushnir akushnir   85 Apr 16 08:52 pyneta
+-rw-rw-r--  1 akushnir akushnir   20 Apr 15 13:43 test1.py
+-rw-rw-r--  1 akushnir akushnir   54 Apr 15 14:01 test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ cd pyneta
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ ls -la
+total 16
+drwxrwxr-x 3 akushnir akushnir   85 Apr 16 08:52 .
+drwxrwxr-x 4 akushnir akushnir   64 Apr 16 08:47 ..
+drwxrwxr-x 8 akushnir akushnir  185 Apr 16 08:56 .git
+-rw-rw-r-- 1 akushnir akushnir 1799 Apr 16 08:47 .gitignore
+-rw-rw-r-- 1 akushnir akushnir   31 Apr 16 08:47 README.md
+-rw-rw-r-- 1 akushnir akushnir   15 Apr 16 08:52 test1.py
+-rw-rw-r-- 1 akushnir akushnir   75 Apr 16 08:53 test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ nano test1.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   test1.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git push origin main
+Everything up-to-date
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   test1.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git commit -m "Adding test Python files"
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+        modified:   test1.py
+
+no changes added to commit
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git add test*.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git commit -m "Adding test Python files"
+[main f13b9e2] Adding test Python files
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git push origin main
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 288 bytes | 288.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/akushnirubc/pyneta
+   a95e2e2..f13b9e2  main -> main
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ ls -la
+total 16
+drwxrwxr-x 3 akushnir akushnir   85 Apr 16 08:52 .
+drwxrwxr-x 4 akushnir akushnir   64 Apr 16 08:47 ..
+drwxrwxr-x 8 akushnir akushnir  185 Apr 16 09:00 .git
+-rw-rw-r-- 1 akushnir akushnir 1799 Apr 16 08:47 .gitignore
+-rw-rw-r-- 1 akushnir akushnir   31 Apr 16 08:47 README.md
+-rw-rw-r-- 1 akushnir akushnir   19 Apr 16 08:58 test1.py
+-rw-rw-r-- 1 akushnir akushnir   75 Apr 16 08:53 test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ cat README.md 
+# pyneta
+Test PyNet Repository
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git pull origin main
+remote: Enumerating objects: 8, done.
+remote: Counting objects: 100% (8/8), done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 6 (delta 3), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (6/6), done.
+From https://github.com/akushnirubc/pyneta
+ * branch            main       -> FETCH_HEAD
+   f13b9e2..376e21c  main       -> origin/main
+Updating f13b9e2..376e21c
+Fast-forward
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ cat README.md 
+# pyneta
+Test PyNet Repository
+
+Some Additional Information on this repo.
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git log
+commit 376e21c980a445675f254f4a9447b6fe08615990 (HEAD -> main, origin/main, origin/HEAD)
+Author: akushnirubc <57720084+akushnirubc@users.noreply.github.com>
+Date:   Fri Apr 16 09:03:16 2021 -0700
+
+    Update the README file
+
+commit f026e3ace144fc2d7ac92e6a117d9bc50afda3f8
+Author: akushnirubc <57720084+akushnirubc@users.noreply.github.com>
+Date:   Fri Apr 16 09:02:19 2021 -0700
+
+    Update README.md
+
+commit f13b9e271d5a3f883c4ddae5b2cef341da93dfa9
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+Date:   Fri Apr 16 09:00:32 2021 -0700
+
+    Adding test Python files
+
+commit a95e2e2b7b0c2f7cf044c56e4f7749ee5447984c
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git log
+commit 376e21c980a445675f254f4a9447b6fe08615990 (HEAD -> main, origin/main, origin/HEAD)
+Author: akushnirubc <57720084+akushnirubc@users.noreply.github.com>
+Date:   Fri Apr 16 09:03:16 2021 -0700
+
+    Update the README file
+
+commit f026e3ace144fc2d7ac92e6a117d9bc50afda3f8
+Author: akushnirubc <57720084+akushnirubc@users.noreply.github.com>
+Date:   Fri Apr 16 09:02:19 2021 -0700
+
+    Update README.md
+
+commit f13b9e271d5a3f883c4ddae5b2cef341da93dfa9
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+Date:   Fri Apr 16 09:00:32 2021 -0700
+
+    Adding test Python files
+
+commit a95e2e2b7b0c2f7cf044c56e4f7749ee5447984c
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+Date:   Fri Apr 16 08:53:48 2021 -0700
+
+    adding a couple of tet python files
+
+commit bd3fb4bd3ab0df0d30528c128ec0138390da14fe
+Author: akushnirubc <57720084+akushnirubc@users.noreply.github.com>
+Date:   Fri Apr 16 08:45:35 2021 -0700
+
+    Initial commit
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ cd ..
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ ls -la
+total 12
+drwxrwxr-x  4 akushnir akushnir   64 Apr 16 08:47 .
+drwx------ 15 akushnir akushnir 4096 Apr 16 08:52 ..
+drwxrwxr-x  8 akushnir akushnir  184 Apr 16 08:28 .git
+drwxrwxr-x  3 akushnir akushnir  102 Apr 16 09:59 pyneta
+-rw-rw-r--  1 akushnir akushnir   20 Apr 15 13:43 test1.py
+-rw-rw-r--  1 akushnir akushnir   54 Apr 15 14:01 test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ cd ..
+(py3_venv) (py3_venv) [akushnir@pylab25b ~]$ cd ..
+(py3_venv) (py3_venv) [akushnir@pylab25b home]$ ls -la
+total 20
+drwxr-xr-x 31 root         root         4096 Apr 13 19:32 .
+dr-xr-xr-x 18 root         root          257 Apr 13 14:55 ..
+drwx------ 15 akushnir     akushnir     4096 Apr 16 08:52 akushnir
+drwx------ 12 aromero      aromero       315 Apr 13 20:50 aromero
+drwx------ 12 bkesavan     bkesavan      315 Apr 13 20:50 bkesavan
+drwx------ 12 dambler      dambler       315 Apr 13 20:50 dambler
+drwx------ 12 dbugher      dbugher       315 Apr 13 20:50 dbugher
+drwx------ 12 dobriain     dobriain     4096 Apr 16 08:22 dobriain
+drwx------ 12 dyu          dyu           315 Apr 13 20:50 dyu
+drwx------  5 ec2-user     ec2-user      118 Apr 13 15:06 ec2-user
+drwx------  5 gituser      gituser       138 Apr 13 18:45 gituser
+drwx------ 14 hmodha       hmodha       4096 Apr 16 08:35 hmodha
+drwx------ 12 jang         jang          315 Apr 13 20:50 jang
+drwx------ 12 jianihuang   jianihuang   4096 Apr 15 21:41 jianihuang
+drwx------  2 ktbyers      ktbyers        90 Apr 13 15:06 ktbyers
+drwx------ 12 lkhaire      lkhaire       315 Apr 13 20:50 lkhaire
+drwx------ 12 m_bagheri    m_bagheri     315 Apr 13 20:50 m_bagheri
+drwx------ 12 mhanley      mhanley       315 Apr 13 20:50 mhanley
+drwx------ 12 munamala     munamala      315 Apr 13 20:50 munamala
+drwx------ 12 packe1bb     packe1bb      315 Apr 13 20:50 packe1bb
+drwx------ 12 rajul82      rajul82       315 Apr 13 20:50 rajul82
+drwx------ 12 riteshpawar1 riteshpawar1  315 Apr 13 20:50 riteshpawar1
+drwx------ 12 rmarkle      rmarkle       315 Apr 13 20:50 rmarkle
+drwx------ 12 smaheswarapp smaheswarapp  315 Apr 13 20:50 smaheswarapp
+drwx------ 12 sridolfi     sridolfi      315 Apr 13 20:50 sridolfi
+drwx------ 12 sulo         sulo          315 Apr 13 20:50 sulo
+drwx------ 12 tanghe       tanghe        315 Apr 13 20:50 tanghe
+drwx------ 12 tatkins      tatkins       315 Apr 13 20:50 tatkins
+drwx------ 12 vidyathe7ths vidyathe7ths  315 Apr 13 20:50 vidyathe7ths
+drwx------ 12 vpatel       vpatel        315 Apr 13 20:50 vpatel
+drwx------ 12 wbellward    wbellward     315 Apr 13 19:06 wbellward
+(py3_venv) (py3_venv) [akushnir@pylab25b home]$ cd akushnir
+(py3_venv) (py3_venv) [akushnir@pylab25b ~]$ ls -la
+total 52
+drwx------ 15 akushnir akushnir 4096 Apr 16 08:52 .
+drwxr-xr-x 31 root     root     4096 Apr 13 19:32 ..
+drwx------  5 akushnir akushnir   69 Apr 13 20:49 .ansible
+-rw-r--r--  1 akushnir akushnir  408 Apr 13 20:44 .ansible.cfg
+drwxr-xr-x  3 akushnir akushnir   25 Apr 13 20:46 ansible-extras
+-rw-r--r--  1 akushnir akushnir  925 Apr 13 20:45 ansible-hosts.ini
+-rw-------  1 akushnir akushnir  566 Apr 15 17:52 .bash_history
+-rw-r--r--  1 akushnir akushnir   18 Jul 14  2020 .bash_logout
+-rw-r--r--  1 akushnir akushnir  193 Jul 14  2020 .bash_profile
+-rw-rwxr--  1 akushnir akushnir  678 Apr 13 19:33 .bashrc
+drwxr-xr-x  2 akushnir akushnir   24 Apr 13 20:50 bin
+drwxr-xr-x  3 akushnir akushnir   17 Apr 13 20:21 .cache
+-rw-r--r--  1 akushnir akushnir  334 Oct 27 19:47 .emacs
+-rw-rw-r--  1 akushnir akushnir   57 Apr 15 13:48 .gitconfig
+drwxrwxr-x  4 akushnir akushnir   64 Apr 16 08:47 git-test
+drwxr-xr-x  5 akushnir akushnir  209 Apr 13 20:43 netmiko_tools
+-rw-------  1 akushnir akushnir 1196 Apr 13 20:43 .netmiko.yml
+drwxrwxr-x  3 akushnir akushnir   67 Apr 16 09:56 notes
+drwxr-xr-x  6 akushnir akushnir  294 Apr 13 20:42 ntc-templates
+drwxr-xr-x  2 akushnir akushnir   51 Apr 13 20:41 python-libs
+drwxr-xr-x  2 akushnir akushnir   48 Apr 13 20:52 .ssh
+drwxr-xr-x  3 akushnir akushnir   37 Apr 13 20:44 VENV
+drwxr-xr-x  3 akushnir akushnir   20 Apr 13 19:34 .vim
+-rw-------  1 akushnir akushnir 1040 Apr 16 08:52 .viminfo
+-rw-r--r--  1 akushnir akushnir  165 Apr 13 19:33 .vimrc
+drwxrwxr-x  5 akushnir akushnir  208 Apr 16 07:54 .vscode-server
+(py3_venv) (py3_venv) [akushnir@pylab25b ~]$ cd git-test
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ ls -la
+total 12
+drwxrwxr-x  4 akushnir akushnir   64 Apr 16 08:47 .
+drwx------ 15 akushnir akushnir 4096 Apr 16 08:52 ..
+drwxrwxr-x  8 akushnir akushnir  184 Apr 16 08:28 .git
+drwxrwxr-x  3 akushnir akushnir  102 Apr 16 09:59 pyneta
+-rw-rw-r--  1 akushnir akushnir   20 Apr 15 13:43 test1.py
+-rw-rw-r--  1 akushnir akushnir   54 Apr 15 14:01 test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b git-test]$ cd pyneta/
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ who
+hmodha   pts/0        2021-04-16 06:27 (host86-189-174-98.range86-189.btcentralplus.com)
+gituser  pts/3        2021-04-16 08:21 (ec2-54-214-14-39.us-west-2.compute.amazonaws.com)
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test3a.py
+
+nothing added to commit but untracked files present (use "git add" to track)
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ rm tet3a.py
+rm: cannot remove ‘tet3a.py’: No such file or directory
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test3a.py
+
+nothing added to commit but untracked files present (use "git add" to track)
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git add test3a.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   test3a.py
+
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git reset HEAD test3a.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test3a.py
+
+nothing added to commit but untracked files present (use "git add" to track)
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ rm test3a.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   test2.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git diff
+diff --git a/test2.py b/test2.py
+index e5e45df..11086fe 100644
+--- a/test2.py
++++ b/test2.py
+@@ -3,3 +3,7 @@ print("Hello")
+ print("Hello")
+ print("Hello")
+ print("Hello")
++print("Hello")
++print("Hello")
++print("Hello")
++print("Hello")
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   test2.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git restore ./test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ cat test2.py
+print("Hello")
+print("Hello")
+print("Hello")
+print("Hello")
+print("Hello")
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ touch test3.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ touch test4.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ touch test5.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test3.py
+        test4.py
+        test5.py
+
+nothing added to commit but untracked files present (use "git add" to track)
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ 
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ 
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   test2.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test3.py
+        test4.py
+        test5.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   test2.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test3.py
+        test4.py
+        test5.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   test1.py
+        modified:   test2.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test3.py
+        test4.py
+        test5.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git stash
+Saved working directory and index state WIP on main: 376e21c Update the README file
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test3.py
+        test4.py
+        test5.py
+
+nothing added to commit but untracked files present (use "git add" to track)
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ rm test3.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ rm test4.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ rm test5.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git branch
+* main
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git log
+commit 376e21c980a445675f254f4a9447b6fe08615990 (HEAD -> main, origin/main, origin/HEAD)
+Author: akushnirubc <57720084+akushnirubc@users.noreply.github.com>
+Date:   Fri Apr 16 09:03:16 2021 -0700
+
+    Update the README file
+
+commit f026e3ace144fc2d7ac92e6a117d9bc50afda3f8
+Author: akushnirubc <57720084+akushnirubc@users.noreply.github.com>
+Date:   Fri Apr 16 09:02:19 2021 -0700
+
+    Update README.md
+
+commit f13b9e271d5a3f883c4ddae5b2cef341da93dfa9
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+Date:   Fri Apr 16 09:00:32 2021 -0700
+
+    Adding test Python files
+
+commit a95e2e2b7b0c2f7cf044c56e4f7749ee5447984c
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git checkout -b devel main
+Switched to a new branch 'devel'
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch devel
+nothing to commit, working tree clean
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git branch feature1
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch devel
+nothing to commit, working tree clean
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git branch
+* devel
+  feature1
+  main
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git checkout feature1
+Switched to branch 'feature1'
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch feature1
+nothing to commit, working tree clean
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git branch
+  devel
+* feature1
+  main
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git checkout devel
+Switched to branch 'devel'
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch devel
+nothing to commit, working tree clean
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ touch test3a.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git status
+On branch devel
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test3a.py
+
+nothing added to commit but untracked files present (use "git add" to track)
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git add test3a.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git commit -m :Adding test3a.py"
+> ^C
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git commit -m "Adding test3a.py"
+[devel 325a49d] Adding test3a.py
+ 1 file changed, 2 insertions(+)
+ create mode 100644 test3a.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git branch
+* devel
+  feature1
+  main
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git checkout master
+error: pathspec 'master' did not match any file(s) known to git
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ ls
+README.md  test1.py  test2.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git checkout devel
+Switched to branch 'devel'
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ ls
+README.md  test1.py  test2.py  test3a.py
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git push origin devel
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 306 bytes | 153.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote: 
+remote: Create a pull request for 'devel' on GitHub by visiting:
+remote:      https://github.com/akushnirubc/pyneta/pull/new/devel
+remote: 
+To https://github.com/akushnirubc/pyneta
+ * [new branch]      devel -> devel
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git pull origin main
+remote: Enumerating objects: 1, done.
+remote: Counting objects: 100% (1/1), done.
+remote: Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (1/1), done.
+From https://github.com/akushnirubc/pyneta
+ * branch            main       -> FETCH_HEAD
+   376e21c..21f661c  main       -> origin/main
+Updating 325a49d..21f661c
+Fast-forward
+(py3_venv) (py3_venv) [akushnir@pylab25b pyneta]$ git log
+commit 21f661c2be12ef49f0e94c985d77f350422cf936 (HEAD -> devel, origin/main, origin/HEAD)
+Merge: 376e21c 325a49d
+Author: akushnirubc <57720084+akushnirubc@users.noreply.github.com>
+Date:   Fri Apr 16 10:27:40 2021 -0700
+
+    Merge pull request #1 from akushnirubc/devel
+    
+    Adding test3a.py into main
+
+commit 325a49d62e7e66ba23c623cf78274ece19b6e579 (origin/devel)
+Author: Alex Kushnir <alex.kushnir@ubc.ca>
+Date:   Fri Apr 16 10:22:24 2021 -0700
+
+    Adding test3a.py
+
+commit 376e21c980a445675f254f4a9447b6fe08615990 (main, feature1)
+Author: akushnirubc <57720084+akushnirubc@users.noreply.github.com>
+Date:   Fri Apr 16 09:03:16 2021 -0700
+
+    Update the README file

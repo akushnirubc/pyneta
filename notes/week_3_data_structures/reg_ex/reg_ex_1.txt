@@ -1,0 +1,112 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b week_3_data_structures]$ ipython
+Python 3.7.9 (default, Feb 18 2021, 03:10:35) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: import re
+
+In [2]: line = "10.220.100.1"
+
+In [3]: ip_addr = line
+
+In [4]: re.search(r".", ip_addr)
+Out[4]: <re.Match object; span=(0, 1), match='1'>
+
+
+In [5]: re.search(r".", ip_addr).group(0)
+Out[5]: '1'
+
+In [6]: re.search(r"..", ip_addr).group(0)
+Out[6]: '10'
+
+In [7]: re.search(r"...", ip_addr).group(0)
+Out[7]: '10.'
+
+
+In [8]: re.search(r"...", ip_addr).group(0).
+  File "<ipython-input-8-ab566787c1b8>", line 1
+    re.search(r"...", ip_addr).group(0).
+                                        ^
+SyntaxError: invalid syntax
+
+
+In [9]: re.search(r"....", ip_addr).group(0)
+Out[9]: '10.2'
+
+
+In [10]: re.search(r".+", ip_addr)
+Out[10]: <re.Match object; span=(0, 12), match='10.220.100.1'>
+
+
+In [11]: re.search(r".+", ip_addr).group(0)
+Out[11]: '10.220.100.1'
+
+In [12]: re.search(r".*", ip_addr).group(0)
+Out[12]: '10.220.100.1'
+
+In [13]: re.search(r".*", "")
+Out[13]: <re.Match object; span=(0, 0), match=''>
+
+
+In [14]: re.search(r"^.+$", ip_addr).group(0)
+Out[14]: '10.220.100.1'
+
+In [15]: re.search(r"\d", ip_addr).group(0)
+Out[15]: '1'
+
+In [16]: re.search(r"\d\d", ip_addr).group(0)
+Out[16]: '10'
+
+In [17]: re.search(r"\d\d\d", ip_addr).group(0)
+Out[17]: '220'
+
+In [18]: re.search(r"^\d\d\d", ip_addr).group(0)
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-18-ee605b5ffe5f> in <module>
+----> 1 re.search(r"^\d\d\d", ip_addr).group(0)
+
+AttributeError: 'NoneType' object has no attribute 'group'
+
+In [19]: re.search(r"^\d\d\d", ip_addr)
+
+In [20]: re.search(r"^\d+", ip_addr)
+Out[20]: <re.Match object; span=(0, 2), match='10'>
+
+In [21]: re.search(r"\d+$", ip_addr)
+Out[21]: <re.Match object; span=(11, 12), match='1'>
+
+In [22]: re.search(r"\d+$", ip_addr).group(0)
+Out[22]: '1'
+
+In [23]: ip_addr = '    10.220.100.1     '
+
+In [24]: re.search(r"\s+", ip_addr)
+Out[24]: <re.Match object; span=(0, 4), match='    '>
+
+In [25]: re.search(r"\s+\d+", ip_addr)
+Out[25]: <re.Match object; span=(0, 6), match='    10'>
+
+In [26]: re.search(r"\s+\S+", ip_addr)
+Out[26]: <re.Match object; span=(0, 16), match='    10.220.100.1'>
+
+In [27]: re.search(r"\s+[\d\.]", ip_addr)
+Out[27]: <re.Match object; span=(0, 5), match='    1'>
+
+In [28]: re.search(r"\s+[\d\.]+", ip_addr)
+Out[28]: <re.Match object; span=(0, 16), match='    10.220.100.1'>
+
+In [29]: re.search(r"^\s+(\S+)", ip_addr)
+Out[29]: <re.Match object; span=(0, 16), match='    10.220.100.1'>
+
+In [30]: re.search(r"^\s+(\S+)", ip_addr).group(0)
+Out[30]: '    10.220.100.1'
+
+In [31]: re.search(r"^\s+(\S+)", ip_addr).group(1)
+Out[31]: '10.220.100.1'
+
+In [32]: re.search(r"^\s+(\S+)", ip_addr).groups
+Out[32]: <function Match.groups(default=None)>
+
+In [33]: re.search(r"^\s+(\S+)", ip_addr).groups()
+Out[33]: ('10.220.100.1',)
