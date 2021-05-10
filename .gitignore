@@ -127,3 +127,17 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+.bash_history
+.bash_history
+.python_history
+.vscode-server/.3c4e3df9e89829dce27b7b5c24508306b151f30d.pid
+.vscode-server/.3c4e3df9e89829dce27b7b5c24508306b151f30d.token
+.vscode-server/.cfa2e218100323074ac1948c885448fdf4de2a7f.token
+.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/LICENSE
+.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/node
+.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/package.json
+.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/product.json
+.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/extensions/configuration-editing/package.json
+.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/extensions/configuration-editing/package.nls.json
+.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/extensions/configuration-editing/images/icon.png
+.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/extensions/css-language-features/README.md
