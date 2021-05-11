@@ -1,0 +1,27 @@
+Value DEVICE_ID (\S+)
+Value LOCAL_INTF (\S+)
+Value CAPABILITY (\w+)
+Value REMOTE_PORT (\S+)
+
+Start
+  ^Device ID.*Port ID -> LLDPTable
+
+LLDPTable  
+  ^${DEVICE_ID}\s+${LOCAL_INTF}\s+\d+\s+${CAPABILITY}\s+${REMOTE_PORT} -> Record
+
+
+
+#Parse the 'show lldp neighbors' output from nxos1
+#From this output use TextFSM to extract the Device ID, Local Intf, Capability, and Port ID.
+
+#Capability codes:
+#  (R) Router, (B) Bridge, (T) Telephone, (C) DOCSIS Cable Device
+#  (W) WLAN Access Point, (P) Repeater, (S) Station, (O) Other
+#Device ID                         Local Intf          Hold-time   Capability  Port ID     
+#nxos2.twb-tech.com                Eth2/1              120          BR          Eth2/1      
+#nxos2.twb-tech.com                Eth2/2              120          BR          Eth2/2      
+#nxos2.twb-tech.com                Eth2/3              120          BR          Eth2/3      
+#nxos2.twb-tech.com                Eth2/4              120          BR          Eth2/4      
+#Total entries displayed: 4
+
+#python textfsm.py ex_5_nxos_show_lldp_neighbors.template ex5_nxos_show_lldp_neighbors.txt
