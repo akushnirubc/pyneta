@@ -1,0 +1,40 @@
+Value Filldown BGP_ROUTER_ID ([0-9\.]+)
+Value Filldown LOCAL_AS (\d+)
+Value PEER_IP ([0-9\.]+)
+Value REMOTE_AS (\d{4,6})
+Value UP_DOWN (\S+)
+Value STATE_PFXRCD (\S+)
+
+Start
+  ^BGP router identifier ${BGP_ROUTER_ID}, local AS number ${LOCAL_AS}\s*$$
+  ^Neighbor.*State.PfxRcd.*$$ -> BGPTable
+
+BGPTable
+  ^${PEER_IP}\s+4\s+${REMOTE_AS}\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+${UP_DOWN}\s+${STATE_PFXRCD} -> Record
+
+EOF
+
+#From this output, extract the following fields: Neighbor, Remote AS, Up_Down, and State_PrefixRcvd. 
+#Also include the Local AS and the BGP Router ID in each row of the tabular output (hint: use filldown for this). 
+#Note, in order to simplify this problem only worry about the data shown in the output 
+#(in other words, don't worry about all possible values that could be present in the output).
+
+#Second hint: remember there is an implicit 'EOF -> Record' at the end of the template (by default).
+
+#BGP router identifier 128.223.51.103, local AS number 6447
+#Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+#4.69.184.193    4         3356 942101852   70242 24508270    0    0 4w5d       720787
+#5.101.110.2     4        14061       0       0        1    0    0 never    Active
+#12.0.1.63       4         7018 20129803   53213 24508270    0    0 4w5d       722337
+#37.139.139.0    4        57866 21976076  103582 24508270    0    0 4w4d       723278
+#64.71.137.241   4         6939 7493759   53210 24508270    0    0 4w5d       748249
+#66.59.190.221   4         6539       0       0        1    0    0 never    Active
+#66.110.0.86     4         6453       0       0        1    0    0 never    Idle
+#66.185.128.48   4         1668       0       0        1    0    0 never    Active
+#69.31.111.244   4         4436       0       0        1    0    0 never    Active
+#80.241.176.31   4        20771       0       0        1    0    0 never    Active
+#89.149.178.10   4         3257 4554910   10722 24508270    0    0 4w5d       721998
+#91.218.184.60   4        49788 11604600   40029 24508270    0    0 4w5d       724514
+#94.142.247.3    4         8283 59677087   36962 24508270    0    0 4w3d       723358
+
+#python textfsm.py ex_5_nxos_show_lldp_neighbors.template ex5_nxos_show_lldp_neighbors.txt
