@@ -1,0 +1,87 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b week_6_arista_eapi]$ python pyeapi_simple.py 
+> /home/akushnir/notes/week_6_arista_eapi/pyeapi_simple.py(7)<module>()
+      6 ipdb.set_trace()
+----> 7 connection = pyeapi.client.connect(
+      8     transport="https",
+
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/pyeapi_simple.py(8)<module>()
+      7 connection = pyeapi.client.connect(
+----> 8     transport="https",
+      9     host="arista8.lasthop.io",
+
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/pyeapi_simple.py(9)<module>()
+      8     transport="https",
+----> 9     host="arista8.lasthop.io",
+     10     username="pyclass",
+
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/pyeapi_simple.py(10)<module>()
+      9     host="arista8.lasthop.io",
+---> 10     username="pyclass",
+     11     password=getpass(),
+
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/pyeapi_simple.py(11)<module>()
+     10     username="pyclass",
+---> 11     password=getpass(),
+     12     port="443",
+
+ipdb> n
+Password: 
+> /home/akushnir/notes/week_6_arista_eapi/pyeapi_simple.py(12)<module>()
+     11     password=getpass(),
+---> 12     port="443",
+     13 )
+
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/pyeapi_simple.py(17)<module>()
+     15 # enable = getpass("Enable: ")
+     16 # device = pyeapi.client.Node(connection, enablepwd=enable)
+---> 17 device = pyeapi.client.Node(connection)
+
+ipdb> p connection
+EapiConnection(transport=https://arista8.lasthop.io:443//command-api)
+ipdb> n
+--Return--
+None
+> /home/akushnir/notes/week_6_arista_eapi/pyeapi_simple.py(17)<module>()
+     15 # enable = getpass("Enable: ")
+     16 # device = pyeapi.client.Node(connection, enablepwd=enable)
+---> 17 device = pyeapi.client.Node(connection)
+
+ipdb> p device
+Node(connection=EapiConnection(transport=https://arista8.lasthop.io:443//command-api))
+ipdb> dir(device)
+['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_configure_and_exit_session', '_configure_session', '_configure_terminal', '_connection', '_enablepwd', '_get_version_properties', '_model', '_running_config', '_session_name', '_startup_config', '_version', '_version_number', 'abort', 'api', 'autorefresh', 'commit', 'config', 'configure_session', 'connection', 'diff', 'enable', 'enable_authentication', 'get_config', 'model', 'refresh', 'run_commands', 'running_config', 'section', 'settings', 'startup_config', 'version', 'version_number']
+ipdb> !device.model
+'vEOS'
+ipdb> !device.version
+'4.20.10M'
+ipdb> !device.version_number
+'4.20.10'
+ipdb> !device.get_config()
+['! Command: show running-config', '! device: arista8 (vEOS, EOS-4.20.10M)', '!', '! boot system flash:/vEOS-lab.swi', '!', 'transceiver qsfp default-mode 4x10G', '!', 'hostname arista8', '!', 'ntp server 130.126.24.24', '!', 'spanning-tree mode rapid-pvst', '!', 'aaa authorization exec default local', '!', 'no aaa root', '!', 'username admin privilege 15 role network-admin secret 5 $1$aM6w809x$tgkc6ZGhcScvELVKVHq3n0', 'username admin1 privilege 15 secret 5 $1$7kD0oS/t$wXhtTFwnWwnlPFKWwXoJ70', 'username eapi secret 5 $1$zBpvd4C5$LDS6j8PPt6rHikh79Hi46/', 'username pyclass privilege 15 secret 5 $1$C3VfUfcO$86t4iqCX60yW.NIR8d2Lh0', '!', 'clock timezone America/Los_Angeles', '!', 'vlan 2-7', '!', 'vlan 225', '   name green', '!', 'interface Ethernet1', '   spanning-tree portfast', '   spanning-tree cost 1', '!', 'interface Ethernet2', '   switchport access vlan 2', '!', 'interface Ethernet3', '   switchport access vlan 3', '!', 'interface Ethernet4', '   switchport access vlan 4', '!', 'interface Ethernet5', '   switchport access vlan 5', '!', 'interface Ethernet6', '   switchport access vlan 6', '!', 'interface Ethernet7', '   switchport access vlan 7', '!', 'interface Management1', '   shutdown', '!', 'interface Vlan1', '   ip address 10.220.88.35/24', '!', 'ip route 0.0.0.0/0 10.220.88.1', '!', 'ip routing', '!', 'management api http-commands', '   no shutdown', '!', 'end', '']
+ipdb> !help(device.get_config())
+
+ipdb> !help(device.get_config)
+
+ipdb> !device.get_config('startup-config, as_string=True)
+*** SyntaxError: EOL while scanning string literal
+iipdb> !device.get_config('startup-confi'g, as_string=True)
+*** SyntaxError: invalid syntax
+ipdb> !device.get_config('startup-config', as_string=True)
+'! Command: show startup-config\n! Startup-config last modified at  Wed May 12 04:15:26 2021 by admin1\n! device: arista8 (vEOS, EOS-4.20.10M)\n!\n! boot system flash:/vEOS-lab.swi\n!\ntransceiver qsfp default-mode 4x10G\n!\nhostname arista8\n!\nntp server 130.126.24.24\n!\nspanning-tree mode rapid-pvst\n!\naaa authorization exec default local\n!\nno aaa root\n!\nusername admin privilege 15 role network-admin secret 5 $1$aM6w809x$tgkc6ZGhcScvELVKVHq3n0\nusername admin1 privilege 15 secret 5 $1$7kD0oS/t$wXhtTFwnWwnlPFKWwXoJ70\nusername eapi secret 5 $1$zBpvd4C5$LDS6j8PPt6rHikh79Hi46/\nusername pyclass privilege 15 secret 5 $1$C3VfUfcO$86t4iqCX60yW.NIR8d2Lh0\n!\nclock timezone America/Los_Angeles\n!\nvlan 2-7\n!\ninterface Ethernet1\n   spanning-tree portfast\n   spanning-tree cost 1\n!\ninterface Ethernet2\n   switchport access vlan 2\n!\ninterface Ethernet3\n   switchport access vlan 3\n!\ninterface Ethernet4\n   switchport access vlan 4\n!\ninterface Ethernet5\n   switchport access vlan 5\n!\ninterface Ethernet6\n   switchport access vlan 6\n!\ninterface Ethernet7\n   switchport access vlan 7\n!\ninterface Management1\n   shutdown\n!\ninterface Vlan1\n   ip address 10.220.88.35/24\n!\nip route 0.0.0.0/0 10.220.88.1\n!\nip routing\n!\nmanagement api http-commands\n   no shutdown\n!\nend'
+ipdb>ipdb> !device.get_coas_string=True)
+*** SyntaxError: invalid syntax
+iipdb> !device.get_cnfig(as_string=True)
+*** AttributeError: 'Node' object has no attribute 'get_cnfig'
+ipipdb> !device.geto_cnfig(as_string=True)
+*** AttributeError: 'Node' object has no attribute 'geto_cnfig'
+ipipdb> !device.g_config(as_string=True)
+*** AttributeError: 'Node' object has no attribute 'g_config'
+ipdb> !device.get_config(as_string=True)
+'! Command: show running-config\n! device: arista8 (vEOS, EOS-4.20.10M)\n!\n! boot system flash:/vEOS-lab.swi\n!\ntransceiver qsfp default-mode 4x10G\n!\nhostname arista8\n!\nntp server 130.126.24.24\n!\nspanning-tree mode rapid-pvst\n!\naaa authorization exec default local\n!\nno aaa root\n!\nusername admin privilege 15 role network-admin secret 5 $1$aM6w809x$tgkc6ZGhcScvELVKVHq3n0\nusername admin1 privilege 15 secret 5 $1$7kD0oS/t$wXhtTFwnWwnlPFKWwXoJ70\nusername eapi secret 5 $1$zBpvd4C5$LDS6j8PPt6rHikh79Hi46/\nusername pyclass privilege 15 secret 5 $1$C3VfUfcO$86t4iqCX60yW.NIR8d2Lh0\n!\nclock timezone America/Los_Angeles\n!\nvlan 2-7\n!\nvlan 225\n   name green\n!\ninterface Ethernet1\n   spanning-tree portfast\n   spanning-tree cost 1\n!\ninterface Ethernet2\n   switchport access vlan 2\n!\ninterface Ethernet3\n   switchport access vlan 3\n!\ninterface Ethernet4\n   switchport access vlan 4\n!\ninterface Ethernet5\n   switchport access vlan 5\n!\ninterface Ethernet6\n   switchport access vlan 6\n!\ninterface Ethernet7\n   switchport access vlan 7\n!\ninterface Management1\n   shutdown\n!\ninterface Vlan1\n   ip address 10.220.88.35/24\n!\nip route 0.0.0.0/0 10.220.88.1\n!\nip routing\n!\nmanagement api http-commands\n   no shutdown\n!\nend'
+ipdb> c
+(py3_venv) (py3_venv) [akushnir@pylab25b week_6_arista_eapi]$ 

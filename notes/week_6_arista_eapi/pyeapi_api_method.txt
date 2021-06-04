@@ -1,0 +1,49 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b week_6_arista_eapi]$ ipython -i pyeapi_api.py 
+Python 3.7.9 (default, Apr 30 2021, 20:11:56) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+Password: 
+Enable: 
+<pyeapi.api.vlans.Vlans object at 0x7f69c01e62d0>
+
+In [1]: device
+Out[1]: Node(connection=EapiConnection(transport=https://arista8.lasthop.io:443//command-api))
+
+In [2]: vlan_cfg
+Out[2]: <pyeapi.api.vlans.Vlans at 0x7f69c01e62d0>
+
+In [3]: help(device.api)
+
+
+In [4]: device.api("bgp")
+Out[4]: <pyeapi.api.bgp.Bgp at 0x7f69c00d6810>
+
+In [5]: device.api("acl")
+Out[5]: <pyeapi.api.acl.Acls at 0x7f69c013aa90>
+
+In [6]: vlan_cfg
+Out[6]: <pyeapi.api.vlans.Vlans at 0x7f69c01e62d0>
+
+In [7]: vlan_cfg.get(1)
+Out[7]: {'vlan_id': 1, 'name': 'default', 'state': 'active', 'trunk_groups': []}
+
+In [8]: vlan_cfg
+Out[8]: <pyeapi.api.vlans.Vlans at 0x7f69c01e62d0>
+
+In [9]: vlan_cfg.create(800)
+Out[9]: True
+
+In [10]: vlan_cfg.create(801)
+Out[10]: True
+
+In [11]: vlan_cfg.create(802)
+Out[11]: True
+
+In [12]: vlan_cfg.set_name(800, "blue")
+^[[AOut[12]: True
+
+In [13]: vlan_cfg.set_name(801, "red")
+Out[13]: True
+
+In [14]: vlan_cfg.set_name(802, "green")
+Out[14]: True

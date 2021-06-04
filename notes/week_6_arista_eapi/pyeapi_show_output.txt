@@ -1,0 +1,169 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b week_6_arista_eapi]$ ipython -i pyeapi_show.py 
+Python 3.7.9 (default, Apr 30 2021, 20:11:56) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+Password: 
+[{'command': 'show version', 'result': {'uptime': 48109198.69, 'modelName': 'vEOS', 'internalVersion': '4.20.10M-10040268.42010M', 'systemMacAddress': '00:aa:87:7d:c6:e5', 'serialNumber': '', 'memTotal': 4010924, 'bootupTimestamp': 1574644535.0, 'memFree': 1798644, 'version': '4.20.10M', 'architecture': 'i386', 'isIntlVersion': False, 'internalBuildId': '68f3ae78-65cb-4ed3-8675-0ff2219bf118', 'hardwareRevision': ''}, 'encoding': 'json'}]
+
+In [1]: print(output)
+[{'command': 'show version', 'result': {'uptime': 48109198.69, 'modelName': 'vEOS', 'internalVersion': '4.20.10M-10040268.42010M', 'systemMacAddress': '00:aa:87:7d:c6:e5', 'serialNumber': '', 'memTotal': 4010924, 'bootupTimestamp': 1574644535.0, 'memFree': 1798644, 'version': '4.20.10M', 'architecture': 'i386', 'isIntlVersion': False, 'internalBuildId': '68f3ae78-65cb-4ed3-8675-0ff2219bf118', 'hardwareRevision': ''}, 'encoding': 'json'}]
+
+In [2]: from pprint import pprint
+
+In [3]: pprint(output)
+[{'command': 'show version',
+  'encoding': 'json',
+  'result': {'architecture': 'i386',
+             'bootupTimestamp': 1574644535.0,
+             'hardwareRevision': '',
+             'internalBuildId': '68f3ae78-65cb-4ed3-8675-0ff2219bf118',
+             'internalVersion': '4.20.10M-10040268.42010M',
+             'isIntlVersion': False,
+             'memFree': 1798644,
+             'memTotal': 4010924,
+             'modelName': 'vEOS',
+             'serialNumber': '',
+             'systemMacAddress': '00:aa:87:7d:c6:e5',
+             'uptime': 48109198.69,
+             'version': '4.20.10M'}}]
+
+In [4]: pprint(output[0])
+{'command': 'show version',
+ 'encoding': 'json',
+ 'result': {'architecture': 'i386',
+            'bootupTimestamp': 1574644535.0,
+            'hardwareRevision': '',
+            'internalBuildId': '68f3ae78-65cb-4ed3-8675-0ff2219bf118',
+            'internalVersion': '4.20.10M-10040268.42010M',
+            'isIntlVersion': False,
+            'memFree': 1798644,
+            'memTotal': 4010924,
+            'modelName': 'vEOS',
+            'serialNumber': '',
+            'systemMacAddress': '00:aa:87:7d:c6:e5',
+            'uptime': 48109198.69,
+            'version': '4.20.10M'}}
+
+In [5]: pprint(output[1])
+---------------------------------------------------------------------------
+IndexError                                Traceback (most recent call last)
+<ipython-input-5-6962e79a799c> in <module>
+----> 1 pprint(output[1])
+
+IndexError: list index out of range
+
+In [6]: pprint(output[0]['result'])
+{'architecture': 'i386',
+ 'bootupTimestamp': 1574644535.0,
+ 'hardwareRevision': '',
+ 'internalBuildId': '68f3ae78-65cb-4ed3-8675-0ff2219bf118',
+ 'internalVersion': '4.20.10M-10040268.42010M',
+ 'isIntlVersion': False,
+ 'memFree': 1798644,
+ 'memTotal': 4010924,
+ 'modelName': 'vEOS',
+ 'serialNumber': '',
+ 'systemMacAddress': '00:aa:87:7d:c6:e5',
+ 'uptime': 48109198.69,
+ 'version': '4.20.10M'}
+
+In [7]: pprint(output[0]['result']['systemMacAddress'])
+'00:aa:87:7d:c6:e5'
+
+In [8]: quit()
+(py3_venv) (py3_venv) [akushnir@pylab25b week_6_arista_eapi]$ ipython -i pyeapi_show.py 
+Python 3.7.9 (default, Apr 30 2021, 20:11:56) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+Password: 
+[{'command': 'show version', 'result': {'uptime': 48109381.67, 'modelName': 'vEOS', 'internalVersion': '4.20.10M-10040268.42010M', 'systemMacAddress': '00:aa:87:7d:c6:e5', 'serialNumber': '', 'memTotal': 4010924, 'bootupTimestamp': 1574644535.0, 'memFree': 1798744, 'version': '4.20.10M', 'architecture': 'i386', 'isIntlVersion': False, 'internalBuildId': '68f3ae78-65cb-4ed3-8675-0ff2219bf118', 'hardwareRevision': ''}, 'encoding': 'json'}, {'command': 'show ip arp', 'result': {'dynamicEntries': 5, 'ipV4Neighbors': [{'hwAddress': '0062.ec29.70fe', 'address': '10.220.88.1', 'interface': 'Vlan1, Ethernet1', 'age': 0}, {'hwAddress': 'c89c.1dea.0eb6', 'address': '10.220.88.20', 'interface': 'Vlan1, not learned', 'age': 0}, {'hwAddress': '00ac.fc59.97f2', 'address': '10.220.88.31', 'interface': 'Vlan1, not learned', 'age': 0}, {'hwAddress': '0001.00ff.0001', 'address': '10.220.88.37', 'interface': 'Vlan1, not learned', 'age': 0}, {'hwAddress': '0002.00ff.0001', 'address': '10.220.88.38', 'interface': 'Vlan1, not learned', 'age': 0}], 'notLearnedEntries': 4, 'totalEntries': 5, 'staticEntries': 0}, 'encoding': 'json'}]
+
+In [1]: from pprint import pprint
+
+In [2]: pprint(output)
+[{'command': 'show version',
+  'encoding': 'json',
+  'result': {'architecture': 'i386',
+             'bootupTimestamp': 1574644535.0,
+             'hardwareRevision': '',
+             'internalBuildId': '68f3ae78-65cb-4ed3-8675-0ff2219bf118',
+             'internalVersion': '4.20.10M-10040268.42010M',
+             'isIntlVersion': False,
+             'memFree': 1798744,
+             'memTotal': 4010924,
+             'modelName': 'vEOS',
+             'serialNumber': '',
+             'systemMacAddress': '00:aa:87:7d:c6:e5',
+             'uptime': 48109381.67,
+             'version': '4.20.10M'}},
+ {'command': 'show ip arp',
+  'encoding': 'json',
+  'result': {'dynamicEntries': 5,
+             'ipV4Neighbors': [{'address': '10.220.88.1',
+                                'age': 0,
+                                'hwAddress': '0062.ec29.70fe',
+                                'interface': 'Vlan1, Ethernet1'},
+                               {'address': '10.220.88.20',
+                                'age': 0,
+                                'hwAddress': 'c89c.1dea.0eb6',
+                                'interface': 'Vlan1, not learned'},
+                               {'address': '10.220.88.31',
+                                'age': 0,
+                                'hwAddress': '00ac.fc59.97f2',
+                                'interface': 'Vlan1, not learned'},
+                               {'address': '10.220.88.37',
+                                'age': 0,
+                                'hwAddress': '0001.00ff.0001',
+                                'interface': 'Vlan1, not learned'},
+                               {'address': '10.220.88.38',
+                                'age': 0,
+                                'hwAddress': '0002.00ff.0001',
+                                'interface': 'Vlan1, not learned'}],
+             'notLearnedEntries': 4,
+             'staticEntries': 0,
+             'totalEntries': 5}}]
+
+In [3]: pprint(output[0])
+{'command': 'show version',
+ 'encoding': 'json',
+ 'result': {'architecture': 'i386',
+            'bootupTimestamp': 1574644535.0,
+            'hardwareRevision': '',
+            'internalBuildId': '68f3ae78-65cb-4ed3-8675-0ff2219bf118',
+            'internalVersion': '4.20.10M-10040268.42010M',
+            'isIntlVersion': False,
+            'memFree': 1798744,
+            'memTotal': 4010924,
+            'modelName': 'vEOS',
+            'serialNumber': '',
+            'systemMacAddress': '00:aa:87:7d:c6:e5',
+            'uptime': 48109381.67,
+            'version': '4.20.10M'}}
+
+In [4]: pprint(output[1])
+{'command': 'show ip arp',
+ 'encoding': 'json',
+ 'result': {'dynamicEntries': 5,
+            'ipV4Neighbors': [{'address': '10.220.88.1',
+                               'age': 0,
+                               'hwAddress': '0062.ec29.70fe',
+                               'interface': 'Vlan1, Ethernet1'},
+                              {'address': '10.220.88.20',
+                               'age': 0,
+                               'hwAddress': 'c89c.1dea.0eb6',
+                               'interface': 'Vlan1, not learned'},
+                              {'address': '10.220.88.31',
+                               'age': 0,
+                               'hwAddress': '00ac.fc59.97f2',
+                               'interface': 'Vlan1, not learned'},
+                              {'address': '10.220.88.37',
+                               'age': 0,
+                               'hwAddress': '0001.00ff.0001',
+                               'interface': 'Vlan1, not learned'},
+                              {'address': '10.220.88.38',
+                               'age': 0,
+                               'hwAddress': '0002.00ff.0001',
+                               'interface': 'Vlan1, not learned'}],
+            'notLearnedEntries': 4,
+            'staticEntries': 0,
+            'totalEntries': 5}}
