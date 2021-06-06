@@ -1,0 +1,201 @@
+eapi_config.py  eapi_simple.py  pyeapi_api.py  pyeapi_config.py  pyeapi_show.py  pyeapi_simple.py  pyeapi_w_conf.py
+(py3_venv) (py3_venv) [akushnir@pylab25b week_6_arista_eapi]$ python eapi_simple.py 
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(16)<module>()
+     15 
+---> 16     http_headers = {"Content-Type": "application/json-rpc;"}
+     17     host = "arista8.lasthop.io"
+
+ipdb> list
+     11 
+     12 if __name__ == "__main__":
+     13 
+     14     ipdb.set_trace()
+     15 
+---> 16     http_headers = {"Content-Type": "application/json-rpc;"}
+     17     host = "arista8.lasthop.io"
+     18     port = 443
+     19     username = "pyclass"
+     20     password = getpass()
+     21 
+
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(17)<module>()
+     16     http_headers = {"Content-Type": "application/json-rpc;"}
+---> 17     host = "arista8.lasthop.io"
+     18     port = 443
+
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(18)<module>()
+     17     host = "arista8.lasthop.io"
+---> 18     port = 443
+     19     username = "pyclass"
+
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(19)<module>()
+     18     port = 443
+---> 19     username = "pyclass"
+     20     password = getpass()
+
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(20)<module>()
+     19     username = "pyclass"
+---> 20     password = getpass()
+     21 
+
+ipdb> n
+Password: 
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(22)<module>()
+     21 
+---> 22     url = "https://{}:{}/command-api".format(host, port)
+     23 
+
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(25)<module>()
+     24     json_payload = {
+---> 25         "jsonrpc": "2.0",
+     26         "method": "runCmds",
+
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(26)<module>()
+     25         "jsonrpc": "2.0",
+---> 26         "method": "runCmds",
+     27         "params": {"version": 1, "cmds": ["show version"], "format": "json"},
+
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(27)<module>()
+     26         "method": "runCmds",
+---> 27         "params": {"version": 1, "cmds": ["show version"], "format": "json"},
+     28         "id": "1",
+
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(28)<module>()
+     27         "params": {"version": 1, "cmds": ["show version"], "format": "json"},
+---> 28         "id": "1",
+     29     }
+
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(30)<module>()
+     29     }
+---> 30     json_data = json.dumps(json_payload)
+     31     http_headers["Content-length"] = str(len(json_data))
+
+ipdb> pp json_data
+*** NameError: name 'json_data' is not defined
+ipdb> pp json_payload
+{'id': '1',
+ 'jsonrpc': '2.0',
+ 'method': 'runCmds',
+ 'params': {'cmds': ['show version'], 'format': 'json', 'version': 1}}
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(31)<module>()
+     30     json_data = json.dumps(json_payload)
+---> 31     http_headers["Content-length"] = str(len(json_data))
+     32 
+
+ipdb> pp json_data
+('{"jsonrpc": "2.0", "method": "runCmds", "params": {"version": 1, "cmds": '
+ '["show version"], "format": "json"}, "id": "1"}')
+ipdb> p json_data
+'{"jsonrpc": "2.0", "method": "runCmds", "params": {"version": 1, "cmds": ["show version"], "format": "json"}, "id": "1"}'
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(33)<module>()
+     32 
+---> 33     response = requests.post(
+     34         url,
+
+ipdb> p http_headers
+{'Content-Type': 'application/json-rpc;', 'Content-length': '120'}
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(34)<module>()
+     33     response = requests.post(
+---> 34         url,
+     35         headers=http_headers,
+
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(35)<module>()
+     34         url,
+---> 35         headers=http_headers,
+     36         auth=(username, password),
+
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(36)<module>()
+     35         headers=http_headers,
+---> 36         auth=(username, password),
+     37         data=json_data,
+
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(37)<module>()
+     36         auth=(username, password),
+---> 37         data=json_data,
+     38         verify=False,
+
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(38)<module>()
+     37         data=json_data,
+---> 38         verify=False,
+     39     )
+
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(40)<module>()
+     39     )
+---> 40     response = response.json()
+     41 
+
+ipdb> p response
+<Response [200]>
+ipdb> p response.__dict__
+{'_content': b'{"jsonrpc": "2.0", "id": "1", "result": [{"uptime": 48103691.36, "modelName": "vEOS", "internalVersion": "4.20.10M-10040268.42010M", "systemMacAddress": "00:aa:87:7d:c6:e5", "serialNumber": "", "memTotal": 4010924, "bootupTimestamp": 1574644535.0, "memFree": 1799992, "version": "4.20.10M", "architecture": "i386", "isIntlVersion": false, "internalBuildId": "68f3ae78-65cb-4ed3-8675-0ff2219bf118", "hardwareRevision": ""}]}', '_content_consumed': True, '_next': None, 'status_code': 200, 'headers': {'Server': 'nginx', 'Date': 'Thu, 03 Jun 2021 19:23:46 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Cache-control': 'no-store, no-cache, must-revalidate, max-age=0, pre-check=0, post-check=0', 'Pragma': 'no-cache', 'Content-Encoding': 'gzip'}, 'raw': <urllib3.response.HTTPResponse object at 0x7f167c38c0d0>, 'url': 'https://arista8.lasthop.io:443/command-api', 'encoding': 'utf-8', 'history': [], 'reason': 'OK', 'cookies': <RequestsCookieJar[]>, 'elapsed': datetime.timedelta(microseconds=384305), 'request': <PreparedRequest [POST]>, 'connection': <requests.adapters.HTTPAdapter object at 0x7f167c396210>}
+ipdb> n
+> /home/akushnir/notes/week_6_arista_eapi/eapi_simple.py(42)<module>()
+     41 
+---> 42     print()
+     43     pprint(response)
+
+ipdb> pp response
+{'id': '1',
+ 'jsonrpc': '2.0',
+ 'result': [{'architecture': 'i386',
+             'bootupTimestamp': 1574644535.0,
+             'hardwareRevision': '',
+             'internalBuildId': '68f3ae78-65cb-4ed3-8675-0ff2219bf118',
+             'internalVersion': '4.20.10M-10040268.42010M',
+             'isIntlVersion': False,
+             'memFree': 1799992,
+             'memTotal': 4010924,
+             'modelName': 'vEOS',
+             'serialNumber': '',
+             'systemMacAddress': '00:aa:87:7d:c6:e5',
+             'uptime': 48103691.36,
+             'version': '4.20.10M'}]}
+ipdb> q
+Traceback (most recent call last):
+  File "eapi_simple.py", line 42, in <module>
+    print()
+  File "eapi_simple.py", line 42, in <module>
+    print()
+  File "/usr/lib64/python3.7/bdb.py", line 88, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/usr/lib64/python3.7/bdb.py", line 113, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+
+If you suspect this is an IPython 7.22.0 bug, please report it at:
+    https://github.com/ipython/ipython/issues
+or send an email to the mailing list at ipython-dev@python.org
+
+You can print a more detailed traceback right now with "%tb", or use "%debug"
+to interactively debug it.
+
+Extra-detailed tracebacks for bug-reporting purposes can be enabled via:
+    %config Application.verbose_crash=True
+
+(py3_venv) (py3_venv) [akushnir@pylab25b week_6_arista_eapi]$ python eapi_config.py 
+> /home/akushnir/notes/week_6_arista_eapi/eapi_config.py(15)<module>()
+     14     ipdb.set_trace()
+---> 15     http_headers = {"Content-Type": "application/json-rpc;"}
+     16     host = "arista8.lasthop.io"
+
+ipdb> c
+Password: 
+
+{'id': '1', 'jsonrpc': '2.0', 'result': [{}, {}, {}, {}, {}]}
