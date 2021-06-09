@@ -1,0 +1,52 @@
+</rpc-reply>(py3_venv) (py3_venv) [akushnir@pylab25b LXML]$ ipython
+frPython 3.7.9 (default, Apr 30 2021, 20:11:56) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from lxml import etree
+
+In [2]: 
+
+In [2]: 
+
+In [2]: etree.parse("juniper_show_version.xml")
+Out[2]: <lxml.etree._ElementTree at 0x7f87bc9243c0>
+
+In [3]: my_xml = etree.parse("juniper_show_version.xml")
+
+In [4]: my_xml
+Out[4]: <lxml.etree._ElementTree at 0x7f87b721b500>
+
+In [5]: my_xml = my_xml.getroot()
+
+In [6]: my_xml
+Out[6]: <Element rpc-reply at 0x7f87b7246cd0>
+
+In [7]: my_xml.tag
+Out[7]: 'rpc-reply'
+
+In [8]: etree.tostring(my_xml)
+Out[8]: b'<rpc-reply xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos">\n    <software-information>\n        <host-name>pynet-jnpr-srx1</host-name>\n        <product-model>srx100h2</product-model>\n        <product-name>srx100h2</product-name>\n        <jsr/>\n        <package-information>\n            <name>junos</name>\n            <comment>JUNOS Software Release [12.1X44-D35.5]</comment>\n        </package-information>\n    </software-information>\n    <cli>\n        <banner/>\n    </cli>\n</rpc-reply>'
+
+In [9]: etree.tostring(my_xml).decode()
+Out[9]: '<rpc-reply xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos">\n    <software-information>\n        <host-name>pynet-jnpr-srx1</host-name>\n        <product-model>srx100h2</product-model>\n        <product-name>srx100h2</product-name>\n        <jsr/>\n        <package-information>\n            <name>junos</name>\n            <comment>JUNOS Software Release [12.1X44-D35.5]</comment>\n        </package-information>\n    </software-information>\n    <cli>\n        <banner/>\n    </cli>\n</rpc-reply>'
+
+IIn [10]: etree.tostring(my_xml).decode()
+Out[10]: '<rpc-reply xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos">\n    <software-information>\n        <host-name>pynet-jnpr-srx1</host-name>\n        <product-model>srx100h2</product-model>\n        <product-name>srx100h2</product-name>\n        <jsr/>\n        <package-information>\n            <name>junos</name>\n            <comment>JUNOS Software Release [12.1X44-D35.5]</comment>\n        </package-information>\n    </software-information>\n    <cli>\n        <banner/>\n    </cli>\n</rpc-reply>'
+
+In [11]: print(etree.tostring(my_xml).decode())
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos">
+    <software-information>
+        <host-name>pynet-jnpr-srx1</host-name>
+        <product-model>srx100h2</product-model>
+        <product-name>srx100h2</product-name>
+        <jsr/>
+        <package-information>
+            <name>junos</name>
+            <comment>JUNOS Software Release [12.1X44-D35.5]</comment>
+        </package-information>
+    </software-information>
+    <cli>
+        <banner/>
+    </cli>
+</rpc-reply>

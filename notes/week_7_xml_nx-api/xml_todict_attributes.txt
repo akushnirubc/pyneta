@@ -1,0 +1,101 @@
+    </software-information>(py3_venv) (py3_venv) [akushnir@pylab25b week_7_xml_nx-api]$ cat show_ver3.xml 
+    <software-information>
+        <host-name>pynet-jnpr-srx1</host-name>
+        <product-model>srx100h2</product-model>
+        <product-name foo="bar">srx100h2</product-name>
+        <product-name foo="bar">srx100h3</product-name>
+        <jsr/>
+        <package-information>
+            <name>junos</name>
+            <comment>JUNOS Software Release [12.1X44-D35.5]</comment>
+        </package-information>
+    </software-information>(py3_venv) (py3_venv) [akushnir@pylab25b week_7_xml_nx-api]$ ipython
+Python 3.7.9 (default, Apr 30 2021, 20:11:56) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: 
+
+In [1]: import xmltodict
+
+In [2]: f = open("show_ver3.xml")
+
+In [3]: xmldata = f.read().strip()
+
+In [4]: my_xml = xmltodict.parse(xmldata)
+
+In [5]: my_xml
+Out[5]: 
+OrderedDict([('software-information',
+              OrderedDict([('host-name', 'pynet-jnpr-srx1'),
+                           ('product-model', 'srx100h2'),
+                           ('product-name',
+                            [OrderedDict([('@foo', 'bar'),
+                                          ('#text', 'srx100h2')]),
+                             OrderedDict([('@foo', 'bar'),
+                                          ('#text', 'srx100h3')])]),
+                           ('jsr', None),
+                           ('package-information',
+                            OrderedDict([('name', 'junos'),
+                                         ('comment',
+                                          'JUNOS Software Release [12.1X44-D35.5]')]))]))])
+
+In [6]: my_xml.keys()
+Out[6]: odict_keys(['software-information'])
+
+In [7]: my_xml['software-information']
+Out[7]: 
+OrderedDict([('host-name', 'pynet-jnpr-srx1'),
+             ('product-model', 'srx100h2'),
+             ('product-name',
+              [OrderedDict([('@foo', 'bar'), ('#text', 'srx100h2')]),
+               OrderedDict([('@foo', 'bar'), ('#text', 'srx100h3')])]),
+             ('jsr', None),
+             ('package-information',
+              OrderedDict([('name', 'junos'),
+                           ('comment',
+                            'JUNOS Software Release [12.1X44-D35.5]')]))])
+
+In [8]: my_xml['software-information'].keys()
+Out[8]: odict_keys(['host-name', 'product-model', 'product-name', 'jsr', 'package-information'])
+
+In [9]: my_xml['software-information']['product-name']
+Out[9]: 
+[OrderedDict([('@foo', 'bar'), ('#text', 'srx100h2')]),
+ OrderedDict([('@foo', 'bar'), ('#text', 'srx100h3')])]
+
+In [10]: 
+
+In [10]: type(my_xml['software-information']['product-name'])
+Out[10]: list
+
+In [11]: my_xml['software-information']['product-name'][0]
+Out[11]: OrderedDict([('@foo', 'bar'), ('#text', 'srx100h2')])
+
+In [12]: my_xml['software-information']['product-name'][1]
+Out[12]: OrderedDict([('@foo', 'bar'), ('#text', 'srx100h3')])
+
+In [13]: my_xml['software-information']['product-name'][0].keys()
+Out[13]: odict_keys(['@foo', '#text'])
+
+In [14]: print(xmldata)
+<software-information>
+        <host-name>pynet-jnpr-srx1</host-name>
+        <product-model>srx100h2</product-model>
+        <product-name foo="bar">srx100h2</product-name>
+        <product-name foo="bar">srx100h3</product-name>
+        <jsr/>
+        <package-information>
+            <name>junos</name>
+            <comment>JUNOS Software Release [12.1X44-D35.5]</comment>
+        </package-information>
+    </software-information>
+
+In [15]: my_xml['software-information']['product-name'][0].keys()
+Out[15]: odict_keys(['@foo', '#text'])
+
+In [16]: my_xml['software-information']['product-name'][0]['@foo']
+Out[16]: 'bar'
+
+In [17]: my_xml['software-information']['product-name'][0]['#text']
+Out[17]: 'srx100h2'

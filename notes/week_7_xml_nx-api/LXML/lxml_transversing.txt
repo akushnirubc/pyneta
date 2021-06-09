@@ -1,0 +1,294 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b LXML]$ cat juniper_show_version.xml 
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos">
+    <software-information>
+        <host-name>pynet-jnpr-srx1</host-name>
+        <product-model>srx100h2</product-model>
+        <product-name>srx100h2</product-name>
+        <jsr/>
+        <package-information>
+            <name>junos</name>
+            <comment>JUNOS Software Release [12.1X44-D35.5]</comment>
+        </package-information>
+    </software-information>
+    <cli>
+        <banner></banner>
+    </cli>
+</rpc-reply>(py3_venv) (py3_venv) [akushnir@pylab25b LXML]$ ipython
+Python 3.7.9 (default, Apr 30 2021, 20:11:56) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: a = """
+   ...: <rpc-reply xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos">
+   ...:     <software-information>
+   ...:         <host-name>pynet-jnpr-srx1</host-name>
+   ...:         <product-model>srx100h2</product-model>
+   ...:         <product-name>srx100h2</product-name>
+   ...:         <jsr/>
+   ...:         <package-information>
+   ...:             <name>junos</name>
+   ...:             <comment>JUNOS Software Release [12.1X44-D35.5]</comment>
+   ...:         </package-information>
+   ...:     </software-information>
+   ...:     <cli>
+   ...:         <banner></banner>
+   ...:     </cli>
+   ...: </rpc-reply>
+   ...: """
+
+In [2]: from lxml import etree
+
+In [3]: my_xml = etree.fromstring(a)
+
+In [4]: my_xml
+Out[4]: <Element rpc-reply at 0x7f7c4243aa00>
+
+In [5]: my_xml.tag
+Out[5]: 'rpc-reply'
+
+In [6]: etree.tostring(my_xml)
+Out[6]: b'<rpc-reply xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos">\n    <software-information>\n        <host-name>pynet-jnpr-srx1</host-name>\n        <product-model>srx100h2</product-model>\n        <product-name>srx100h2</product-name>\n        <jsr/>\n        <package-information>\n            <name>junos</name>\n            <comment>JUNOS Software Release [12.1X44-D35.5]</comment>\n        </package-information>\n    </software-information>\n    <cli>\n        <banner/>\n    </cli>\n</rpc-reply>'
+
+In [7]: etree.tostring(my_xml).decode()
+Out[7]: '<rpc-reply xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos">\n    <software-information>\n        <host-name>pynet-jnpr-srx1</host-name>\n        <product-model>srx100h2</product-model>\n        <product-name>srx100h2</product-name>\n        <jsr/>\n        <package-information>\n            <name>junos</name>\n            <comment>JUNOS Software Release [12.1X44-D35.5]</comment>\n        </package-information>\n    </software-information>\n    <cli>\n        <banner/>\n    </cli>\n</rpc-reply>'
+
+In [8]: 
+
+In [8]: 
+
+In [8]: 
+
+In [8]: print(etree.tostring(my_xml).decode())
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos">
+    <software-information>
+        <host-name>pynet-jnpr-srx1</host-name>
+        <product-model>srx100h2</product-model>
+        <product-name>srx100h2</product-name>
+        <jsr/>
+        <package-information>
+            <name>junos</name>
+            <comment>JUNOS Software Release [12.1X44-D35.5]</comment>
+        </package-information>
+    </software-information>
+    <cli>
+        <banner/>
+    </cli>
+</rpc-reply>
+
+In [9]: my_xml.tag
+Out[9]: 'rpc-reply'
+
+In [10]: my_xml.getchildren()
+Out[10]: 
+[<Element software-information at 0x7f7c423ac410>,
+ <Element cli at 0x7f7c42410640>]
+
+In [11]: my_xml
+Out[11]: <Element rpc-reply at 0x7f7c4243aa00>
+
+In [12]: print(etree.tostring(my_xml).decode())
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos">
+    <software-information>
+        <host-name>pynet-jnpr-srx1</host-name>
+        <product-model>srx100h2</product-model>
+        <product-name>srx100h2</product-name>
+        <jsr/>
+        <package-information>
+            <name>junos</name>
+            <comment>JUNOS Software Release [12.1X44-D35.5]</comment>
+        </package-information>
+    </software-information>
+    <cli>
+        <banner/>
+    </cli>
+</rpc-reply>
+
+In [13]: my_xml.getchildren()
+Out[13]: 
+[<Element software-information at 0x7f7c423ac410>,
+ <Element cli at 0x7f7c42410640>]
+
+In [14]: my_xml[0]
+Out[14]: <Element software-information at 0x7f7c423ac410>
+
+In [15]: my_xml[1]
+Out[15]: <Element cli at 0x7f7c42410640>
+
+In [16]: my_xml.getchildren()
+Out[16]: 
+[<Element software-information at 0x7f7c423ac410>,
+ <Element cli at 0x7f7c42410640>]
+
+In [17]: my_xml.getchildren()[0]
+Out[17]: <Element software-information at 0x7f7c423ac410>
+
+In [18]: my_xml.getchildren()[0].getchildren()
+Out[18]: 
+[<Element host-name at 0x7f7c424c78c0>,
+ <Element product-model at 0x7f7c423f8cd0>,
+ <Element product-name at 0x7f7c4243a690>,
+ <Element jsr at 0x7f7c4243ad70>,
+ <Element package-information at 0x7f7c42f5dc30>]
+
+In [19]: my_xml[0]
+Out[19]: <Element software-information at 0x7f7c423ac410>
+
+In [20]: my_xml[0][0]
+Out[20]: <Element host-name at 0x7f7c424c78c0>
+
+In [21]: my_xml[0][1]
+Out[21]: <Element product-model at 0x7f7c423f8cd0>
+
+In [22]: my_xml[0][2]
+Out[22]: <Element product-name at 0x7f7c4243a690>
+
+In [23]: my_xml[0][3]
+Out[23]: <Element jsr at 0x7f7c4243ad70>
+
+In [24]: print(etree.tostring(my_xml).decode())
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos">
+    <software-information>
+        <host-name>pynet-jnpr-srx1</host-name>
+        <product-model>srx100h2</product-model>
+        <product-name>srx100h2</product-name>
+        <jsr/>
+        <package-information>
+            <name>junos</name>
+            <comment>JUNOS Software Release [12.1X44-D35.5]</comment>
+        </package-information>
+    </software-information>
+    <cli>
+        <banner/>
+    </cli>
+</rpc-reply>
+
+In [25]: for child in my_xml:
+    ...:     print(child)
+    ...: 
+<Element software-information at 0x7f7c423ac410>
+<Element cli at 0x7f7c42410640>
+
+In [26]: for child in my_xml:
+    ...:     print(child.tag)
+    ...: 
+    ...: 
+software-information
+cli
+
+In [27]: dir(my_xml)
+Out[27]: 
+['__bool__',
+ '__class__',
+ '__contains__',
+ '__copy__',
+ '__deepcopy__',
+ '__delattr__',
+ '__delitem__',
+ '__dir__',
+ '__doc__',
+ '__eq__',
+ '__format__',
+ '__ge__',
+ '__getattribute__',
+ '__getitem__',
+ '__gt__',
+ '__hash__',
+ '__init__',
+ '__init_subclass__',
+ '__iter__',
+ '__le__',
+ '__len__',
+ '__lt__',
+ '__ne__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__reversed__',
+ '__setattr__',
+ '__setitem__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ '_init',
+ 'addnext',
+ 'addprevious',
+ 'append',
+ 'attrib',
+ 'base',
+ 'clear',
+ 'cssselect',
+ 'extend',
+ 'find',
+ 'findall',
+ 'findtext',
+ 'get',
+ 'getchildren',
+ 'getiterator',
+ 'getnext',
+ 'getparent',
+ 'getprevious',
+ 'getroottree',
+ 'index',
+ 'insert',
+ 'items',
+ 'iter',
+ 'iterancestors',
+ 'iterchildren',
+ 'iterdescendants',
+ 'iterfind',
+ 'itersiblings',
+ 'itertext',
+ 'keys',
+ 'makeelement',
+ 'nsmap',
+ 'prefix',
+ 'remove',
+ 'replace',
+ 'set',
+ 'sourceline',
+ 'tag',
+ 'tail',
+ 'text',
+ 'values',
+ 'xpath']
+
+In [29]: for child in my_xml.iterdescendants():
+    ...:     print(child)
+    ...: 
+    ...: 
+<Element software-information at 0x7f7c423ac410>
+<Element host-name at 0x7f7c424c78c0>
+<Element product-model at 0x7f7c423f8cd0>
+<Element product-name at 0x7f7c4243a690>
+<Element jsr at 0x7f7c4243ad70>
+<Element package-information at 0x7f7c42f5dc30>
+<Element name at 0x7f7c42d9ef50>
+<Element comment at 0x7f7c415cb0a0>
+<Element cli at 0x7f7c42410640>
+<Element banner at 0x7f7c42d9ef50>
+
+In [30]: print(etree.tostring(my_xml).decode())
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos">
+    <software-information>
+        <host-name>pynet-jnpr-srx1</host-name>
+        <product-model>srx100h2</product-model>
+        <product-name>srx100h2</product-name>
+        <jsr/>
+        <package-information>
+            <name>junos</name>
+            <comment>JUNOS Software Release [12.1X44-D35.5]</comment>
+        </package-information>
+    </software-information>
+    <cli>
+        <banner/>
+    </cli>
+</rpc-reply>
+
+In [31]: my_xml[0]
+Out[31]: <Element software-information at 0x7f7c423ac410>
+
+In [33]: my_xml.getchildren()
+Out[33]: 
+[<Element software-information at 0x7f7c423ac410>,
+ <Element cli at 0x7f7c42410640>]
