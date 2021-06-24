@@ -1,0 +1,270 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b NXAPI]$ python test1_jsonrpc.py 
+Password: 
+{'hostname': 'nxos1.lasthop.io'}
+(py3_venv) (py3_venv) [akushnir@pylab25b NXAPI]$ python jrpc_methods.py 
+Password: Traceback (most recent call last):
+  File "jrpc_methods.py", line 13, in <module>
+    password=getpass(),
+  File "/usr/lib64/python3.7/getpass.py", line 77, in unix_getpass
+    passwd = _raw_input(prompt, stream, input=input)
+  File "/usr/lib64/python3.7/getpass.py", line 146, in _raw_input
+    line = input.readline()
+KeyboardInterrupt
+(py3_venv) (py3_venv) [akushnir@pylab25b NXAPI]$ ipython -i jrpc_methods.py 
+Python 3.7.9 (default, Apr 30 2021, 20:11:56) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+Password: 
+[{'command': 'show hostname', 'result': {'hostname': 'nxos1.lasthop.io'}}, {'command': 'show version', 'result': {'header_str': 'Cisco Nexus Operating System (NX-OS) Software\nTAC support: http://www.cisco.com/tac\nDocuments: http://www.cisco.com/en/US/products/ps9372/tsd_products_support_series_home.html\nCopyright (c) 2002-2019, Cisco Systems, Inc. All rights reserved.\nThe copyrights to certain works contained herein are owned by\nother third parties and are used and distributed under license.\nSome parts of this software are covered under the GNU Public\nLicense. A copy of the license is available at\nhttp://www.gnu.org/licenses/gpl.html.\n\nNexus 9000v is a demo version of the Nexus Operating System\n', 'bios_ver_str': '', 'kickstart_ver_str': '9.2(3)', 'bios_cmpl_time': '', 'kick_file_name': 'bootflash:///nxos.9.2.3.bin', 'kick_cmpl_time': '2/17/2019 5:00:00', 'kick_tmstmp': '02/17/2019 15:07:27', 'chassis_id': 'Nexus9000 9000v Chassis', 'cpu_name': '', 'memory': 6096260, 'mem_type': 'kB', 'proc_board_id': '9B2B28CMF9S', 'host_name': 'nxos1', 'bootflash_size': 3509454, 'kern_uptm_days': 78, 'kern_uptm_hrs': 18, 'kern_uptm_mins': 51, 'kern_uptm_secs': 36, 'rr_reason': 'Unknown', 'rr_sys_ver': '', 'rr_service': '', 'manufacturer': 'Cisco Systems, Inc.', 'TABLE_package_list': {'ROW_package_list': {'package_id': {}}}}}, {'command': 'show lldp neighbors', 'result': {'neigh_hdr': 'neigh_hdr', 'neigh_count': '3', 'TABLE_nbor': {'ROW_nbor': [{'chassis_type': 'Locally Assigned', 'chassis_id': 'nxos2.lasthop.io', 'l_port_id': 'Eth1/1', 'hold_time': '120', 'system_capability': 'BR', 'enabled_capability': 'BR', 'port_type': 'Interface Name', 'port_id': 'Ethernet1/1', 'mgmt_addr_type': 'IPV4', 'mgmt_addr': '10.0.2.16', 'mgmt_addr_ipv6_type': '802', 'mgmt_addr_ipv6': '5254.0012.345e'}, {'chassis_type': 'Locally Assigned', 'chassis_id': 'nxos2.lasthop.io', 'l_port_id': 'Eth1/3', 'hold_time': '120', 'system_capability': 'BR', 'enabled_capability': 'BR', 'port_type': 'Interface Name', 'port_id': 'Ethernet1/3', 'mgmt_addr_type': 'IPV4', 'mgmt_addr': '10.0.2.16', 'mgmt_addr_ipv6_type': '802', 'mgmt_addr_ipv6': '5254.0012.3460'}, {'chassis_type': 'Locally Assigned', 'chassis_id': 'nxos2.lasthop.io', 'l_port_id': 'Eth1/4', 'hold_time': '120', 'system_capability': 'BR', 'enabled_capability': 'BR', 'port_type': 'Interface Name', 'port_id': 'Ethernet1/4', 'mgmt_addr_type': 'IPV4', 'mgmt_addr': '10.0.2.16', 'mgmt_addr_ipv6_type': '802', 'mgmt_addr_ipv6': '5254.0012.3461'}]}}}]
+
+In [1]: type(output)
+Out[1]: list
+
+In [2]: len(output)
+Out[2]: 3
+
+In [3]: output[0]
+Out[3]: {'command': 'show hostname', 'result': {'hostname': 'nxos1.lasthop.io'}}
+
+In [4]: output[0].keys
+Out[4]: <function dict.keys>
+
+In [5]: output[0].keys()
+Out[5]: dict_keys(['command', 'result'])
+
+In [6]: output[0]['command']
+Out[6]: 'show hostname'
+
+In [7]: output[0]['result']
+Out[7]: {'hostname': 'nxos1.lasthop.io'}
+
+In [8]: output[1]['command']
+Out[8]: 'show version'
+
+In [9]: output[1]['result']
+Out[9]: 
+{'header_str': 'Cisco Nexus Operating System (NX-OS) Software\nTAC support: http://www.cisco.com/tac\nDocuments: http://www.cisco.com/en/US/products/ps9372/tsd_products_support_series_home.html\nCopyright (c) 2002-2019, Cisco Systems, Inc. All rights reserved.\nThe copyrights to certain works contained herein are owned by\nother third parties and are used and distributed under license.\nSome parts of this software are covered under the GNU Public\nLicense. A copy of the license is available at\nhttp://www.gnu.org/licenses/gpl.html.\n\nNexus 9000v is a demo version of the Nexus Operating System\n',
+ 'bios_ver_str': '',
+ 'kickstart_ver_str': '9.2(3)',
+ 'bios_cmpl_time': '',
+ 'kick_file_name': 'bootflash:///nxos.9.2.3.bin',
+ 'kick_cmpl_time': '2/17/2019 5:00:00',
+ 'kick_tmstmp': '02/17/2019 15:07:27',
+ 'chassis_id': 'Nexus9000 9000v Chassis',
+ 'cpu_name': '',
+ 'memory': 6096260,
+ 'mem_type': 'kB',
+ 'proc_board_id': '9B2B28CMF9S',
+ 'host_name': 'nxos1',
+ 'bootflash_size': 3509454,
+ 'kern_uptm_days': 78,
+ 'kern_uptm_hrs': 18,
+ 'kern_uptm_mins': 51,
+ 'kern_uptm_secs': 36,
+ 'rr_reason': 'Unknown',
+ 'rr_sys_ver': '',
+ 'rr_service': '',
+ 'manufacturer': 'Cisco Systems, Inc.',
+ 'TABLE_package_list': {'ROW_package_list': {'package_id': {}}}}
+
+In [10]: output[2]['command']
+Out[10]: 'show lldp neighbors'
+
+In [11]: output[2]['result']
+Out[11]: 
+{'neigh_hdr': 'neigh_hdr',
+ 'neigh_count': '3',
+ 'TABLE_nbor': {'ROW_nbor': [{'chassis_type': 'Locally Assigned',
+    'chassis_id': 'nxos2.lasthop.io',
+    'l_port_id': 'Eth1/1',
+    'hold_time': '120',
+    'system_capability': 'BR',
+    'enabled_capability': 'BR',
+    'port_type': 'Interface Name',
+    'port_id': 'Ethernet1/1',
+    'mgmt_addr_type': 'IPV4',
+    'mgmt_addr': '10.0.2.16',
+    'mgmt_addr_ipv6_type': '802',
+    'mgmt_addr_ipv6': '5254.0012.345e'},
+   {'chassis_type': 'Locally Assigned',
+    'chassis_id': 'nxos2.lasthop.io',
+    'l_port_id': 'Eth1/3',
+    'hold_time': '120',
+    'system_capability': 'BR',
+    'enabled_capability': 'BR',
+    'port_type': 'Interface Name',
+    'port_id': 'Ethernet1/3',
+    'mgmt_addr_type': 'IPV4',
+    'mgmt_addr': '10.0.2.16',
+    'mgmt_addr_ipv6_type': '802',
+    'mgmt_addr_ipv6': '5254.0012.3460'},
+   {'chassis_type': 'Locally Assigned',
+    'chassis_id': 'nxos2.lasthop.io',
+    'l_port_id': 'Eth1/4',
+    'hold_time': '120',
+    'system_capability': 'BR',
+    'enabled_capability': 'BR',
+    'port_type': 'Interface Name',
+    'port_id': 'Ethernet1/4',
+    'mgmt_addr_type': 'IPV4',
+    'mgmt_addr': '10.0.2.16',
+    'mgmt_addr_ipv6_type': '802',
+    'mgmt_addr_ipv6': '5254.0012.3461'}]}}
+
+In [12]: quit()
+(py3_venv) (py3_venv) [akushnir@pylab25b NXAPI]$ ipython jrpc_methods.py 
+Password: 
+[{'command': 'show version',
+  'result': 'Cisco Nexus Operating System (NX-OS) Software\n'
+            'TAC support: http://www.cisco.com/tac\n'
+            'Documents: '
+            'http://www.cisco.com/en/US/products/ps9372/tsd_products_support_series_home.html\n'
+            'Copyright (c) 2002-2019, Cisco Systems, Inc. All rights '
+            'reserved.\n'
+            'The copyrights to certain works contained herein are owned by\n'
+            'other third parties and are used and distributed under license.\n'
+            'Some parts of this software are covered under the GNU Public\n'
+            'License. A copy of the license is available at\n'
+            'http://www.gnu.org/licenses/gpl.html.\n'
+            '\n'
+            'Nexus 9000v is a demo version of the Nexus Operating System\n'
+            '\n'
+            'Software\n'
+            '  BIOS: version \n'
+            ' NXOS: version 9.2(3)\n'
+            '  BIOS compile time:  \n'
+            '  NXOS image file is: bootflash:///nxos.9.2.3.bin\n'
+            '  NXOS compile time:  2/17/2019 5:00:00 [02/17/2019 15:07:27]\n'
+            '\n'
+            '\n'
+            'Hardware\n'
+            '  cisco Nexus9000 9000v Chassis \n'
+            '   with 6096260 kB of memory.\n'
+            '  Processor Board ID 9B2B28CMF9S\n'
+            '\n'
+            '  Device name: nxos1\n'
+            '  bootflash:    3509454 kB\n'
+            'Kernel uptime is 78 day(s), 18 hour(s), 55 minute(s), 41 '
+            'second(s)\n'
+            '\n'
+            'Last reset \n'
+            '  Reason: Unknown\n'
+            '  System version: \n'
+            '  Service: \n'
+            '\n'
+            'plugin\n'
+            '  Core Plugin, Ethernet Plugin\n'
+            '\n'
+            'Active Package(s):\n'
+            '        \n'}]
+(py3_venv) (py3_venv) [akushnir@pylab25b NXAPI]$ ipython -i jrpc_methods.py 
+Python 3.7.9 (default, Apr 30 2021, 20:11:56) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+Password: 
+[{'command': 'show version',
+  'result': 'Cisco Nexus Operating System (NX-OS) Software\n'
+            'TAC support: http://www.cisco.com/tac\n'
+            'Documents: '
+            'http://www.cisco.com/en/US/products/ps9372/tsd_products_support_series_home.html\n'
+            'Copyright (c) 2002-2019, Cisco Systems, Inc. All rights '
+            'reserved.\n'
+            'The copyrights to certain works contained herein are owned by\n'
+            'other third parties and are used and distributed under license.\n'
+            'Some parts of this software are covered under the GNU Public\n'
+            'License. A copy of the license is available at\n'
+            'http://www.gnu.org/licenses/gpl.html.\n'
+            '\n'
+            'Nexus 9000v is a demo version of the Nexus Operating System\n'
+            '\n'
+            'Software\n'
+            '  BIOS: version \n'
+            ' NXOS: version 9.2(3)\n'
+            '  BIOS compile time:  \n'
+            '  NXOS image file is: bootflash:///nxos.9.2.3.bin\n'
+            '  NXOS compile time:  2/17/2019 5:00:00 [02/17/2019 15:07:27]\n'
+            '\n'
+            '\n'
+            'Hardware\n'
+            '  cisco Nexus9000 9000v Chassis \n'
+            '   with 6096260 kB of memory.\n'
+            '  Processor Board ID 9B2B28CMF9S\n'
+            '\n'
+            '  Device name: nxos1\n'
+            '  bootflash:    3509454 kB\n'
+            'Kernel uptime is 78 day(s), 18 hour(s), 56 minute(s), 5 '
+            'second(s)\n'
+            '\n'
+            'Last reset \n'
+            '  Reason: Unknown\n'
+            '  System version: \n'
+            '  Service: \n'
+            '\n'
+            'plugin\n'
+            '  Core Plugin, Ethernet Plugin\n'
+            '\n'
+            'Active Package(s):\n'
+            '        \n'}]
+
+In [1]: output
+Out[1]: 
+[{'command': 'show version',
+  'result': 'Cisco Nexus Operating System (NX-OS) Software\nTAC support: http://www.cisco.com/tac\nDocuments: http://www.cisco.com/en/US/products/ps9372/tsd_products_support_series_home.html\nCopyright (c) 2002-2019, Cisco Systems, Inc. All rights reserved.\nThe copyrights to certain works contained herein are owned by\nother third parties and are used and distributed under license.\nSome parts of this software are covered under the GNU Public\nLicense. A copy of the license is available at\nhttp://www.gnu.org/licenses/gpl.html.\n\nNexus 9000v is a demo version of the Nexus Operating System\n\nSoftware\n  BIOS: version \n NXOS: version 9.2(3)\n  BIOS compile time:  \n  NXOS image file is: bootflash:///nxos.9.2.3.bin\n  NXOS compile time:  2/17/2019 5:00:00 [02/17/2019 15:07:27]\n\n\nHardware\n  cisco Nexus9000 9000v Chassis \n   with 6096260 kB of memory.\n  Processor Board ID 9B2B28CMF9S\n\n  Device name: nxos1\n  bootflash:    3509454 kB\nKernel uptime is 78 day(s), 18 hour(s), 56 minute(s), 5 second(s)\n\nLast reset \n  Reason: Unknown\n  System version: \n  Service: \n\nplugin\n  Core Plugin, Ethernet Plugin\n\nActive Package(s):\n        \n'}]
+
+In [2]: output[0]
+Out[2]: 
+{'command': 'show version',
+ 'result': 'Cisco Nexus Operating System (NX-OS) Software\nTAC support: http://www.cisco.com/tac\nDocuments: http://www.cisco.com/en/US/products/ps9372/tsd_products_support_series_home.html\nCopyright (c) 2002-2019, Cisco Systems, Inc. All rights reserved.\nThe copyrights to certain works contained herein are owned by\nother third parties and are used and distributed under license.\nSome parts of this software are covered under the GNU Public\nLicense. A copy of the license is available at\nhttp://www.gnu.org/licenses/gpl.html.\n\nNexus 9000v is a demo version of the Nexus Operating System\n\nSoftware\n  BIOS: version \n NXOS: version 9.2(3)\n  BIOS compile time:  \n  NXOS image file is: bootflash:///nxos.9.2.3.bin\n  NXOS compile time:  2/17/2019 5:00:00 [02/17/2019 15:07:27]\n\n\nHardware\n  cisco Nexus9000 9000v Chassis \n   with 6096260 kB of memory.\n  Processor Board ID 9B2B28CMF9S\n\n  Device name: nxos1\n  bootflash:    3509454 kB\nKernel uptime is 78 day(s), 18 hour(s), 56 minute(s), 5 second(s)\n\nLast reset \n  Reason: Unknown\n  System version: \n  Service: \n\nplugin\n  Core Plugin, Ethernet Plugin\n\nActive Package(s):\n        \n'}
+
+In [3]: output[0]['command']
+Out[3]: 'show version'
+
+In [4]: output[0]['result']
+Out[4]: 'Cisco Nexus Operating System (NX-OS) Software\nTAC support: http://www.cisco.com/tac\nDocuments: http://www.cisco.com/en/US/products/ps9372/tsd_products_support_series_home.html\nCopyright (c) 2002-2019, Cisco Systems, Inc. All rights reserved.\nThe copyrights to certain works contained herein are owned by\nother third parties and are used and distributed under license.\nSome parts of this software are covered under the GNU Public\nLicense. A copy of the license is available at\nhttp://www.gnu.org/licenses/gpl.html.\n\nNexus 9000v is a demo version of the Nexus Operating System\n\nSoftware\n  BIOS: version \n NXOS: version 9.2(3)\n  BIOS compile time:  \n  NXOS image file is: bootflash:///nxos.9.2.3.bin\n  NXOS compile time:  2/17/2019 5:00:00 [02/17/2019 15:07:27]\n\n\nHardware\n  cisco Nexus9000 9000v Chassis \n   with 6096260 kB of memory.\n  Processor Board ID 9B2B28CMF9S\n\n  Device name: nxos1\n  bootflash:    3509454 kB\nKernel uptime is 78 day(s), 18 hour(s), 56 minute(s), 5 second(s)\n\nLast reset \n  Reason: Unknown\n  System version: \n  Service: \n\nplugin\n  Core Plugin, Ethernet Plugin\n\nActive Package(s):\n        \n'
+
+In [5]: print(output[0]['result'])
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Documents: http://www.cisco.com/en/US/products/ps9372/tsd_products_support_series_home.html
+Copyright (c) 2002-2019, Cisco Systems, Inc. All rights reserved.
+The copyrights to certain works contained herein are owned by
+other third parties and are used and distributed under license.
+Some parts of this software are covered under the GNU Public
+License. A copy of the license is available at
+http://www.gnu.org/licenses/gpl.html.
+
+Nexus 9000v is a demo version of the Nexus Operating System
+
+Software
+  BIOS: version 
+ NXOS: version 9.2(3)
+  BIOS compile time:  
+  NXOS image file is: bootflash:///nxos.9.2.3.bin
+  NXOS compile time:  2/17/2019 5:00:00 [02/17/2019 15:07:27]
+
+
+Hardware
+  cisco Nexus9000 9000v Chassis 
+   with 6096260 kB of memory.
+  Processor Board ID 9B2B28CMF9S
+
+  Device name: nxos1
+  bootflash:    3509454 kB
+Kernel uptime is 78 day(s), 18 hour(s), 56 minute(s), 5 second(s)
+
+Last reset 
+  Reason: Unknown
+  System version: 
+  Service: 
+
+plugin
+  Core Plugin, Ethernet Plugin
+
+Active Package(s):
+        
+
+
+In [6]: quit()
+(py3_venv) (py3_venv) [akushnir@pylab25b NXAPI]$ python jrpc_methods.py 
+Password: 
+[{'command': 'logging monitor 2', 'result': None}]

@@ -1,0 +1,164 @@
+</rpc-reply>(py3_venv) (py3_venv) [akushnir@pylab25b LXML]$ ipython
+Python 3.7.9 (default, Apr 30 2021, 20:11:56) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: a = """
+   ...: <rpc-reply xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos">
+   ...:     <software-information>
+   ...:         <host-name>pynet-jnpr-srx1</host-name>
+   ...:         <product-model>srx100h2</product-model>
+   ...:         <product-name>srx100h2</product-name>
+   ...:         <jsr/>
+   ...:         <package-information>
+   ...:             <name>junos</name>
+   ...:             <comment>JUNOS Software Release [12.1X44-D35.5]</comment>
+   ...:         </package-information>
+   ...:     </software-information>
+   ...:     <cli>
+   ...:         <banner></banner>
+   ...:     </cli>
+   ...: </rpc-reply>
+   ...: """
+
+In [2]: from lxml import etree
+
+In [3]: etree.fromstring(a)
+Out[3]: <Element rpc-reply at 0x7fde28be0960>
+
+In [4]: my_xml = etree.fromstring(a)
+
+In [5]: etree.tostring(my_xml)
+Out[5]: b'<rpc-reply xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos">\n    <software-information>\n        <host-name>pynet-jnpr-srx1</host-name>\n        <product-model>srx100h2</product-model>\n        <product-name>srx100h2</product-name>\n        <jsr/>\n        <package-information>\n            <name>junos</name>\n            <comment>JUNOS Software Release [12.1X44-D35.5]</comment>\n        </package-information>\n    </software-information>\n    <cli>\n        <banner/>\n    </cli>\n</rpc-reply>'
+
+In [6]: etree.tostring(my_xml).decode()
+Out[6]: '<rpc-reply xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos">\n    <software-information>\n        <host-name>pynet-jnpr-srx1</host-name>\n        <product-model>srx100h2</product-model>\n        <product-name>srx100h2</product-name>\n        <jsr/>\n        <package-information>\n            <name>junos</name>\n            <comment>JUNOS Software Release [12.1X44-D35.5]</comment>\n        </package-information>\n    </software-information>\n    <cli>\n        <banner/>\n    </cli>\n</rpc-reply>'
+
+In [7]: print(etree.tostring(my_xml).decode())
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos">
+    <software-information>
+        <host-name>pynet-jnpr-srx1</host-name>
+        <product-model>srx100h2</product-model>
+        <product-name>srx100h2</product-name>
+        <jsr/>
+        <package-information>
+            <name>junos</name>
+            <comment>JUNOS Software Release [12.1X44-D35.5]</comment>
+        </package-information>
+    </software-information>
+    <cli>
+        <banner/>
+    </cli>
+</rpc-reply>
+
+In [8]: my_xml
+Out[8]: <Element rpc-reply at 0x7fde282cd460>
+
+In [9]: my_xml.find("software-information")
+Out[9]: <Element software-information at 0x7fde28292c80>
+
+In [10]: my_xml.find("product-name")
+
+In [11]: my_xml.fin.(".")
+  File "<ipython-input-11-28a4b15810d0>", line 1
+    my_xml.fin.(".")
+               ^
+SyntaxError: invalid syntax
+
+
+IIn [12]: my_xml.fidn.(".")
+  File "<ipython-input-12-e463bc3f614b>", line 1
+    my_xml.fidn.(".")
+                ^
+SyntaxError: invalid syntax
+
+
+In [13]: my_xml.find(".")
+Out[13]: <Element rpc-reply at 0x7fde282cd460>
+
+In [14]: my_xml.find("./software-information")
+Out[14]: <Element software-information at 0x7fde28292c80>
+
+In [15]: my_xml.find("./software-information/product-name")
+Out[15]: <Element product-name at 0x7fde282f07d0>
+
+In [16]: my_xml.("software-information/product-name")
+  File "<ipython-input-16-c911f33cf831>", line 1
+    my_xml.("software-information/product-name")
+           ^
+SyntaxError: invalid syntax
+
+
+In [17]: my_xml.find("software-information/product-name")
+Out[17]: <Element product-name at 0x7fde282f07d0>
+
+In [18]: my_xml.findall("software-information/product-name")
+Out[18]: [<Element product-name at 0x7fde282f07d0>]
+
+InIn [19]: my_xmxpath
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-19-0865d194cfc5> in <module>
+----> 1 my_xmxpath
+
+NameError: name 'my_xmxpath' is not defined
+
+In [20]: my_xml.xpath
+Out[20]: <bound method _Element.xpath of <Element rpc-reply at 0x7fde282cd460>>
+
+In [21]: my_xml.findall(".//product-name")
+Out[21]: [<Element product-name at 0x7fde282f07d0>]
+
+In [22]: my_xml.find(".//product-name")
+Out[22]: <Element product-name at 0x7fde282f07d0>
+
+In In [23]: print(etree.tostring(my_xml).decode())
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos">
+    <software-information>
+        <host-name>pynet-jnpr-srx1</host-name>
+        <product-model>srx100h2</product-model>
+        <product-name>srx100h2</product-name>
+        <jsr/>
+        <package-information>
+            <name>junos</name>
+            <comment>JUNOS Software Release [12.1X44-D35.5]</comment>
+        </package-information>
+    </software-information>
+    <cli>
+        <banner/>
+    </cli>
+</rpc-reply>
+
+In [24]: my_xml.findall(".//product-name")[0].tag
+Out[24]: 'product-name'
+
+In [25]: my_xml.findall(".//product-name")[0].text
+Out[25]: 'srx100h2'
+
+InIn [26]: 
+
+In [26]: my_xml.find(".//product-name").text
+Out[26]: 'srx100h2'
+
+In [27]: print(etree.tostring(my_xml).decode())
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos">
+    <software-information>
+        <host-name>pynet-jnpr-srx1</host-name>
+        <product-model>srx100h2</product-model>
+        <product-name>srx100h2</product-name>
+        <jsr/>
+        <package-information>
+            <name>junos</name>
+            <comment>JUNOS Software Release [12.1X44-D35.5]</comment>
+        </package-information>
+    </software-information>
+    <cli>
+        <banner/>
+    </cli>
+</rpc-reply>
+
+In [28]: my_xml.find(".//comment")
+Out[28]: <Element comment at 0x7fde233b8e60>
+
+In [29]: my_xml.find(".//comment").text
+Out[29]: 'JUNOS Software Release [12.1X44-D35.5]'

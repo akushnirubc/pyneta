@@ -1,13 +1,13 @@
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
-from lxml import etree
 from getpass import getpass
+from pprint import pprint
 from nxapi_plumbing import Device
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 device = Device(
-    api_format="xml",
+    api_format="jsonrpc",
     host="nxos1.lasthop.io",
     username="pyclass",
     password=getpass(),
@@ -17,21 +17,18 @@ device = Device(
 )
 
 cmds = ["show hostname", "show version", "show lldp neighbors"]
-output = device.show_list(cmds)
-for entry in output:
-    print(etree.tostring(entry).decode())
-    input("Hit enter to continue: ")
+# output = device.show_list(cmds)
+# print(output)
 
 cmds = ["show version"]
-output = device.show_list(cmds, raw_text=True)
-print(etree.tostring(output[0]).decode())
+# output = device.show_list(cmds, raw_text=True)
+# pprint(output)
 
 cfg_cmd = ["logging monitor 2"]
 output = device.config_list(cfg_cmd)
-print(etree.tostring(output[0]).decode())
+print(output)
 
 output = device.save()
 print(output)
 
-# output = device.checkpoint(filename="my_checkpoint2")
-# print(output)
+output = device.checkpoint(filename="my_checkpoint")
