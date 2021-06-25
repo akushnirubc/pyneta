@@ -1,0 +1,15 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b week_8_netconf_juniper_pyez]$ ipython -i jnpr_cfg_xml.py 
+Python 3.7.10 (default, Jun  3 2021, 00:02:01) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+Password: 
+
+In [1]: print(cfg.diff())
+
+[edit routing-options static]
+     route 0.0.0.0/0 { ... }
++    route 1.1.4.0/24 next-hop 10.220.88.1;
+
+
+In [2]: cfg.commit(confirm=1)
+Out[2]: True

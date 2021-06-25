@@ -1,0 +1,229 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b week_8_netconf_juniper_pyez]$ ipython -i jnpr_tables.py 
+Python 3.7.10 (default, Jun  3 2021, 00:02:01) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+Password: 
+
+In [1]: arp_entries
+Out[1]: ArpTable:srx2.lasthop.io: 1 items
+
+In [2]: dir(arp_entries)
+Out[2]: 
+['D',
+ 'GET_ARGS',
+ 'GET_RPC',
+ 'ITEM_NAME_XPATH',
+ 'ITEM_XPATH',
+ 'RPC',
+ 'USE_FILTER',
+ 'VIEW',
+ '__call__',
+ '__class__',
+ '__contains__',
+ '__delattr__',
+ '__dict__',
+ '__dir__',
+ '__doc__',
+ '__eq__',
+ '__format__',
+ '__ge__',
+ '__getattribute__',
+ '__getitem__',
+ '__gt__',
+ '__hash__',
+ '__init__',
+ '__init_subclass__',
+ '__iter__',
+ '__le__',
+ '__len__',
+ '__lt__',
+ '__module__',
+ '__ne__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ '__weakref__',
+ '_assert_data',
+ '_clearkeys',
+ '_dev',
+ '_key_list',
+ '_keys',
+ '_keys_composite',
+ '_keys_simple',
+ '_keyspec',
+ '_lxml',
+ '_path',
+ '_tkey',
+ '_use_filter',
+ '_view',
+ 'get',
+ 'hostname',
+ 'is_container',
+ 'items',
+ 'key_list',
+ 'keys',
+ 'savexml',
+ 'to_json',
+ 'values',
+ 'view',
+ 'xml']
+
+In [3]: help(arp_entries)
+
+
+In [4]: arp_entries.keys()
+Out[4]: ['00:62:ec:29:70:fe']
+
+In [5]: arp_entries['00:62:ec:29:70:fe']
+Out[5]: ArpView:00:62:ec:29:70:fe
+
+In [6]: dir(arp_entries['00:62:ec:29:70:fe'])
+Out[6]: 
+['D',
+ 'EVAL',
+ 'FIELDS',
+ 'GROUPS',
+ 'ITEM_NAME_XPATH',
+ 'T',
+ '__class__',
+ '__delattr__',
+ '__dict__',
+ '__dir__',
+ '__doc__',
+ '__eq__',
+ '__format__',
+ '__ge__',
+ '__getattr__',
+ '__getattribute__',
+ '__getitem__',
+ '__gt__',
+ '__hash__',
+ '__init__',
+ '__init_subclass__',
+ '__le__',
+ '__lt__',
+ '__module__',
+ '__ne__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ '__weakref__',
+ '_check_key_delimiter_null',
+ '_init_xml',
+ '_table',
+ '_updater_class',
+ '_updater_instance',
+ '_xml',
+ 'asview',
+ 'items',
+ 'key',
+ 'keys',
+ 'name',
+ 'refresh',
+ 'to_json',
+ 'updater',
+ 'values',
+ 'xml']
+
+In [7]: arp_entries['00:62:ec:29:70:fe'].keys()
+Out[7]: dict_keys(['mac_address', 'ip_address', 'interface_name'])
+
+In [8]: arp_entries['00:62:ec:29:70:fe']['ip_address']
+Out[8]: '10.220.88.1'
+
+In [9]: dir(arp_entries)
+Out[9]: 
+['D',
+ 'GET_ARGS',
+ 'GET_RPC',
+ 'ITEM_NAME_XPATH',
+ 'ITEM_XPATH',
+ 'RPC',
+ 'USE_FILTER',
+ 'VIEW',
+ '__call__',
+ '__class__',
+ '__contains__',
+ '__delattr__',
+ '__dict__',
+ '__dir__',
+ '__doc__',
+ '__eq__',
+ '__format__',
+ '__ge__',
+ '__getattribute__',
+ '__getitem__',
+ '__gt__',
+ '__hash__',
+ '__init__',
+ '__init_subclass__',
+ '__iter__',
+ '__le__',
+ '__len__',
+ '__lt__',
+ '__module__',
+ '__ne__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ '__weakref__',
+ '_assert_data',
+ '_clearkeys',
+ '_dev',
+ '_key_list',
+ '_keys',
+ '_keys_composite',
+ '_keys_simple',
+ '_keyspec',
+ '_lxml',
+ '_path',
+ '_tkey',
+ '_use_filter',
+ '_view',
+ 'get',
+ 'hostname',
+ 'is_container',
+ 'items',
+ 'key_list',
+ 'keys',
+ 'savexml',
+ 'to_json',
+ 'values',
+ 'view',
+ 'xml']
+
+In [10]: arp_entries.items()
+Out[10]: 
+[('00:62:ec:29:70:fe',
+  [('mac_address', '00:62:ec:29:70:fe'),
+   ('ip_address', '10.220.88.1'),
+   ('interface_name', 'vlan.0')])]
+
+In [11]: for x in arp_entries.items():
+    ...:     print(x)
+    ...:     break
+    ...: 
+('00:62:ec:29:70:fe', [('mac_address', '00:62:ec:29:70:fe'), ('ip_address', '10.220.88.1'), ('interface_name', 'vlan.0')])
+
+In [12]: for x in arp_entries.items():
+    ...:     print(x)
+    ...: 
+    ...: 
+('00:62:ec:29:70:fe', [('mac_address', '00:62:ec:29:70:fe'), ('ip_address', '10.220.88.1'), ('interface_name', 'vlan.0')])
+
+In [13]: 

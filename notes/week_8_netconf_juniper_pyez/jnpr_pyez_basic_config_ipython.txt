@@ -1,0 +1,52 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b week_8_netconf_juniper_pyez]$ ipython
+Python 3.7.10 (default, Jun  3 2021, 00:02:01) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from jnpr.junos import Device
+   ...: from jnpr.junos.utils.config import Config
+   ...: from getpass import getpass
+   ...: 
+   ...: a_device = Device(host="srx2.lasthop.io", user="pyclass", password=getpass())
+   ...: a_device.open()
+   ...: a_device.timeout = 60
+   ...: 
+   ...: cfg = Config(a_device)
+Password: 
+
+In [2]: cfg
+Out[2]: jnpr.junos.utils.Config(srx2.lasthop.io)
+
+In [3]: type(cfg)
+Out[3]: jnpr.junos.utils.config.Config
+
+In [4]: cfg.lock()
+Out[4]: True
+
+In [5]: cfg.load("set system host-name test123", format="set", merge=True)
+Out[5]: <Element load-configuration-results at 0x7f8e52dfe280>
+
+In [6]: cfg.rollback(0)
+Out[6]: True
+
+In [7]: cfg.load("set system host-name test123", format="set", merge=True)
+Out[7]: <Element load-configuration-results at 0x7f8e4a6c3d20>
+
+In [8]: print(cfg.diff())
+
+[edit system]
+-  host-name srx1;
++  host-name test123;
+
+
+In [9]: cfg.commit()
+Out[9]: True
+
+In [10]: cfg.load("set system host-name srx2", format="set", merge=True)
+Out[10]: <Element load-configuration-results at 0x7f8e536ac050>
+
+In [11]: cfg.commit()
+Out[11]: True
+
+In [12]: cfg.unlock()
+Out[12]: True

@@ -1,0 +1,33 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b week_8_netconf_juniper_pyez]$ ipython -i jnpr_cfg_file.py 
+Python 3.7.10 (default, Jun  3 2021, 00:02:01) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.22.0 -- An enhanced Interactive Python. Type '?' for help.
+Password: 
+
+In [1]: cfg.rollback(o)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-1-0204c98a6d98> in <module>
+----> 1 cfg.rollback(o)
+
+NameError: name 'o' is not defined
+
+In [2]: cfg.rollback(0)
+Out[2]: True
+
+In [3]: print(cfg.diff())
+None
+
+In [4]: cfg.load(path="test_replace.conf", format="text", merge=False)
+Out[4]: <Element load-configuration-results at 0x7f56140e87d0>
+
+In [5]: cfg.rollback(0)
+Out[5]: True
+
+In [6]: print(cfg.diff())
+None
+
+In [7]: cfg.unlock()
+Out[7]: True
+
+In [8]: quit
