@@ -1,4 +1,4 @@
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from datetime import datetime
 from netmiko import ConnectHandler
 from my_devices import device_list
@@ -15,7 +15,7 @@ if __name__ == "__main__":
     max_threads = 4
 
     # Use context manager to gracefully cleanup the pool
-    with ThreadPoolExecutor(max_threads) as pool:
+    with ProcessPoolExecutor(max_threads) as pool:
         future_list = []
         for a_device in device_list:
             future = pool.submit(ssh_conn, a_device)

@@ -1,4 +1,4 @@
-from concurrent.futures import ThreadPoolExecutor, wait
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from datetime import datetime
 from netmiko import ConnectHandler
 from my_devices import device_list
@@ -14,18 +14,15 @@ if __name__ == "__main__":
     start_time = datetime.now()
     max_threads = 4
 
-    pool = ThreadPoolExecutor(max_threads)
+    pool = ProcessPoolExecutor(max_threads)
 
     future_list = []
     for a_device in device_list:
         future = pool.submit(ssh_conn, a_device)
         future_list.append(future)
 
-    # Waits until all the pending threads are done
-    wait(future_list)
-
-    for future in future_list:
+    # Process as completed
+    for future in as_completed(future_list):
         print("Result: " + future.result())
-
-    end_time = datetime.now()
-    print(end_time - start_time)
+        end_time = datetime.now()
+        print(end_time - start_time)

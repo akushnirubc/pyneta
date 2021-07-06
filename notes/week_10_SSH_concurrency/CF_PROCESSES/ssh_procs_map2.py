@@ -1,20 +1,24 @@
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ProcessPoolExecutor
 from my_devices import device_list
 from netmiko import ConnectHandler
 from datetime import datetime
 
 
 def ssh_conn(device):
+    return_dict = {}
     net_connect = ConnectHandler(**device)
-    return net_connect.find_prompt()
+    dns_name = net_connect.host
+    my_prompt = net_connect.find_prompt()
+    return_dict[dns_name] = my_prompt
+    return return_dict
 
 
 if __name__ == "__main__":
 
     start_time = datetime.now()
-    max_threads = 4
+    max_threads = 12
 
-    with ThreadPoolExecutor(max_threads) as pool:
+    with ProcessPoolExecutor(max_threads) as pool:
         results_generator = pool.map(ssh_conn, device_list)
 
         # Results generator

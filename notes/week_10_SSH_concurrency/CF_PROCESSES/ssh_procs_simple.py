@@ -1,5 +1,5 @@
 import time
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ProcessPoolExecutor
 from datetime import datetime
 from netmiko import ConnectHandler
 from my_devices import device_list
@@ -15,7 +15,7 @@ if __name__ == "__main__":
     start_time = datetime.now()
     max_threads = 4
 
-    pool = ThreadPoolExecutor(max_threads)
+    pool = ProcessPoolExecutor(max_threads)
     future = pool.submit(ssh_conn, device_list[0])
 
     print(future.done())
