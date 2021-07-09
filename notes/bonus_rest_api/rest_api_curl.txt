@@ -1,0 +1,52 @@
+(py3_venv) (py3_venv) [akushnir@pylab25b bonus_rest_api]$ curl -s https://netbox.lasthop.io/api/ --insecure | jq "."
+{
+  "circuits": "http://netbox.lasthop.io/api/circuits/",
+  "dcim": "http://netbox.lasthop.io/api/dcim/",
+  "extras": "http://netbox.lasthop.io/api/extras/",
+  "ipam": "http://netbox.lasthop.io/api/ipam/",
+  "secrets": "http://netbox.lasthop.io/api/secrets/",
+  "tenancy": "http://netbox.lasthop.io/api/tenancy/",
+  "virtualization": "http://netbox.lasthop.io/api/virtualization/"
+}
+(py3_venv) (py3_venv) [akushnir@pylab25b bonus_rest_api]$ curl -s https://netbox.lasthop.io/api/dcim/ --insecure | jq "."
+{
+  "_choices": "http://netbox.lasthop.io/api/dcim/_choices/",
+  "regions": "http://netbox.lasthop.io/api/dcim/regions/",
+  "sites": "http://netbox.lasthop.io/api/dcim/sites/",
+  "rack-groups": "http://netbox.lasthop.io/api/dcim/rack-groups/",
+  "rack-roles": "http://netbox.lasthop.io/api/dcim/rack-roles/",
+  "racks": "http://netbox.lasthop.io/api/dcim/racks/",
+  "rack-reservations": "http://netbox.lasthop.io/api/dcim/rack-reservations/",
+  "manufacturers": "http://netbox.lasthop.io/api/dcim/manufacturers/",
+  "device-types": "http://netbox.lasthop.io/api/dcim/device-types/",
+  "console-port-templates": "http://netbox.lasthop.io/api/dcim/console-port-templates/",
+  "console-server-port-templates": "http://netbox.lasthop.io/api/dcim/console-server-port-templates/",
+  "power-port-templates": "http://netbox.lasthop.io/api/dcim/power-port-templates/",
+  "power-outlet-templates": "http://netbox.lasthop.io/api/dcim/power-outlet-templates/",
+  "interface-templates": "http://netbox.lasthop.io/api/dcim/interface-templates/",
+  "device-bay-templates": "http://netbox.lasthop.io/api/dcim/device-bay-templates/",
+  "device-roles": "http://netbox.lasthop.io/api/dcim/device-roles/",
+  "platforms": "http://netbox.lasthop.io/api/dcim/platforms/",
+  "devices": "http://netbox.lasthop.io/api/dcim/devices/",
+  "console-ports": "http://netbox.lasthop.io/api/dcim/console-ports/",
+  "console-server-ports": "http://netbox.lasthop.io/api/dcim/console-server-ports/",
+  "power-ports": "http://netbox.lasthop.io/api/dcim/power-ports/",
+  "power-outlets": "http://netbox.lasthop.io/api/dcim/power-outlets/",
+  "interfaces": "http://netbox.lasthop.io/api/dcim/interfaces/",
+  "device-bays": "http://netbox.lasthop.io/api/dcim/device-bays/",
+  "inventory-items": "http://netbox.lasthop.io/api/dcim/inventory-items/",
+  "console-connections": "http://netbox.lasthop.io/api/dcim/console-connections/",
+  "power-connections": "http://netbox.lasthop.io/api/dcim/power-connections/",
+  "interface-connections": "http://netbox.lasthop.io/api/dcim/interface-connections/",
+  "virtual-chassis": "http://netbox.lasthop.io/api/dcim/virtual-chassis/",
+  "connected-device": "http://netbox.lasthop.io/api/dcim/connected-device/"
+}
+(py3_venv) (py3_venv) [akushnir@pylab25b bonus_rest_api]$ curl -s https://netbox.lasthop.io/api/dcim/devices/ --insecure | jq "."
+{
+  "detail": "Authentication credentials were not provided."
+}
+(py3_venv) (py3_venv) [akushnir@pylab25b bonus_rest_api]$ curl -s https://netbox.lasthop.io/api/dcim/devices/1/ --insecure | jq "."
+{
+  "detail": "Authentication credentials were not provided."
+}
+(py3_venv) (py3_venv) [akushnir@pylab25b bonus_rest_api]$ 
