@@ -1,0 +1,20 @@
+1a. Use curl with the "--insecure" option to view the NetBox top-level /api endpoint. An example of this would be: 
+
+curl -L -s https://netbox.lasthop.io/api/ --insecure
+You can also pipe this into the "jq" utility for prettier output:
+
+curl -L -s https://netbox.lasthop.io/api/ --insecure | jq
+
+Note, you will possibly need to add the "-L" argument to all of the "curl" requests (this instructs "curl" to follow any redirects).
+
+1b.Use curl to access "https://netbox.lasthop.io/api/dcim/devices/". This API endpoint requires authentication; use the "-H" flag to provide this authentication information. Note, the lab has a NETBOX_TOKEN environment variable. Consequently, you should be able to do the following:
+
+curl -H "Authorization: Token $NETBOX_TOKEN" https://netbox.lasthop.io/api/dcim/devices/ --insecure | jq
+
+1c. Use curl to retrieve only the device information for a single device (ID=2 for example). Once again this will require authorization. The API URL for this would be (assuming ID 2):
+
+https://netbox.lasthop.io/api/dcim/devices/2/
+
+
+
+
